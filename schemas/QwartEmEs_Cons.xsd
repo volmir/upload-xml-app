@@ -1,0 +1,28 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:z="http://nssmc.gov.ua/Schem/QwartEmEs_Cons"
+	targetNamespace="http://nssmc.gov.ua/Schem/QwartEmEs_Cons"
+	elementFormDefault="qualified">
+    <xs:include schemaLocation="smc-components-pic.xsd"/>
+    <xs:include schemaLocation="FinRep.xsd"/>
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="DTSTITLIST" type="z:DTSTITLIST-container-Qc"/>
+                <xs:element ref="z:Fin_sub"/>
+                <xs:element ref="z:extparts" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="z:root-attributes"/>
+        </xs:complexType>
+        <xs:key name="extparts-key">
+          <xs:selector xpath="z:extparts/*"/>
+          <xs:field xpath="@NN"/>
+        </xs:key>
+        <xs:keyref name="extparts-keyref" refer="z:extparts-key">
+          <xs:selector xpath="*/*"/>
+          <xs:field xpath="@EXTPART_NN"/>
+        </xs:keyref>
+    </xs:element>
+    <xs:element name="extparts" type="z:extparts-container"/>
+</xs:schema>

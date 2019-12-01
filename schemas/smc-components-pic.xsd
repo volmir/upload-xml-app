@@ -1,0 +1,3146 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    elementFormDefault="qualified">
+    <xs:include schemaLocation="FinRep.xsd"/>
+    <xs:simpleType name="TypeText">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[&#x20;-&#x7E;
+&#x0410;&#x0411;&#x0412;&#x0413;&#x0414;&#x0415;&#x0416;&#x0417;
+&#x0418;&#x0419;&#x041A;&#x041B;&#x041C;&#x041D;&#x041E;&#x041F;
+&#x0420;&#x0421;&#x0422;&#x0423;&#x0424;&#x0425;&#x0426;&#x0427;
+&#x0428;&#x0429;&#x042A;&#x042B;&#x042C;&#x042D;&#x042E;&#x042F;
+&#x0430;&#x0431;&#x0432;&#x0433;&#x0434;&#x0435;&#x0436;&#x0437;
+&#x0438;&#x0439;&#x043A;&#x043B;&#x043C;&#x043D;&#x043E;&#x043F;
+&#x0440;&#x0441;&#x0442;&#x0443;&#x0444;&#x0445;&#x0446;&#x0447;
+&#x0448;&#x0449;&#x044A;&#x044B;&#x044C;&#x044D;&#x044E;&#x044F;
+&#x0402;&#x0403;&#x201A;&#x0453;&#x201E;&#x2026;&#x2020;&#x2021;
+&#x20AC;&#x2030;&#x0409;&#x2039;&#x040A;&#x040C;&#x040B;&#x040F;
+&#x0452;&#x2018;&#x2019;&#x201C;&#x201D;&#x2022;&#x2013;&#x2014;
+&#x2122;&#x0459;&#x203A;&#x045A;&#x045C;&#x045B;&#x045F;&#x00A0;
+&#x040E;&#x045E;&#x0408;&#x00A4;&#x0490;&#x00A6;&#x00A7;&#x0401;
+&#x00A9;&#x0404;&#x00AB;&#x00AC;&#x00AD;&#x00AE;&#x0407;&#x00B0;
+&#x00B1;&#x0406;&#x0456;&#x0491;&#x00B5;&#x00B6;&#x00B7;&#x0451;
+&#x2116;&#x0454;&#x00BB;&#x0458;&#x0405;&#x0455;&#x0457;
+&#x09;&#x0A;&#x0D;
+]+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="URL_Type">
+        <xs:restriction base="xs:anyURI">
+            <xs:minLength value="3"/>
+            <xs:maxLength value="255"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="CRC32_Type">
+        <xs:restriction base="xs:hexBinary">
+            <xs:length value="4"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DocNumber_Type">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EDRPOU">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="12"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="EntityIdCode">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="money">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type10">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type254">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type100">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type50">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="50"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type5">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="5"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type20">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="20"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type16">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="16"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type1">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="1"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type3">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type30">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="30"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type40">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="40"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type6">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="6"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type14">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="14"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Type140">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="140"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="OfrActType">
+        <xs:restriction base="xs:integer">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="dateTimeZero">
+        <xs:restriction base="xs:dateTime">
+            <xs:pattern value=".{10}(T00:00:00)?"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="dateCompatible">
+        <xs:union memberTypes="xs:date dateTimeZero"/>
+    </xs:simpleType>
+    <xs:simpleType name="GuarantorType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DivPayWayType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Opt1Or2Type">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="VlasnPovType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="50"/>
+            <xs:enumeration value="75"/>
+            <xs:enumeration value="95"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TypeAuditOpinion">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01"/>
+            <xs:enumeration value="02"/>
+            <xs:enumeration value="03"/>
+            <xs:enumeration value="04"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ISIN_Type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[A-Z]{2}[0-9A-Z]{9}[0-9]"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="HoldChReasonType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="HoldChOwType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="HrefType">
+        <xs:restriction base="xs:anyURI">
+            <xs:pattern value="https?://.+"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DealInterestEntityType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+            <xs:enumeration value="9"/>
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="12"/>
+            <xs:enumeration value="13"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DealInterestType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+            <xs:enumeration value="4"/>
+            <xs:enumeration value="5"/>
+            <xs:enumeration value="6"/>
+            <xs:enumeration value="7"/>
+            <xs:enumeration value="8"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="DealEntityRelType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="10"/>
+            <xs:enumeration value="11"/>
+            <xs:enumeration value="20"/>
+            <xs:enumeration value="21"/>
+            <xs:enumeration value="22"/>
+            <xs:enumeration value="23"/>
+            <xs:enumeration value="24"/>
+            <xs:enumeration value="25"/>
+            <xs:enumeration value="26"/>
+            <xs:enumeration value="27"/>
+            <xs:enumeration value="28"/>
+            <xs:enumeration value="29"/>
+            <xs:enumeration value="30"/>
+            <xs:enumeration value="31"/>
+            <xs:enumeration value="32"/>
+            <xs:enumeration value="40"/>
+            <xs:enumeration value="41"/>
+            <xs:enumeration value="42"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="MBSKindType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="OblKindType">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+            <xs:enumeration value="3"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="Yes1No0Type">
+        <xs:restriction base="xs:unsignedByte">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="0"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ClsObl_Type">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="01000"/>
+            <xs:enumeration value="05000"/>
+            <xs:enumeration value="07000"/>
+            <xs:enumeration value="12000"/>
+            <xs:enumeration value="14000"/>
+            <xs:enumeration value="18000"/>
+            <xs:enumeration value="21000"/>
+            <xs:enumeration value="23000"/>
+            <xs:enumeration value="26000"/>
+            <xs:enumeration value="32000"/>
+            <xs:enumeration value="35000"/>
+            <xs:enumeration value="44000"/>
+            <xs:enumeration value="46000"/>
+            <xs:enumeration value="48000"/>
+            <xs:enumeration value="51000"/>
+            <xs:enumeration value="53000"/>
+            <xs:enumeration value="56000"/>
+            <xs:enumeration value="59000"/>
+            <xs:enumeration value="61000"/>
+            <xs:enumeration value="63000"/>
+            <xs:enumeration value="65000"/>
+            <xs:enumeration value="68000"/>
+            <xs:enumeration value="71000"/>
+            <xs:enumeration value="73000"/>
+            <xs:enumeration value="74000"/>
+            <xs:enumeration value="80000"/>
+            <xs:enumeration value="85000"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TOCItem-Q">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="UROSOB"/>
+            <xs:enumeration value="LICENCE"/>
+            <xs:enumeration value="PERS_PO"/>
+            <xs:enumeration value="GOSPFIN"/>
+            <xs:enumeration value="ZOBOVYAZ"/>
+            <xs:enumeration value="OBS_PROD"/>
+            <xs:enumeration value="CVRP"/>
+            <xs:enumeration value="PAPERY"/>
+            <xs:enumeration value="PAPERY_A"/>
+            <xs:enumeration value="OBLIG"/>
+            <xs:enumeration value="PAPER_DR"/>
+            <xs:enumeration value="POHID_CP"/>
+            <xs:enumeration value="STV_UO"/>
+            <xs:enumeration value="KORP_SEC"/>
+            <xs:enumeration value="DEAL_BC"/>
+            <xs:enumeration value="DEAL_WI"/>
+            <xs:enumeration value="SECLIM"/>
+            <xs:enumeration value="GAR_TO"/>
+            <xs:enumeration value="KONV_CP"/>
+            <xs:enumeration value="ZAM_UPR"/>
+            <xs:enumeration value="KER_IP"/>
+            <xs:enumeration value="TRANS_IA"/>
+            <xs:enumeration value="ZM_RZIS"/>
+            <xs:enumeration value="SSR_IP"/>
+            <xs:enumeration value="ZAM_IA"/>
+            <xs:enumeration value="ROZM_IP"/>
+            <xs:enumeration value="ZOB_IP"/>
+            <xs:enumeration value="ZMINY_IA"/>
+            <xs:enumeration value="ZAM_OFU"/>
+            <xs:enumeration value="GARFIN"/>
+            <xs:enumeration value="ZV_SON"/>
+            <xs:enumeration value="FIN"/>
+            <xs:enumeration value="FIN_IFRS"/>
+            <xs:enumeration value="AUDITQ"/>
+            <xs:enumeration value="MANREP"/>
+            <xs:enumeration value="REPCONS"/>
+            <xs:enumeration value="PRIM"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="TOCItem-Y">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="UROSOB"/>
+            <xs:enumeration value="LICENCE"/>
+            <xs:enumeration value="STV_UO"/>
+            <xs:enumeration value="KORP_SEC"/>
+            <xs:enumeration value="RA_INFO"/>
+            <xs:enumeration value="ORGSTR"/>
+            <xs:enumeration value="SUDSPRV"/>
+            <xs:enumeration value="SHTRAF"/>
+            <xs:enumeration value="BUS_TEXT"/>
+            <xs:enumeration value="ORGUPRPO"/>
+            <xs:enumeration value="ORGUPR"/>
+            <xs:enumeration value="PERS_PO"/>
+            <xs:enumeration value="PERSON_P"/>
+            <xs:enumeration value="OWNER_PO"/>
+            <xs:enumeration value="EXITFEE"/>
+            <xs:enumeration value="ZASN"/>
+            <xs:enumeration value="MANREPA"/>
+            <xs:enumeration value="DEVPROSP"/>
+            <xs:enumeration value="DEVINFO"/>
+            <xs:enumeration value="DERIVS"/>
+            <xs:enumeration value="FINRISKMAN"/>
+            <xs:enumeration value="RISKTEND"/>
+            <xs:enumeration value="CORP"/>
+            <xs:enumeration value="CORPOWNREF"/>
+            <xs:enumeration value="CORPVOLREF"/>
+            <xs:enumeration value="CORPBEYREF"/>
+            <xs:enumeration value="ZBORY"/>
+            <xs:enumeration value="CORP_SVB"/>
+            <xs:enumeration value="CORP_EXB"/>
+            <xs:enumeration value="CORP_OU2"/>
+            <xs:enumeration value="CORP_SPO"/>
+            <xs:enumeration value="CORP_DNY"/>
+            <xs:enumeration value="APPDISPROC"/>
+            <xs:enumeration value="AUTHOFFIC"/>
+            <xs:enumeration value="OWNER"/>
+            <xs:enumeration value="HOLDCH1"/>
+            <xs:enumeration value="HOLDCH2"/>
+            <xs:enumeration value="HOLDCH3"/>
+            <xs:enumeration value="CAPSTRU"/>
+            <xs:enumeration value="PAPERY"/>
+            <xs:enumeration value="PAPERY_A"/>
+            <xs:enumeration value="OBLIG"/>
+            <xs:enumeration value="PAPER_DR"/>
+            <xs:enumeration value="POHID_CP"/>
+            <xs:enumeration value="GAR_TO"/>
+            <xs:enumeration value="VYKUP"/>
+            <xs:enumeration value="ZV_SON"/>
+            <xs:enumeration value="EMOWSC"/>
+            <xs:enumeration value="EMOWEQ"/>
+            <xs:enumeration value="SECLIM"/>
+            <xs:enumeration value="VSHQTY"/>
+            <xs:enumeration value="DYVIDEND"/>
+            <xs:enumeration value="GOSPFIN"/>
+            <xs:enumeration value="OSN_ZASB"/>
+            <xs:enumeration value="CHAKTIVY"/>
+            <xs:enumeration value="ZOBOVYAZ"/>
+            <xs:enumeration value="OBS_PROD"/>
+            <xs:enumeration value="CVRP"/>
+            <xs:enumeration value="OBSLUG"/>
+            <xs:enumeration value="DEAL_BA"/>
+            <xs:enumeration value="DEAL_BC"/>
+            <xs:enumeration value="DEAL_WI"/>
+            <xs:enumeration value="DEAL_WICA"/>
+            <xs:enumeration value="FIN"/>
+            <xs:enumeration value="AUDITINFO"/>
+            <xs:enumeration value="GARFIN"/>
+            <xs:enumeration value="REPCONS"/>
+            <xs:enumeration value="AGRCORP"/>
+            <xs:enumeration value="AGRCONST"/>
+            <xs:enumeration value="OSOBLYVA"/>
+            <xs:enumeration value="OBLIG_IP"/>
+            <xs:enumeration value="SSR_IP"/>
+            <xs:enumeration value="ROZM_IP"/>
+            <xs:enumeration value="ZOB_IP"/>
+            <xs:enumeration value="ZMINY_IA"/>
+            <xs:enumeration value="STR_IP"/>
+            <xs:enumeration value="PRAVA_IA"/>
+            <xs:enumeration value="BORG"/>
+            <xs:enumeration value="VYP_IS"/>
+            <xs:enumeration value="RSTR_IA"/>
+            <xs:enumeration value="FON"/>
+            <xs:enumeration value="SERT_FON"/>
+            <xs:enumeration value="O_FON"/>
+            <xs:enumeration value="CHA_FON"/>
+            <xs:enumeration value="PRAV_FON"/>
+            <xs:enumeration value="PRIM"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ClsCont_Type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="ClsSec_Type">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{8}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:attributeGroup name="root-attributes">
+        <xs:attribute name="D_EDRPOU" type="EDRPOU" use="required"/>
+        <xs:attribute name="D_NAME" type="TypeText" use="required"/>
+        <xs:attribute name="REGDATE" type="dateCompatible" use="required"/>
+        <xs:attribute name="REGNUM" type="DocNumber_Type" use="required"/>
+        <xs:attribute name="STD" type="dateCompatible" use="required"/>
+        <xs:attribute name="FID" type="dateCompatible" use="required"/>
+        <xs:attribute name="NREG" type="xs:string" use="required"/>
+        <xs:attribute name="TTYPE" type="xs:string" use="required"/>
+    </xs:attributeGroup>
+    <xs:complexType name="ZMIST-row">
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="extparts-row">
+        <xs:attribute name="NN" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="URL" type="URL_Type" use="required"/>
+        <xs:attribute name="FILENAME" type="URL_Type" use="required"/>
+        <xs:attribute name="FILESIZE" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="CRC32" type="CRC32_Type" use="required"/>
+        <xs:attribute name="OPYS" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="extparts-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="extparts-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSAGRCONST-row">
+        <xs:attribute name="AGR_SIDE" type="Type254" use="required"/>
+        <xs:attribute name="PERS_OZN" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="AGR_DATE" type="dateCompatible"/>
+        <xs:attribute name="AGR_ACT" type="dateCompatible"/>
+        <xs:attribute name="AGR_DEAL" type="dateCompatible"/>
+        <xs:attribute name="AGR_SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="AGR_VALUE" type="TypeText" use="required"/>
+        <xs:attribute name="AGR_TERM" type="TypeText"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSAGRCONST-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSAGRCONST-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSAGRCORP-row">
+        <xs:attribute name="AGR_SIDE" type="TypeText" use="required"/>
+        <xs:attribute name="PERS_OZN" type="Opt1Or2Type"/>
+        <xs:attribute name="AGR_DATE" type="dateCompatible"/>
+        <xs:attribute name="AGR_ACT" type="dateCompatible"/>
+        <xs:attribute name="AGR_SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="AGR_TERM" type="TypeText"/>
+        <xs:attribute name="SH_OWN" type="xs:double"/>
+        <xs:attribute name="SH_VOT" type="xs:double"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSAGRCORP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSAGRCORP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSAUDITINFO-row">
+        <xs:attribute name="NAMEAUD" type="Type254" use="required"/>
+        <xs:attribute name="EDRPOUAUD" type="Type10"/>
+        <xs:attribute name="MSZNAUD" type="Type140"/>
+        <xs:attribute name="NUM_SV" type="Type20"/>
+        <xs:attribute name="CHMB_QSNM" type="Type50"/>
+        <xs:attribute name="CHMB_QSDT" type="dateCompatible"/>
+        <xs:attribute name="AUD_REPFID" type="dateCompatible"/>
+        <xs:attribute name="AUD_REPSTD" type="dateCompatible"/>
+        <xs:attribute name="AUD_OPIN" type="TypeAuditOpinion"/>
+        <xs:attribute name="AUD_EXPL" type="xs:string"/>
+        <xs:attribute name="AUD_SVCNM" type="Type50"/>
+        <xs:attribute name="AUD_SVCDT" type="dateCompatible"/>
+        <xs:attribute name="AUD_BEG" type="dateCompatible"/>
+        <xs:attribute name="AUD_END" type="dateCompatible"/>
+        <xs:attribute name="AUD_DATE" type="dateCompatible"/>
+        <xs:attribute name="AUD_FEE" type="money"/>
+        <xs:attribute name="AUDIT" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSAUDITINFO-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSAUDITINFO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSBANKR_O-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="TYP_DAT" type="Type10"/>
+        <xs:attribute name="DAT_UH" type="dateCompatible"/>
+        <xs:attribute name="DT_SUD" type="dateCompatible"/>
+        <xs:attribute name="ZAYAVN" type="Type100"/>
+        <xs:attribute name="ARB_KER" type="Type100"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSBANKR_O-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSBANKR_O-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSBORG-row">
+        <xs:attribute name="KL_30" type="xs:double"/>
+        <xs:attribute name="CHIA_30P" type="xs:double"/>
+        <xs:attribute name="CHIA_30" type="xs:double"/>
+        <xs:attribute name="CHIP_30P" type="xs:double"/>
+        <xs:attribute name="CHIP_30" type="xs:double"/>
+        <xs:attribute name="KL_60" type="xs:double"/>
+        <xs:attribute name="CHIA_60P" type="xs:double"/>
+        <xs:attribute name="CHIA_60" type="xs:double"/>
+        <xs:attribute name="CHIP_60P" type="xs:double"/>
+        <xs:attribute name="CHIP_60" type="xs:double"/>
+        <xs:attribute name="KL_90" type="xs:double"/>
+        <xs:attribute name="CHIA_90P" type="xs:double"/>
+        <xs:attribute name="CHIA_90" type="xs:double"/>
+        <xs:attribute name="CHIP_90P" type="xs:double"/>
+        <xs:attribute name="CHIP_90" type="xs:double"/>
+        <xs:attribute name="KL_180" type="xs:double"/>
+        <xs:attribute name="CHIA180P" type="xs:double"/>
+        <xs:attribute name="CHIA_180" type="xs:double"/>
+        <xs:attribute name="CHIP180P" type="xs:double"/>
+        <xs:attribute name="CHIP_180" type="xs:double"/>
+        <xs:attribute name="KL_B" type="xs:double"/>
+        <xs:attribute name="CHIA_BP" type="xs:double"/>
+        <xs:attribute name="CHIA_B" type="xs:double"/>
+        <xs:attribute name="CHIP_BP" type="xs:double"/>
+        <xs:attribute name="CHIP_B" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSBORG-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSBORG-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSBUS_TEXT-row">
+        <xs:attribute name="SERCHIS" type="xs:string"/>
+        <xs:attribute name="NEZAL" type="xs:string"/>
+        <xs:attribute name="SPDIYAL" type="xs:string"/>
+        <xs:attribute name="ORG_STR" type="xs:string"/>
+        <xs:attribute name="PROPOZ" type="xs:string"/>
+        <xs:attribute name="OBL_POL" type="xs:string"/>
+        <xs:attribute name="PRODUKT" type="xs:string"/>
+        <xs:attribute name="PRYDBAN" type="xs:string"/>
+        <xs:attribute name="OSN_ZASB" type="xs:string"/>
+        <xs:attribute name="PROBLEM" type="xs:string"/>
+        <xs:attribute name="FIN_POL" type="xs:string"/>
+        <xs:attribute name="DOGOVOR" type="xs:string"/>
+        <xs:attribute name="STRATEG" type="xs:string"/>
+        <xs:attribute name="DOSLID" type="xs:string"/>
+        <xs:attribute name="INSHE" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSBUS_TEXT-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSBUS_TEXT-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCAPSTRU-row">
+        <xs:attribute name="TP_STOCK" type="Type50" use="required"/>
+        <xs:attribute name="KL_STOCK" type="xs:double" use="required"/>
+        <xs:attribute name="NV_STOCK" type="xs:double" use="required"/>
+        <xs:attribute name="RIGHOBLG" type="TypeText" use="required"/>
+        <xs:attribute name="PUBLOFR" type="TypeText" use="required"/>
+        <xs:attribute name="PRIM" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCAPSTRU-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCAPSTRU-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCHA_FON-row">
+        <xs:attribute name="NAME_FON" type="Type254"/>
+        <xs:attribute name="VM_FON" type="xs:double"/>
+        <xs:attribute name="VZ_FON" type="xs:double"/>
+        <xs:attribute name="CHA_FON" type="xs:double"/>
+        <xs:attribute name="KLS_FON" type="xs:double"/>
+        <xs:attribute name="VCS_FONZ" type="xs:double"/>
+        <xs:attribute name="VCS_FONP" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCHA_FON-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCHA_FON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCHAKTIVY-row">
+        <xs:attribute name="VCA_ZP" type="xs:double"/>
+        <xs:attribute name="VCA_PP" type="xs:double"/>
+        <xs:attribute name="SKAP_ZP" type="xs:double"/>
+        <xs:attribute name="SKAP_PP" type="xs:double"/>
+        <xs:attribute name="SSKAP_ZP" type="xs:double"/>
+        <xs:attribute name="SSKAP_PP" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+        <xs:attribute name="VUSNOVOK" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCHAKTIVY-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSCHAKTIVY-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_DNY-row">
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="D_SHARES" type="xs:double"/>
+        <xs:attribute name="D_SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="D_DATE" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_DNY-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCORP_DNY-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_EXB-row">
+        <xs:attribute name="EB_COMP" type="TypeText" use="required"/>
+        <xs:attribute name="EB_FUNC" type="TypeText" use="required"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_EXB-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCORP_EXB-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_OU1-row">
+        <xs:attribute name="OUP_Q16" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="OUP_Q16R" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="OUP_Q16P" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="OUP_Q18A" type="xs:double"/>
+        <xs:attribute name="OUP_Q18G" type="Opt1Or2Type"/>
+        <xs:attribute name="OUP_Q18V" type="xs:double"/>
+        <xs:attribute name="OUP_Q18I" type="xs:string"/>
+        <xs:attribute name="OUP_Q18VW" type="xs:string"/>
+        <xs:attribute name="OUP_Q18CS" type="xs:string"/>
+        <xs:attribute name="OUP_Q20F" type="xs:double"/>
+        <xs:attribute name="OUP_Q20P" type="xs:double"/>
+        <xs:attribute name="OUP_Q20S" type="xs:double"/>
+        <xs:attribute name="OUP_Q20N" type="xs:double"/>
+        <xs:attribute name="OUP_Q20I" type="xs:string"/>
+        <xs:attribute name="OUP_Q21Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q21F" type="xs:double"/>
+        <xs:attribute name="OUP_Q21O" type="xs:double"/>
+        <xs:attribute name="OUP_Q21K" type="xs:double"/>
+        <xs:attribute name="OUP_Q21V" type="xs:double"/>
+        <xs:attribute name="OUP_Q21N" type="xs:double"/>
+        <xs:attribute name="OUP_Q21I" type="xs:string"/>
+        <xs:attribute name="OUP_Q21Y" type="xs:double"/>
+        <xs:attribute name="OUP_Q22S" type="xs:double"/>
+        <xs:attribute name="OUP_Q22Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q22K" type="xs:double"/>
+        <xs:attribute name="OUP_Q22P" type="xs:double"/>
+        <xs:attribute name="OUP_Q22I" type="xs:string"/>
+        <xs:attribute name="OUP_Q23" type="xs:double"/>
+        <xs:attribute name="OUP_Q24" type="xs:double"/>
+        <xs:attribute name="OUP_Q25" type="xs:double"/>
+        <xs:attribute name="OUP_Q30" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_OU1-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSCORP_OU1-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_OU2-row">
+        <xs:attribute name="OUP_Q29S" type="xs:double"/>
+        <xs:attribute name="OUP_Q29P" type="xs:double"/>
+        <xs:attribute name="OUP_Q29F" type="xs:double"/>
+        <xs:attribute name="OUP_Q29G" type="xs:double"/>
+        <xs:attribute name="OUP_Q29O" type="xs:double"/>
+        <xs:attribute name="OUP_Q29H" type="xs:double"/>
+        <xs:attribute name="OUP_Q29R" type="xs:double"/>
+        <xs:attribute name="OUP_Q29K" type="xs:double"/>
+        <xs:attribute name="OUP_Q29V" type="xs:double"/>
+        <xs:attribute name="OUP_Q29T" type="xs:double"/>
+        <xs:attribute name="OUP_Q29M" type="xs:double"/>
+        <xs:attribute name="OUP_Q29A" type="xs:double"/>
+        <xs:attribute name="OUP_Q29D" type="xs:double"/>
+        <xs:attribute name="OUP_Q29U" type="xs:double"/>
+        <xs:attribute name="OUP_Q29Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q30S" type="xs:double"/>
+        <xs:attribute name="OUP_Q30P" type="xs:double"/>
+        <xs:attribute name="OUP_Q30F" type="xs:double"/>
+        <xs:attribute name="OUP_Q30G" type="xs:double"/>
+        <xs:attribute name="OUP_Q30O" type="xs:double"/>
+        <xs:attribute name="OUP_Q30H" type="xs:double"/>
+        <xs:attribute name="OUP_Q30R" type="xs:double"/>
+        <xs:attribute name="OUP_Q30K" type="xs:double"/>
+        <xs:attribute name="OUP_Q30V" type="xs:double"/>
+        <xs:attribute name="OUP_Q30T" type="xs:double"/>
+        <xs:attribute name="OUP_Q30M" type="xs:double"/>
+        <xs:attribute name="OUP_Q30A" type="xs:double"/>
+        <xs:attribute name="OUP_Q30D" type="xs:double"/>
+        <xs:attribute name="OUP_Q30U" type="xs:double"/>
+        <xs:attribute name="OUP_Q30Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q31S" type="xs:double"/>
+        <xs:attribute name="OUP_Q31P" type="xs:double"/>
+        <xs:attribute name="OUP_Q31F" type="xs:double"/>
+        <xs:attribute name="OUP_Q31G" type="xs:double"/>
+        <xs:attribute name="OUP_Q31O" type="xs:double"/>
+        <xs:attribute name="OUP_Q31H" type="xs:double"/>
+        <xs:attribute name="OUP_Q31R" type="xs:double"/>
+        <xs:attribute name="OUP_Q31K" type="xs:double"/>
+        <xs:attribute name="OUP_Q31V" type="xs:double"/>
+        <xs:attribute name="OUP_Q31T" type="xs:double"/>
+        <xs:attribute name="OUP_Q31M" type="xs:double"/>
+        <xs:attribute name="OUP_Q31A" type="xs:double"/>
+        <xs:attribute name="OUP_Q31D" type="xs:double"/>
+        <xs:attribute name="OUP_Q31U" type="xs:double"/>
+        <xs:attribute name="OUP_Q31Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q32S" type="xs:double"/>
+        <xs:attribute name="OUP_Q32P" type="xs:double"/>
+        <xs:attribute name="OUP_Q32F" type="xs:double"/>
+        <xs:attribute name="OUP_Q32G" type="xs:double"/>
+        <xs:attribute name="OUP_Q32O" type="xs:double"/>
+        <xs:attribute name="OUP_Q32H" type="xs:double"/>
+        <xs:attribute name="OUP_Q32R" type="xs:double"/>
+        <xs:attribute name="OUP_Q32K" type="xs:double"/>
+        <xs:attribute name="OUP_Q32V" type="xs:double"/>
+        <xs:attribute name="OUP_Q32T" type="xs:double"/>
+        <xs:attribute name="OUP_Q32M" type="xs:double"/>
+        <xs:attribute name="OUP_Q32A" type="xs:double"/>
+        <xs:attribute name="OUP_Q32D" type="xs:double"/>
+        <xs:attribute name="OUP_Q32U" type="xs:double"/>
+        <xs:attribute name="OUP_Q32Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q33" type="xs:double"/>
+        <xs:attribute name="OUP_Q34" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_OU2-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSCORP_OU2-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_OU3-row">
+        <xs:attribute name="OUP_Q351" type="xs:double"/>
+        <xs:attribute name="OUP_Q352" type="xs:double"/>
+        <xs:attribute name="OUP_Q353" type="xs:double"/>
+        <xs:attribute name="OUP_Q354" type="xs:double"/>
+        <xs:attribute name="OUP_Q355" type="xs:double"/>
+        <xs:attribute name="OUP_Q356" type="xs:double"/>
+        <xs:attribute name="OUP_Q357" type="xs:double"/>
+        <xs:attribute name="OUP_Q358" type="xs:string"/>
+        <xs:attribute name="OUP_Q36Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q36V" type="xs:double"/>
+        <xs:attribute name="OUP_Q36S" type="xs:double"/>
+        <xs:attribute name="OUP_Q36F" type="xs:double"/>
+        <xs:attribute name="OUP_Q36P" type="xs:double"/>
+        <xs:attribute name="OUP_Q36R" type="xs:double"/>
+        <xs:attribute name="OUP_Q37Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q37V" type="xs:double"/>
+        <xs:attribute name="OUP_Q37S" type="xs:double"/>
+        <xs:attribute name="OUP_Q37F" type="xs:double"/>
+        <xs:attribute name="OUP_Q37P" type="xs:double"/>
+        <xs:attribute name="OUP_Q37R" type="xs:double"/>
+        <xs:attribute name="OUP_Q38Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q38V" type="xs:double"/>
+        <xs:attribute name="OUP_Q38S" type="xs:double"/>
+        <xs:attribute name="OUP_Q38F" type="xs:double"/>
+        <xs:attribute name="OUP_Q38P" type="xs:double"/>
+        <xs:attribute name="OUP_Q38R" type="xs:double"/>
+        <xs:attribute name="OUP_Q39Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q39V" type="xs:double"/>
+        <xs:attribute name="OUP_Q39S" type="xs:double"/>
+        <xs:attribute name="OUP_Q39F" type="xs:double"/>
+        <xs:attribute name="OUP_Q39P" type="xs:double"/>
+        <xs:attribute name="OUP_Q39R" type="xs:double"/>
+        <xs:attribute name="OUP_Q40Z" type="xs:double"/>
+        <xs:attribute name="OUP_Q40V" type="xs:double"/>
+        <xs:attribute name="OUP_Q40S" type="xs:double"/>
+        <xs:attribute name="OUP_Q40F" type="xs:double"/>
+        <xs:attribute name="OUP_Q40P" type="xs:double"/>
+        <xs:attribute name="OUP_Q40R" type="xs:double"/>
+        <xs:attribute name="OUP_Q41" type="xs:double"/>
+        <xs:attribute name="OUP_Q421" type="xs:double"/>
+        <xs:attribute name="OUP_Q422" type="xs:double"/>
+        <xs:attribute name="OUP_Q423" type="xs:double"/>
+        <xs:attribute name="OUP_Q424" type="xs:double"/>
+        <xs:attribute name="OUP_Q431" type="xs:double"/>
+        <xs:attribute name="OUP_Q432" type="xs:double"/>
+        <xs:attribute name="OUP_Q433" type="xs:double"/>
+        <xs:attribute name="OUP_Q434" type="xs:string"/>
+        <xs:attribute name="OUP_Q471" type="xs:double"/>
+        <xs:attribute name="OUP_Q472" type="xs:double"/>
+        <xs:attribute name="OUP_Q473" type="xs:double"/>
+        <xs:attribute name="OUP_Q474" type="xs:double"/>
+        <xs:attribute name="OUP_Q475" type="xs:double"/>
+        <xs:attribute name="OUP_Q476" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_OU3-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSCORP_OU3-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_SPO-row">
+        <xs:attribute name="O_NAME" type="Type254" use="required"/>
+        <xs:attribute name="O_ID" type="EDRPOU"/>
+        <xs:attribute name="PERS_OZN" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="VL_STAT" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_SPO-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCORP_SPO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_SVB-row">
+        <xs:attribute name="SV_PIB" type="Type254" use="required"/>
+        <xs:attribute name="SV_POSADA" type="Type254" use="required"/>
+        <xs:attribute name="SV_INDEP" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_SVB-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCORP_SVB-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_ZZA-row">
+        <xs:attribute name="ZZA_Q2" type="xs:double"/>
+        <xs:attribute name="ZZA_Q3" type="xs:double"/>
+        <xs:attribute name="ZZA_Q4" type="xs:double"/>
+        <xs:attribute name="ZZA_Q7" type="xs:double"/>
+        <xs:attribute name="ZZA_Q5" type="xs:string"/>
+        <xs:attribute name="ZZA_Q6" type="xs:double"/>
+        <xs:attribute name="ZZA_Q6_K" type="xs:double"/>
+        <xs:attribute name="ZZA_Q6_A" type="xs:double"/>
+        <xs:attribute name="ZZA_Q7_K" type="xs:double"/>
+        <xs:attribute name="ZZA_Q7_B" type="xs:double"/>
+        <xs:attribute name="ZZA_Q7_R" type="xs:double"/>
+        <xs:attribute name="ZZA_Q7_I" type="xs:string"/>
+        <xs:attribute name="ZZA_Q7_Y" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_R" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_N" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_A" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_D" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_Z" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_S" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_C" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_P" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_V" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_O" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8_I" type="xs:string"/>
+        <xs:attribute name="ZZA_Q8_Y" type="xs:double"/>
+        <xs:attribute name="ZZA_Q8A_SVB" type="Opt1Or2Type"/>
+        <xs:attribute name="ZZA_Q8A_EXA" type="Opt1Or2Type"/>
+        <xs:attribute name="ZZA_Q8A_AUC" type="Opt1Or2Type"/>
+        <xs:attribute name="ZZA_Q8A_CPH" type="TypeText"/>
+        <xs:attribute name="ZZA_Q8A_OTH" type="TypeText"/>
+        <xs:attribute name="ZZA_Q8B_ORD" type="TypeText"/>
+        <xs:attribute name="ZZA_Q8B_EXO" type="TypeText"/>
+        <xs:attribute name="ZZA_Q9" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCORP_ZZA-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSCORP_ZZA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCVRP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="SKL_V" type="Type100"/>
+        <xs:attribute name="VID_CVRP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSCVRP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSCVRP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEAL_BA-row">
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="VALUE" type="xs:double" use="required"/>
+        <xs:attribute name="ASSETS" type="xs:double" use="required"/>
+        <xs:attribute name="WEIGHT" type="xs:double" use="required"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEAL_BA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEAL_BA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEAL_BC-row">
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="VALUE" type="xs:double" use="required"/>
+        <xs:attribute name="ASSETS" type="xs:double" use="required"/>
+        <xs:attribute name="WEIGHT" type="xs:double" use="required"/>
+        <xs:attribute name="DOCURL" type="HrefType"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEAL_BC-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEAL_BC-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEAL_WI-row">
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="VALUE" type="xs:double" use="required"/>
+        <xs:attribute name="ASSETS" type="xs:double" use="required"/>
+        <xs:attribute name="WEIGHT" type="xs:double" use="required"/>
+        <xs:attribute name="ENT_TYP" type="DealInterestEntityType" use="required"/>
+        <xs:attribute name="ENT_NAME" type="TypeText" use="required"/>
+        <xs:attribute name="INT_TYP" type="DealInterestType" use="required"/>
+        <xs:attribute name="IAFL_TYP" type="DealEntityRelType"/>
+        <xs:attribute name="IAFL_WITH" type="TypeText"/>
+        <xs:attribute name="DOCURL" type="HrefType"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEAL_WI-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEAL_WI-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEALIMP-row-R">
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="DECSRC" type="TypeText" use="required"/>
+        <xs:attribute name="VALUE" type="xs:double" use="required"/>
+        <xs:attribute name="ASSETS" type="xs:double" use="required"/>
+        <xs:attribute name="WEIGHT" type="xs:double" use="required"/>
+        <xs:attribute name="SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="DISCLDT" type="dateCompatible" use="optional"/>
+        <xs:attribute name="DISCLWEB" type="TypeText" use="optional"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEALIMP-container-R">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEALIMP-row-R"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEALIMP-row-R2">
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="DECSRC" type="TypeText" use="required"/>
+        <xs:attribute name="VALUE" type="xs:double" use="required"/>
+        <xs:attribute name="ASSETS" type="xs:double" use="required"/>
+        <xs:attribute name="WEIGHT" type="xs:double" use="required"/>
+        <xs:attribute name="SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="DEALDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="DISCLCOM" type="HrefType" use="optional"/>
+        <xs:attribute name="DISCLWEB" type="HrefType" use="optional"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEALIMP-container-R2">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEALIMP-row-R2"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEALIMP-row-RY">
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="DECSRC" type="TypeText" use="required"/>
+        <xs:attribute name="VALUE" type="xs:double" use="required"/>
+        <xs:attribute name="ASSETS" type="xs:double" use="required"/>
+        <xs:attribute name="WEIGHT" type="xs:double" use="required"/>
+        <xs:attribute name="SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="DEALDT" type="dateCompatible" use="optional"/>
+        <xs:attribute name="DISCLDT" type="dateCompatible" use="optional"/>
+        <xs:attribute name="DISCLWEB" type="TypeText" use="optional"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEALIMP-container-RY">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEALIMP-row-RY"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDEBTGUAR-row">
+        <xs:attribute name="ISSREGDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="ISSREGNUM" type="Type100" use="required"/>
+        <xs:attribute name="ISSVOL" type="money" use="required"/>
+        <xs:attribute name="GUARTYPE" type="GuarantorType" use="required"/>
+        <xs:attribute name="OLD_ENDDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="OLD_NAME" type="Type254" use="required"/>
+        <xs:attribute name="OLD_EDRPOU" type="EDRPOU" use="required"/>
+        <xs:attribute name="OLD_ADDR" type="Type254" use="required"/>
+        <xs:attribute name="NEW_DT" type="dateCompatible" use="required"/>
+        <xs:attribute name="NEW_NAME" type="Type254" use="required"/>
+        <xs:attribute name="NEW_EDRPOU" type="EDRPOU" use="required"/>
+        <xs:attribute name="NEW_ADDR" type="Type254" use="required"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDEBTGUAR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDEBTGUAR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDIVPAYDC-row">
+        <xs:attribute name="EVENTDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="DIVVOL" type="money" use="required"/>
+        <xs:attribute name="PAYSTD" type="dateCompatible" use="required"/>
+        <xs:attribute name="PAYFID" type="dateCompatible" use="required"/>
+        <xs:attribute name="PAYWAY" type="DivPayWayType" use="optional"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDIVPAYDC-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDIVPAYDC-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDMGSPROC-row">
+        <xs:attribute name="EVENTDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="CASENUM" type="Type100" use="required"/>
+        <xs:attribute name="DECDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="CLAIMNAME" type="Type254" use="required"/>
+        <xs:attribute name="ZMIST" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDMGSPROC-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDMGSPROC-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDYVIDEND-row">
+        <xs:attribute name="NAR_SPZ" type="xs:double"/>
+        <xs:attribute name="NAR_SPRZ" type="xs:double"/>
+        <xs:attribute name="NAR_SPP" type="xs:double"/>
+        <xs:attribute name="NAR_SPRP" type="xs:double"/>
+        <xs:attribute name="NAR_APZ" type="xs:double"/>
+        <xs:attribute name="NAR_APRZ" type="xs:double"/>
+        <xs:attribute name="NAR_APP" type="xs:double"/>
+        <xs:attribute name="NAR_APRP" type="xs:double"/>
+        <xs:attribute name="VYP_SPZ" type="xs:double"/>
+        <xs:attribute name="VYP_SPRZ" type="xs:double"/>
+        <xs:attribute name="VYP_SPP" type="xs:double"/>
+        <xs:attribute name="VYP_SPRP" type="xs:double"/>
+        <xs:attribute name="DPP_APZ" type="dateCompatible"/>
+        <xs:attribute name="DPP_APRZ" type="dateCompatible"/>
+        <xs:attribute name="DPP_APP" type="dateCompatible"/>
+        <xs:attribute name="DPP_APRP" type="dateCompatible"/>
+        <xs:attribute name="DSP_APZ" type="dateCompatible"/>
+        <xs:attribute name="DSP_APRZ" type="dateCompatible"/>
+        <xs:attribute name="DSP_APP" type="dateCompatible"/>
+        <xs:attribute name="DSP_APRP" type="dateCompatible"/>
+        <xs:attribute name="DPW_PZ" type="TypeText"/>
+        <xs:attribute name="DPW_PRZ" type="TypeText"/>
+        <xs:attribute name="DPW_PP" type="TypeText"/>
+        <xs:attribute name="DPW_PRP" type="TypeText"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDYVIDEND-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSDYVIDEND-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSDYVIDPAY-row">
+        <xs:attribute name="PAYDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="PAYPER" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="SHTYPE" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="PAYWAY" type="DivPayWayType" use="optional"/>
+        <xs:attribute name="PAYVAL" type="money" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSDYVIDPAY-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSDYVIDPAY-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWEQ-row">
+        <xs:attribute name="PERS_PIB" type="TypeText"/>
+        <xs:attribute name="SH_QTY" type="xs:double" use="required"/>
+        <xs:attribute name="SH_PART" type="xs:double" use="required"/>
+        <xs:attribute name="CS_QTY" type="xs:double"/>
+        <xs:attribute name="PS_QTY" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWEQ-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSEMOWEQ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWEQALL-row">
+        <xs:attribute name="SH_QTY" type="xs:double" use="required"/>
+        <xs:attribute name="SH_PART" type="xs:double" use="required"/>
+        <xs:attribute name="CS_QTY" type="xs:double"/>
+        <xs:attribute name="PS_QTY" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWEQALL-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSEMOWEQALL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWSC-row">
+        <xs:attribute name="PERS_PIB" type="TypeText"/>
+        <xs:attribute name="SEC_TYPE" type="ClsSec_Type"/>
+        <xs:attribute name="SEC_QTY" type="xs:double" use="required"/>
+        <xs:attribute name="SEC_PART" type="xs:double" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWSC-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSEMOWSC-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWSCALL-row">
+        <xs:attribute name="SEC_TYPE" type="ClsSec_Type"/>
+        <xs:attribute name="SEC_QTY" type="xs:double" use="required"/>
+        <xs:attribute name="SEC_PART" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSEMOWSCALL-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSEMOWSCALL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSEXITFEE-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="ZMIST-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSFILIA-row">
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSFILIA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSFILIA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSFON-row">
+        <xs:attribute name="FU_NAME" type="Type254"/>
+        <xs:attribute name="FUEDRPOU" type="Type10"/>
+        <xs:attribute name="FU_CONT" type="Type50"/>
+        <xs:attribute name="FU_OBL" type="Type10"/>
+        <xs:attribute name="FU_RAYON" type="Type100"/>
+        <xs:attribute name="FU_POST" type="Type5"/>
+        <xs:attribute name="FU_ADRES" type="Type100"/>
+        <xs:attribute name="FUSTREET" type="Type50"/>
+        <xs:attribute name="NAME_FON" type="Type254"/>
+        <xs:attribute name="DT_FON" type="dateCompatible"/>
+        <xs:attribute name="STR_FON" type="dateCompatible"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSFON-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSFON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSGAR_TO-row">
+        <xs:attribute name="VYD_ZAB" type="Type20"/>
+        <xs:attribute name="SUM_ZAB" type="xs:double"/>
+        <xs:attribute name="OBS_VYP" type="xs:double"/>
+        <xs:attribute name="DT_VYP" type="dateCompatible"/>
+        <xs:attribute name="NS_VYP" type="Type20"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="G_NAME" type="Type254"/>
+        <xs:attribute name="G_EDRPOU" type="Type10"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSGAR_TO-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSGAR_TO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSGAR_TO-row-Q">
+        <xs:attribute name="VYD_ZAB" type="Type20" use="required"/>
+        <xs:attribute name="SUM_ZAB" type="xs:double" use="required"/>
+        <xs:attribute name="OBS_VYP" type="xs:double"/>
+        <xs:attribute name="DT_VYP" type="dateCompatible"/>
+        <xs:attribute name="NS_VYP" type="Type20"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="G_NAME" type="TypeText" use="required"/>
+        <xs:attribute name="G_EDRPOU" type="Type10"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSGAR_TO-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSGAR_TO-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSGARFIN-row">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element ref="Fin_sub"/>
+        </xs:sequence>
+        <xs:attribute name="G_EDRPOU" type="Type10" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSGARFIN-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSGARFIN-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSJSCTYP_O-row">
+        <xs:attribute name="TYP_DAT" type="Type10" use="required"/>
+        <xs:attribute name="DAT_POD" type="dateCompatible" use="required"/>
+        <xs:attribute name="DOC_DATE" type="dateCompatible"/>
+        <xs:attribute name="DOC_UNIT" type="TypeText"/>
+        <xs:attribute name="NAME_OLD" type="TypeText" use="required"/>
+        <xs:attribute name="NAME_NEW" type="TypeText" use="required"/>
+        <xs:attribute name="ZMIST" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSJSCTYP_O-container">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSJSCTYP_O-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSKER_IP-row">
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSKER_IP-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSKER_IP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSKONV_CP-row">
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSKONV_CP-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSKONV_CP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSKONV_IS-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="VYD_SCP" type="Type10"/>
+        <xs:attribute name="DTEM_SCP" type="dateCompatible"/>
+        <xs:attribute name="NSEM_SCP" type="Type20"/>
+        <xs:attribute name="FORM_SCP" type="Type10"/>
+        <xs:attribute name="SER_SCP" type="Type20"/>
+        <xs:attribute name="NV_SCP" type="xs:double"/>
+        <xs:attribute name="CHKIBSCP" type="xs:double"/>
+        <xs:attribute name="ZV_SCP" type="xs:double"/>
+        <xs:attribute name="KILK_SCP" type="xs:double"/>
+        <xs:attribute name="DTEM_NCP" type="dateCompatible"/>
+        <xs:attribute name="NSEM_NCP" type="Type20"/>
+        <xs:attribute name="VYD_NCP" type="Type10"/>
+        <xs:attribute name="TYP_NCP" type="Type10"/>
+        <xs:attribute name="SER_NCP" type="Type20"/>
+        <xs:attribute name="FORM_NCP" type="Type10"/>
+        <xs:attribute name="NV_NCP" type="xs:double"/>
+        <xs:attribute name="CHKIBNCP" type="xs:double"/>
+        <xs:attribute name="KILK_NCP" type="xs:double"/>
+        <xs:attribute name="ZV_NCP" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSKONV_IS-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSKONV_IS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSKORP_SEC-row">
+        <xs:attribute name="DT_POS" type="dateCompatible"/>
+        <xs:attribute name="DT_PRYZN" type="dateCompatible"/>
+        <xs:attribute name="PIB_SECR" type="Type100" use="required"/>
+        <xs:attribute name="E_PHONE" type="Type50"/>
+        <xs:attribute name="E_MAIL" type="Type50"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSKORP_SEC-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSKORP_SEC-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSMANREPA-row">
+        <xs:attribute name="DEVPROSP" type="TypeText"/>
+        <xs:attribute name="DEVINFO" type="TypeText"/>
+        <xs:attribute name="DERIVS" type="TypeText"/>
+        <xs:attribute name="FINRISKMAN" type="TypeText"/>
+        <xs:attribute name="RISKTEND" type="TypeText"/>
+        <xs:attribute name="CORPOWNREF" type="TypeText"/>
+        <xs:attribute name="CORPVOLREF" type="TypeText"/>
+        <xs:attribute name="CORPBEYREF" type="TypeText"/>
+        <xs:attribute name="DEVIREAS" type="TypeText"/>
+        <xs:attribute name="BDINFO" type="TypeText"/>
+        <xs:attribute name="APPDISPROC" type="TypeText"/>
+        <xs:attribute name="AUTHOFFIC" type="TypeText"/>
+        <xs:attribute name="CGRAUDINF" type="TypeText"/>
+        <xs:attribute name="CORP_UPR" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSMANREPA-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSMANREPA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSLICENCE-row">
+        <xs:attribute name="L_DIYAL" type="Type254"/>
+        <xs:attribute name="L_NUMBER" type="Type20"/>
+        <xs:attribute name="L_DATE" type="dateCompatible"/>
+        <xs:attribute name="L_ORGAN" type="Type254"/>
+        <xs:attribute name="L_DATE3" type="dateCompatible"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSLICENCE-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSLICENCE-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSLIKV_SUD-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="TYP_DAT" type="Type10"/>
+        <xs:attribute name="STR_LIKV" type="xs:double"/>
+        <xs:attribute name="ZAYAV" type="Type100"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSLIKV_SUD-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSLIKV_SUD-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSLIKV_VOE-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="ORG_NAME" type="Type100"/>
+        <xs:attribute name="KREDIT" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSLIKV_VOE-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSLIKV_VOE-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSLIST_CP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DIYA" type="Type1"/>
+        <xs:attribute name="FB_NAME" type="Type100"/>
+        <xs:attribute name="TYP_DAT" type="Type10"/>
+        <xs:attribute name="VYD_CP" type="Type10"/>
+        <xs:attribute name="NV_CP" type="xs:double"/>
+        <xs:attribute name="KILK_CP" type="xs:double"/>
+        <xs:attribute name="CH_STKAP" type="xs:double"/>
+        <xs:attribute name="DT_V_CP" type="dateCompatible"/>
+        <xs:attribute name="NS_V_CP" type="Type20"/>
+        <xs:attribute name="ORG_V_CP" type="Type100"/>
+        <xs:attribute name="TYP_CP" type="Type10"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSLIST_CP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSLIST_CP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSO_FON_FZ-row">
+        <xs:attribute name="O_PIB" type="Type100"/>
+        <xs:attribute name="O_DATE" type="dateCompatible"/>
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSO_FON_FZ-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSO_FON_FZ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSO_FON_UR-row">
+        <xs:attribute name="O_NAME" type="Type254"/>
+        <xs:attribute name="O_EDRPOU" type="Type10"/>
+        <xs:attribute name="O_CONT" type="Type50"/>
+        <xs:attribute name="O_OBL" type="Type10"/>
+        <xs:attribute name="O_REG" type="Type100"/>
+        <xs:attribute name="O_POST" type="Type5"/>
+        <xs:attribute name="O_ADRES" type="Type100"/>
+        <xs:attribute name="O_STREET" type="Type50"/>
+        <xs:attribute name="O_DATE" type="dateCompatible"/>
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSO_FON_UR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSO_FON_UR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOBL_INF-row">
+        <xs:attribute name="DT_OBL" type="dateCompatible"/>
+        <xs:attribute name="NS_OBL" type="Type20"/>
+        <xs:attribute name="OB_OBL" type="xs:double"/>
+        <xs:attribute name="META_OBL" type="xs:string"/>
+        <xs:attribute name="KL_OBL" type="xs:double"/>
+        <xs:attribute name="SUM_1" type="xs:double"/>
+        <xs:attribute name="VUKOR" type="xs:string"/>
+        <xs:attribute name="TOV" type="xs:string"/>
+        <xs:attribute name="RUN_1" type="xs:string"/>
+        <xs:attribute name="RUN_2" type="xs:string"/>
+        <xs:attribute name="L_D" type="xs:string"/>
+        <xs:attribute name="L_D1" type="xs:string"/>
+        <xs:attribute name="VUP_1" type="xs:double"/>
+        <xs:attribute name="SUM_3" type="xs:double"/>
+        <xs:attribute name="VUP_2" type="xs:double"/>
+        <xs:attribute name="SUM_4" type="xs:double"/>
+        <xs:attribute name="SUM_5" type="xs:double"/>
+        <xs:attribute name="SUM_6" type="xs:double"/>
+        <xs:attribute name="KILK_2" type="xs:double"/>
+        <xs:attribute name="SUM_7" type="xs:double"/>
+        <xs:attribute name="IN_INF" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOBL_INF-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOBL_INF-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOBLIG-row">
+        <xs:attribute name="DT_OBL" type="dateCompatible"/>
+        <xs:attribute name="NS_OBL" type="Type20"/>
+        <xs:attribute name="ORG_OBL" type="Type254"/>
+        <xs:attribute name="TYP_OBL" type="OblKindType" use="required"/>
+        <xs:attribute name="NV_OBL" type="xs:double"/>
+  <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="KL_OBL" type="xs:double"/>
+        <xs:attribute name="FI_STOCK" type="Type10"/>
+        <xs:attribute name="ZNV_OBL" type="xs:double"/>
+        <xs:attribute name="PR_OBL" type="xs:double"/>
+        <xs:attribute name="TERM_OBL" type="Type50"/>
+        <xs:attribute name="SUM_DOH" type="xs:double"/>
+        <xs:attribute name="DT_P_OBL" type="dateCompatible"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOBLIG-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOBLIG-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOBLIG_IP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_OBL" type="dateCompatible"/>
+        <xs:attribute name="NS_OBL" type="Type20"/>
+        <xs:attribute name="ORG_OBL" type="Type254"/>
+        <xs:attribute name="NV_OBL" type="xs:double"/>
+        <xs:attribute name="KL_OBL" type="xs:double"/>
+        <xs:attribute name="ZNV_OBL" type="xs:double"/>
+        <xs:attribute name="VYD_OBL" type="Type10"/>
+        <xs:attribute name="VYD_PROC" type="xs:double"/>
+        <xs:attribute name="DOXIDN" type="xs:double"/>
+        <xs:attribute name="IP_P_IA" type="xs:double"/>
+        <xs:attribute name="IP_P_IN" type="xs:double"/>
+        <xs:attribute name="DT_OBIG" type="dateCompatible"/>
+        <xs:attribute name="DT_POG" type="dateCompatible"/>
+        <xs:attribute name="PER_PLAT" type="xs:double"/>
+        <xs:attribute name="PER_PLA1" type="xs:double"/>
+        <xs:attribute name="SER_S_IA" type="xs:double"/>
+        <xs:attribute name="SER_S_I1" type="xs:double"/>
+        <xs:attribute name="SER_D_IA" type="xs:double"/>
+        <xs:attribute name="SER_D_1" type="xs:double"/>
+        <xs:attribute name="REZ_FOND" type="xs:double"/>
+        <xs:attribute name="DOS_POG1" type="xs:double"/>
+        <xs:attribute name="DOS_POG2" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOBLIG_IP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOBLIG_IP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOBS_PROD-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="OBS_VPOD" type="Type100"/>
+        <xs:attribute name="OBS_VNAT" type="Type50"/>
+        <xs:attribute name="OBS_VGR" type="xs:double"/>
+        <xs:attribute name="OBS_VV" type="xs:double"/>
+        <xs:attribute name="OBS_RNAT" type="Type50"/>
+        <xs:attribute name="OBS_RGR" type="xs:double"/>
+        <xs:attribute name="OBS_RV" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOBS_PROD-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOBS_PROD-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOBSLUG-row-Y">
+        <xs:attribute name="OB_NAME" type="Type254"/>
+        <xs:attribute name="OBEDRPOU" type="Type10"/>
+        <xs:attribute name="OB_OPF" type="Type10"/>
+        <xs:attribute name="OB_CONT" type="Type50"/>
+        <xs:attribute name="OB_OBL" type="Type10"/>
+        <xs:attribute name="OB_RAYON" type="Type100"/>
+        <xs:attribute name="OB_POST" type="Type5"/>
+        <xs:attribute name="OB_ADRES" type="Type100"/>
+        <xs:attribute name="OBSTREET" type="Type50"/>
+        <xs:attribute name="OB_N_GOS" type="Type20"/>
+        <xs:attribute name="OB_ORG" type="Type254"/>
+        <xs:attribute name="OB_D_GOS" type="dateCompatible"/>
+        <xs:attribute name="OB_PHONE" type="Type50"/>
+        <xs:attribute name="OB_FAX" type="Type50"/>
+        <xs:attribute name="VYD_DIY" type="Type254"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOBSLUG-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOBSLUG-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOFON_ALL-row">
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOFON_ALL-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSOFON_ALL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSORGSTR-row">
+        <xs:attribute name="OS_NAME" type="Type254" use="required"/>
+        <xs:attribute name="OS_CONT" type="ClsCont_Type" use="required"/>
+        <xs:attribute name="OS_OBL" type="ClsObl_Type"/>
+        <xs:attribute name="OS_POST" type="Type5"/>
+        <xs:attribute name="OS_RAYON" type="Type100"/>
+        <xs:attribute name="OS_ADRES" type="Type100" use="required"/>
+        <xs:attribute name="OS_STREET" type="Type100"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSORGSTR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSORGSTR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSORGUPR-row">
+        <xs:attribute name="OU_BODY" type="Type254" use="required"/>
+        <xs:attribute name="OU_STRU" type="TypeText" use="required"/>
+        <xs:attribute name="OU_PERS" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSORGUPR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSORGUPR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOSN_ZASB-row">
+        <xs:attribute name="OS_VVPV" type="xs:double"/>
+        <xs:attribute name="OS_VVKV" type="xs:double"/>
+        <xs:attribute name="OS_OVPV" type="xs:double"/>
+        <xs:attribute name="OS_OVKV" type="xs:double"/>
+        <xs:attribute name="OS_VOPV" type="xs:double"/>
+        <xs:attribute name="OS_VOKV" type="xs:double"/>
+        <xs:attribute name="OS_VOPB" type="xs:double"/>
+        <xs:attribute name="OSN_VOKB" type="xs:double"/>
+        <xs:attribute name="OSN_OOPB" type="xs:double"/>
+        <xs:attribute name="OSN_OOKB" type="xs:double"/>
+        <xs:attribute name="OSN_OPB" type="xs:double"/>
+        <xs:attribute name="OSN_OKB" type="xs:double"/>
+        <xs:attribute name="OSN_VOPM" type="xs:double"/>
+        <xs:attribute name="OSN_VOKM" type="xs:double"/>
+        <xs:attribute name="OSN_OOPM" type="xs:double"/>
+        <xs:attribute name="OSN_OOKM" type="xs:double"/>
+        <xs:attribute name="OSN_OPM" type="xs:double"/>
+        <xs:attribute name="OSN_OKM" type="xs:double"/>
+        <xs:attribute name="OSN_VOPT" type="xs:double"/>
+        <xs:attribute name="OSN_VOKT" type="xs:double"/>
+        <xs:attribute name="OSN_OOPT" type="xs:double"/>
+        <xs:attribute name="OSN_OOKT" type="xs:double"/>
+        <xs:attribute name="OSN_OPT" type="xs:double"/>
+        <xs:attribute name="OSN_OKT" type="xs:double"/>
+        <xs:attribute name="OSN_VOPL" type="xs:double"/>
+        <xs:attribute name="OSN_VOKL" type="xs:double"/>
+        <xs:attribute name="OSN_OOPL" type="xs:double"/>
+        <xs:attribute name="OSN_OOKL" type="xs:double"/>
+        <xs:attribute name="OSN_OPL" type="xs:double"/>
+        <xs:attribute name="OSN_OKL" type="xs:double"/>
+        <xs:attribute name="OSN_VOPI" type="xs:double"/>
+        <xs:attribute name="OSN_VOKI" type="xs:double"/>
+        <xs:attribute name="OSN_OOPI" type="xs:double"/>
+        <xs:attribute name="OSN_OOKI" type="xs:double"/>
+        <xs:attribute name="OSN_OPI" type="xs:double"/>
+        <xs:attribute name="OSN_OKI" type="xs:double"/>
+        <xs:attribute name="OSN_VNPV" type="xs:double"/>
+        <xs:attribute name="OSN_VNKV" type="xs:double"/>
+        <xs:attribute name="OSN_ONPV" type="xs:double"/>
+        <xs:attribute name="OSN_NOKV" type="xs:double"/>
+        <xs:attribute name="OSN_NOPV" type="xs:double"/>
+        <xs:attribute name="OSN_ONKV" type="xs:double"/>
+        <xs:attribute name="OSN_VNPB" type="xs:double"/>
+        <xs:attribute name="OSN_VNKB" type="xs:double"/>
+        <xs:attribute name="OSN_ONPB" type="xs:double"/>
+        <xs:attribute name="OSN_ONKB" type="xs:double"/>
+        <xs:attribute name="OSN_NOPB" type="xs:double"/>
+        <xs:attribute name="OSN_NOKB" type="xs:double"/>
+        <xs:attribute name="OSN_VNPM" type="xs:double"/>
+        <xs:attribute name="OSN_VNKM" type="xs:double"/>
+        <xs:attribute name="OSN_ONPM" type="xs:double"/>
+        <xs:attribute name="OSN_ONKM" type="xs:double"/>
+        <xs:attribute name="OSN_NOPM" type="xs:double"/>
+        <xs:attribute name="OSN_NOKM" type="xs:double"/>
+        <xs:attribute name="OSNNVOPT" type="xs:double"/>
+        <xs:attribute name="OSNNVOKT" type="xs:double"/>
+        <xs:attribute name="OSN_ONPT" type="xs:double"/>
+        <xs:attribute name="OSN_ONKT" type="xs:double"/>
+        <xs:attribute name="OSN_NOPT" type="xs:double"/>
+        <xs:attribute name="OSN_NOKT" type="xs:double"/>
+        <xs:attribute name="OSN_VNPL" type="xs:double"/>
+        <xs:attribute name="OSN_VNKL" type="xs:double"/>
+        <xs:attribute name="OSN_ONPL" type="xs:double"/>
+        <xs:attribute name="OSN_ONKL" type="xs:double"/>
+        <xs:attribute name="OSN_NOPL" type="xs:double"/>
+        <xs:attribute name="OSN_NOKL" type="xs:double"/>
+        <xs:attribute name="OSN_VNPG" type="xs:double"/>
+        <xs:attribute name="OSN_VNKG" type="xs:double"/>
+        <xs:attribute name="OSN_ONPG" type="xs:double"/>
+        <xs:attribute name="OSN_ONKG" type="xs:double"/>
+        <xs:attribute name="OSN_NOPG" type="xs:double"/>
+        <xs:attribute name="OSN_NOKG" type="xs:double"/>
+        <xs:attribute name="OSN_VNPI" type="xs:double"/>
+        <xs:attribute name="OSN_VNKI" type="xs:double"/>
+        <xs:attribute name="OSN_ONPI" type="xs:double"/>
+        <xs:attribute name="OSN_ONKI" type="xs:double"/>
+        <xs:attribute name="OSN_NOPI" type="xs:double"/>
+        <xs:attribute name="OSN_NOKI" type="xs:double"/>
+        <xs:attribute name="OSN_VPVV" type="xs:double"/>
+        <xs:attribute name="OSN_VKVV" type="xs:double"/>
+        <xs:attribute name="OSN_OOPV" type="xs:double"/>
+        <xs:attribute name="OSN_OOKV" type="xs:double"/>
+        <xs:attribute name="OSN_PV" type="xs:double"/>
+        <xs:attribute name="OSN_KV" type="xs:double"/>
+        <xs:attribute name="OSN_OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOSN_ZASB-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSOSN_ZASB-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOSOBLYVA-row">
+        <xs:attribute name="DT_POD" type="dateCompatible"/>
+        <xs:attribute name="DT_OPR" type="dateCompatible"/>
+        <xs:attribute name="VYD_INF" type="Type10"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOSOBLYVA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOSOBLYVA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOWFZ_ALL-row">
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PRI" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOWFZ_ALL-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSOWFZ_ALL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOWNER_FZ-row">
+        <xs:attribute name="O_PIB" type="Type100" use="required"/>
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PRI" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOWNER_FZ-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOWNER_FZ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOWNER_PO-row">
+        <xs:attribute name="PERS_OZN" type="xs:double"/>
+        <xs:attribute name="O_POSADA" type="Type254"/>
+        <xs:attribute name="O_PIB" type="Type254" use="required"/>
+        <xs:attribute name="NO_PASP" type="EntityIdCode"/>
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PRI" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOWNER_PO-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOWNER_PO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOWNER_UR-row">
+        <xs:attribute name="O_NAME" type="Type254" use="required"/>
+        <xs:attribute name="O_EDRPOU" type="EntityIdCode"/>
+        <xs:attribute name="O_CONT" type="Type50"/>
+        <xs:attribute name="O_OBL" type="Type10"/>
+        <xs:attribute name="O_RAYON" type="Type100"/>
+        <xs:attribute name="O_POST" type="Type5"/>
+        <xs:attribute name="O_ADRES" type="Type100"/>
+        <xs:attribute name="O_STREET" type="Type50"/>
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PRI" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOWNER_UR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOWNER_UR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOWPO_ALL-row">
+        <xs:attribute name="O_SHARES" type="xs:double"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+        <xs:attribute name="O_PI" type="xs:double"/>
+        <xs:attribute name="O_PRI" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOWPO_ALL-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSOWPO_ALL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPER_DR-row-Q">
+        <xs:attribute name="DT_PAP" type="dateCompatible"/>
+        <xs:attribute name="VID_PAP" type="Type10"/>
+        <xs:attribute name="OBS_PAP" type="xs:double"/>
+        <xs:attribute name="ROZM_PAP" type="xs:double"/>
+        <xs:attribute name="UMOV_PAP" type="xs:string"/>
+        <xs:attribute name="OR_PAP" type="xs:string"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPER_DR-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPAPER_DR-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPER_DR-row-Y">
+        <xs:attribute name="DT_PAP" type="dateCompatible"/>
+        <xs:attribute name="ORG_PAP" type="Type254"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="VYD_PAP" type="Type10"/>
+        <xs:attribute name="OBS_PAP" type="xs:double"/>
+        <xs:attribute name="ROZM_PAP" type="xs:double"/>
+        <xs:attribute name="UMOV_PAP" type="xs:string"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPER_DR-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPAPER_DR-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPERY_A-row-Q">
+        <xs:attribute name="DT_STOCK" type="dateCompatible"/>
+        <xs:attribute name="NS_STOCK" type="Type20"/>
+        <xs:attribute name="OR_STOCK" type="Type254"/>
+        <xs:attribute name="KD_STOCK" type="Type20"/>
+        <xs:attribute name="TP_STOCK" type="Type10"/>
+        <xs:attribute name="FI_STOCK" type="Type10"/>
+        <xs:attribute name="NV_STOCK" type="xs:double"/>
+        <xs:attribute name="KL_STOCK" type="xs:double"/>
+        <xs:attribute name="ZV_STOCK" type="xs:double"/>
+        <xs:attribute name="PR_STOCK" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPERY_A-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPAPERY_A-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPERY_A-row-Y">
+        <xs:attribute name="DT_STOCK" type="dateCompatible"/>
+        <xs:attribute name="NS_STOCK" type="Type20"/>
+        <xs:attribute name="OR_STOCK" type="Type254"/>
+        <xs:attribute name="KD_STOCK" type="Type20"/>
+        <xs:attribute name="TP_STOCK" type="Type10"/>
+        <xs:attribute name="FI_STOCK" type="Type10"/>
+        <xs:attribute name="NV_STOCK" type="xs:double"/>
+        <xs:attribute name="KL_STOCK" type="xs:double"/>
+        <xs:attribute name="SM_STOCK" type="xs:double"/>
+        <xs:attribute name="PR_STOCK" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPAPERY_A-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPAPERY_A-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPERSON_O-row">
+        <xs:attribute name="DAT_POD" type="dateCompatible"/>
+        <xs:attribute name="ZMINY" type="Type1"/>
+        <xs:attribute name="POSADA" type="Type100"/>
+        <xs:attribute name="P_I_B" type="Type100"/>
+        <xs:attribute name="SE_PASP" type="Type5"/>
+        <xs:attribute name="NO_PASP" type="Type16"/>
+        <xs:attribute name="DAT_PASP" type="dateCompatible"/>
+        <xs:attribute name="ORG_PASP" type="Type100"/>
+        <xs:attribute name="VL_STAT" type="xs:double"/>
+        <xs:attribute name="ROZM_PA" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPERSON_O-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPERSON_O-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPERSON_P-row-Q">
+        <xs:attribute name="PERS_OZN" type="Type1"/>
+        <xs:attribute name="POSADA" type="Type100"/>
+        <xs:attribute name="P_I_B" type="Type100"/>
+        <xs:attribute name="NO_PASP" type="Type16"/>
+        <xs:attribute name="RIK" type="xs:double"/>
+        <xs:attribute name="OSVITA" type="Type254"/>
+        <xs:attribute name="STAGE" type="xs:double"/>
+        <xs:attribute name="PO_NAME" type="Type254"/>
+        <xs:attribute name="PO_EDRPOU" type="EntityIdCode"/>
+        <xs:attribute name="PO_POSAD" type="xs:string"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPERSON_P-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPERSON_P-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPERSON_P-row-Y">
+        <xs:attribute name="DAT_OBR" type="dateCompatible"/>
+        <xs:attribute name="TERM_OBR" type="Type100"/>
+        <xs:attribute name="PERS_OZN" type="Type1"/>
+        <xs:attribute name="POSADA" type="Type100"/>
+        <xs:attribute name="P_I_B" type="Type100"/>
+        <xs:attribute name="NO_PASP" type="Type16"/>
+        <xs:attribute name="RIK" type="xs:double"/>
+        <xs:attribute name="OSVITA" type="Type254"/>
+        <xs:attribute name="STAGE" type="xs:double"/>
+        <xs:attribute name="PO_NAME" type="Type254"/>
+        <xs:attribute name="PO_EDRPOU" type="EntityIdCode"/>
+        <xs:attribute name="PO_POSAD" type="xs:string"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPERSON_P-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPERSON_P-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPOG_IO-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_EM" type="dateCompatible"/>
+        <xs:attribute name="NS_EM" type="Type20"/>
+        <xs:attribute name="PIDST_IN" type="xs:string"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPOG_IO-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPOG_IO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPOHID_CP-row-Q">
+        <xs:attribute name="DT_PCP" type="dateCompatible"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="NS_PCP" type="Type20"/>
+        <xs:attribute name="V_PCP" type="Type10"/>
+        <xs:attribute name="RV_PCP" type="Type10"/>
+        <xs:attribute name="SER_PCP" type="Type3"/>
+        <xs:attribute name="TERM_R" type="Type50"/>
+        <xs:attribute name="TERM_D" type="Type50"/>
+        <xs:attribute name="TERM_V" type="Type50"/>
+        <xs:attribute name="KL_PCP" type="xs:double"/>
+        <xs:attribute name="OBS_V" type="xs:double"/>
+        <xs:attribute name="KL_OPC" type="xs:string"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPOHID_CP-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPOHID_CP-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPOHID_CP-row-Y">
+        <xs:attribute name="DT_PCP" type="dateCompatible"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="NS_PCP" type="Type20"/>
+        <xs:attribute name="V_PCP" type="Type10"/>
+        <xs:attribute name="RV_PCP" type="Type10"/>
+        <xs:attribute name="SER_PCP" type="Type3"/>
+        <xs:attribute name="TERM_R" type="Type50"/>
+        <xs:attribute name="TERM_D" type="Type50"/>
+        <xs:attribute name="TERM_V" type="Type50"/>
+        <xs:attribute name="KL_PCP" type="xs:double"/>
+        <xs:attribute name="OBS_V" type="xs:double"/>
+        <xs:attribute name="KL_OPC" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPOHID_CP-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPOHID_CP-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPRAV_FON-row">
+        <xs:attribute name="FUEDRPOU" type="EDRPOU"/>
+        <xs:attribute name="NAME_FON" type="xs:string"/>
+        <xs:attribute name="FU_NAME" type="xs:string"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPRAV_FON-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPRAV_FON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPRAVA_IA-row">
+        <xs:attribute name="IA_KR_P" type="xs:double"/>
+        <xs:attribute name="IA_KR" type="xs:double"/>
+        <xs:attribute name="IA_UPV_P" type="xs:double"/>
+        <xs:attribute name="IA_UPV" type="xs:double"/>
+        <xs:attribute name="IA_IN_N" type="xs:string"/>
+        <xs:attribute name="IA_IN_P" type="xs:double"/>
+        <xs:attribute name="IA_IN" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPRAVA_IA-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSPRAVA_IA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPRYP_FON-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="FON_NAME" type="Type254"/>
+        <xs:attribute name="TYP_DAT" type="Type10"/>
+        <xs:attribute name="DT_ZOBOV" type="dateCompatible"/>
+        <xs:attribute name="U_NAME" type="Type100"/>
+        <xs:attribute name="U_EDRPOU" type="Type10"/>
+        <xs:attribute name="U_POST" type="Type5"/>
+        <xs:attribute name="U_ADRES" type="Type100"/>
+        <xs:attribute name="U_STREET" type="Type50"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPRYP_FON-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPRYP_FON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSPRYZ_DOG-row">
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSPRYZ_DOG-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSPRYZ_DOG-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSRA_INFO-row">
+        <xs:attribute name="RA_NAME" type="Type254"/>
+        <xs:attribute name="RA_OZN" type="xs:double"/>
+        <xs:attribute name="VZ_RO" type="xs:double"/>
+        <xs:attribute name="DT_RO" type="dateCompatible"/>
+        <xs:attribute name="KR_LEVEL" type="Type40"/>
+    </xs:complexType>
+    <xs:complexType name="DTSRA_INFO-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSRA_INFO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSROZM_CP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="VYD_CP" type="Type10"/>
+        <xs:attribute name="KILK_CP" type="xs:double"/>
+        <xs:attribute name="SUM_CP" type="xs:double"/>
+        <xs:attribute name="CH_STKAP" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSROZM_CP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSROZM_CP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSROZM_IP-row-Q">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IP" type="dateCompatible"/>
+        <xs:attribute name="NS_IP" type="Type20"/>
+        <xs:attribute name="ROZM_IPR" type="xs:double"/>
+        <xs:attribute name="ROZM_IPZ" type="xs:double"/>
+        <xs:attribute name="ZOB_IP" type="xs:double"/>
+        <xs:attribute name="KOEF_IP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSROZM_IP-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSROZM_IP-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSROZM_IP-row-Y">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IP" type="dateCompatible"/>
+        <xs:attribute name="NS_IP" type="Type20"/>
+        <xs:attribute name="ROZM_IPR" type="xs:double"/>
+        <xs:attribute name="ROZM_IPZ" type="xs:double"/>
+        <xs:attribute name="ZOB_IP" type="xs:double"/>
+        <xs:attribute name="KOEF_IP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSROZM_IP-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSROZM_IP-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSRSTR_IA-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="VL_ISU" type="xs:double"/>
+        <xs:attribute name="VL_ISFD" type="xs:double"/>
+        <xs:attribute name="OBIG_ISU" type="xs:double"/>
+        <xs:attribute name="OBIG_ISF" type="xs:double"/>
+        <xs:attribute name="DT_IA" type="dateCompatible"/>
+        <xs:attribute name="NS_IA" type="Type20"/>
+        <xs:attribute name="NV_ZOB" type="xs:double"/>
+        <xs:attribute name="SRP_ZOB" type="xs:double"/>
+        <xs:attribute name="SPL_ISU" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSRSTR_IA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSRSTR_IA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSANACIA-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="TYP_DAT" type="Type10"/>
+        <xs:attribute name="STR_SAN" type="xs:double"/>
+        <xs:attribute name="SAN_KER" type="Type100"/>
+        <xs:attribute name="SK_POST" type="Type5"/>
+        <xs:attribute name="SK_ADRES" type="Type100"/>
+        <xs:attribute name="SKSTREET" type="Type50"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSANACIA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSSANACIA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSECLIM-row">
+        <xs:attribute name="DT_PAP" type="dateCompatible"/>
+        <xs:attribute name="ORG_PAP" type="Type254" use="required"/>
+        <xs:attribute name="VYD_PAP" type="ClsSec_Type" use="required"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="LIMINST" type="Type254" use="required"/>
+        <xs:attribute name="LIMSUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="LIMTERM" type="TypeText" use="required"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSECLIM-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSSECLIM-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSERT_FON-row">
+        <xs:attribute name="DT_SF" type="dateCompatible"/>
+        <xs:attribute name="NS_SF" type="Type20"/>
+        <xs:attribute name="FI_SV" type="Type10"/>
+        <xs:attribute name="SUM_SF" type="xs:double"/>
+        <xs:attribute name="KL_SF" type="xs:double"/>
+        <xs:attribute name="OV_SF_PR" type="xs:double"/>
+        <xs:attribute name="OV_SF_PB" type="xs:double"/>
+        <xs:attribute name="P_PRICE" type="xs:double"/>
+        <xs:attribute name="STR_OBIG" type="dateCompatible"/>
+        <xs:attribute name="CH_CHA" type="xs:double"/>
+        <xs:attribute name="VL_KAP" type="xs:double"/>
+        <xs:attribute name="NV_FD" type="xs:double"/>
+        <xs:attribute name="NV_FD1" type="Type254"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSERT_FON-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSSERT_FON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSHTRAF-row">
+        <xs:attribute name="SF_NUM" type="DocNumber_Type"/>
+        <xs:attribute name="SF_DATE" type="dateCompatible"/>
+        <xs:attribute name="SF_BODY" type="Type254" use="required"/>
+        <xs:attribute name="SF_KIND" type="Type254" use="required"/>
+        <xs:attribute name="SF_EXEC" type="TypeText" use="required"/>
+        <xs:attribute name="PRIM" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSHTRAF-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSSHTRAF-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSTR_IP-row">
+        <xs:attribute name="IA_IA_PP" type="xs:double"/>
+        <xs:attribute name="IA_IA_ZS" type="xs:double"/>
+        <xs:attribute name="IA_IP_PP" type="xs:double"/>
+        <xs:attribute name="IA_IP_PS" type="xs:double"/>
+        <xs:attribute name="IA_IP_ZP" type="xs:double"/>
+        <xs:attribute name="IA_IP_ZS" type="xs:double"/>
+        <xs:attribute name="PV_IA_PS" type="xs:double"/>
+        <xs:attribute name="PV_IA_ZS" type="xs:double"/>
+        <xs:attribute name="PV_IP_PP" type="xs:double"/>
+        <xs:attribute name="PV_IP_PS" type="xs:double"/>
+        <xs:attribute name="PV_IP_ZP" type="xs:double"/>
+        <xs:attribute name="PV_IP_ZS" type="xs:double"/>
+        <xs:attribute name="NG_IA_PP" type="xs:double"/>
+        <xs:attribute name="NG_IA_PS" type="xs:double"/>
+        <xs:attribute name="NG_IA_ZP" type="xs:double"/>
+        <xs:attribute name="NG_IA_ZS" type="xs:double"/>
+        <xs:attribute name="NG_IP_PP" type="xs:double"/>
+        <xs:attribute name="NG_IP_PS" type="xs:double"/>
+        <xs:attribute name="NG_IP_ZP" type="xs:double"/>
+        <xs:attribute name="NG_IP_ZS" type="xs:double"/>
+        <xs:attribute name="NGP_IAPP" type="xs:double"/>
+        <xs:attribute name="NGP_IAPS" type="xs:double"/>
+        <xs:attribute name="NGP_IAZP" type="xs:double"/>
+        <xs:attribute name="NGP_IAZS" type="xs:double"/>
+        <xs:attribute name="NGP_IPPP" type="xs:double"/>
+        <xs:attribute name="NGP_IPPS" type="xs:double"/>
+        <xs:attribute name="NGP_IPZP" type="xs:double"/>
+        <xs:attribute name="NGP_IPZS" type="xs:double"/>
+        <xs:attribute name="NN_IA_PP" type="xs:double"/>
+        <xs:attribute name="NN_IA_PS" type="xs:double"/>
+        <xs:attribute name="NN_IA_ZP" type="xs:double"/>
+        <xs:attribute name="NN_IA_ZS" type="xs:double"/>
+        <xs:attribute name="NN_IP_PP" type="xs:double"/>
+        <xs:attribute name="NN_IP_PS" type="xs:double"/>
+        <xs:attribute name="NN_IP_ZP" type="xs:double"/>
+        <xs:attribute name="NN_IP_ZS" type="xs:double"/>
+        <xs:attribute name="NNP_IAPP" type="xs:double"/>
+        <xs:attribute name="NNP_IAPS" type="xs:double"/>
+        <xs:attribute name="NNP_IAZP" type="xs:double"/>
+        <xs:attribute name="NNP_IAZS" type="xs:double"/>
+        <xs:attribute name="NNP_IPPP" type="xs:double"/>
+        <xs:attribute name="NNP_IPPS" type="xs:double"/>
+        <xs:attribute name="NNP_IPZP" type="xs:double"/>
+        <xs:attribute name="NNP_IPZS" type="xs:double"/>
+        <xs:attribute name="IN_IA_PS" type="xs:double"/>
+        <xs:attribute name="IN_IA_ZS" type="xs:double"/>
+        <xs:attribute name="IN_IP_PP" type="xs:double"/>
+        <xs:attribute name="IN_IP_PS" type="xs:double"/>
+        <xs:attribute name="IN_IP_ZP" type="xs:double"/>
+        <xs:attribute name="IN_IP_ZS" type="xs:double"/>
+        <xs:attribute name="KD_IA_PP" type="xs:double"/>
+        <xs:attribute name="KD_IA_PS" type="xs:double"/>
+        <xs:attribute name="KD_IA_ZP" type="xs:double"/>
+        <xs:attribute name="KD_IA_ZS" type="xs:double"/>
+        <xs:attribute name="KD_IP_PP" type="xs:double"/>
+        <xs:attribute name="KD_IP_PS" type="xs:double"/>
+        <xs:attribute name="KD_IP_ZP" type="xs:double"/>
+        <xs:attribute name="KD_IP_ZS" type="xs:double"/>
+        <xs:attribute name="KU_IA_PP" type="xs:double"/>
+        <xs:attribute name="KU_IA_PS" type="xs:double"/>
+        <xs:attribute name="KU_IA_ZP" type="xs:double"/>
+        <xs:attribute name="KU_IA_ZS" type="xs:double"/>
+        <xs:attribute name="KU_IP_PP" type="xs:double"/>
+        <xs:attribute name="KU_IP_PS" type="xs:double"/>
+        <xs:attribute name="KU_IP_ZP" type="xs:double"/>
+        <xs:attribute name="KU_IP_ZS" type="xs:double"/>
+        <xs:attribute name="KI_IA_PP" type="xs:double"/>
+        <xs:attribute name="KI_IA_PS" type="xs:double"/>
+        <xs:attribute name="KI_IA_ZP" type="xs:double"/>
+        <xs:attribute name="KI_IA_ZS" type="xs:double"/>
+        <xs:attribute name="KI_IP_PP" type="xs:double"/>
+        <xs:attribute name="KI_IP_PS" type="xs:double"/>
+        <xs:attribute name="KI_IP_ZP" type="xs:double"/>
+        <xs:attribute name="KI_IP_ZS" type="xs:double"/>
+        <xs:attribute name="DCP_IAPP" type="xs:double"/>
+        <xs:attribute name="DCP_IAPS" type="xs:double"/>
+        <xs:attribute name="DCP_IAZP" type="xs:double"/>
+        <xs:attribute name="DCP_IAZS" type="xs:double"/>
+        <xs:attribute name="DCP_IPPP" type="xs:double"/>
+        <xs:attribute name="DCP_IPPS" type="xs:double"/>
+        <xs:attribute name="DCP_IPZP" type="xs:double"/>
+        <xs:attribute name="DCP_IPZS" type="xs:double"/>
+        <xs:attribute name="GCP_IAPP" type="xs:double"/>
+        <xs:attribute name="GCP_IAPS" type="xs:double"/>
+        <xs:attribute name="GCP_IAZP" type="xs:double"/>
+        <xs:attribute name="GCP_IAZS" type="xs:double"/>
+        <xs:attribute name="GCP_IPPP" type="xs:double"/>
+        <xs:attribute name="GCP_IPPS" type="xs:double"/>
+        <xs:attribute name="GCP_IPZP" type="xs:double"/>
+        <xs:attribute name="GCP_IPZS" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSTR_IP-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSSTR_IP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSTV_UO-row">
+        <xs:attribute name="UR_NAME" type="Type254"/>
+        <xs:attribute name="UR_OPF" type="Type10"/>
+        <xs:attribute name="UREDRPOU" type="Type10"/>
+        <xs:attribute name="UR_ADRES" type="Type254"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSTV_UO-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSSTV_UO-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSSUDSPRV-row">
+        <xs:attribute name="FL_NUM" type="DocNumber_Type"/>
+        <xs:attribute name="FL_COURT" type="Type254" use="required"/>
+        <xs:attribute name="FL_PLTF" type="Type254" use="required"/>
+        <xs:attribute name="FL_DFDT" type="Type254" use="required"/>
+        <xs:attribute name="FL_THRD" type="Type254"/>
+        <xs:attribute name="FL_SUBJ" type="TypeText" use="required"/>
+        <xs:attribute name="FL_STATE" type="Type254" use="required"/>
+        <xs:attribute name="PRIM" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSSUDSPRV-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSSUDSPRV-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTITLIST-row-Q">
+        <xs:attribute name="POS_PODP" type="Type100"/>
+        <xs:attribute name="FIO_PODP" type="Type100"/>
+        <xs:attribute name="E_OBL" type="ClsObl_Type" use="required"/>
+        <xs:attribute name="E_OPF" type="Type3" use="required"/>
+        <xs:attribute name="E_ATTYPE" type="Opt1Or2Type"/>
+        <xs:attribute name="E_OZN" type="xs:double"/>
+        <xs:attribute name="E_ATDCH" type="xs:double"/>
+        <xs:attribute name="E_DAT" type="xs:double"/>
+        <xs:attribute name="E_HKDCH" type="xs:double"/>
+        <xs:attribute name="E_PIDPR" type="xs:double"/>
+        <xs:attribute name="ROZM_OP" type="xs:double"/>
+        <xs:attribute name="ROZM_IO" type="xs:double"/>
+        <xs:attribute name="ROZM_IS" type="xs:double"/>
+        <xs:attribute name="ROZM_FON" type="xs:double"/>
+        <xs:attribute name="E_CPINBR" type="xs:double"/>
+        <xs:attribute name="E_KONSFZ" type="xs:double"/>
+        <xs:attribute name="FST_OZN" type="xs:double"/>
+        <xs:attribute name="E_POST" type="Type5"/>
+        <xs:attribute name="E_ADRES" type="Type100"/>
+        <xs:attribute name="E_STREET" type="Type50"/>
+        <xs:attribute name="E_PHONE" type="Type50"/>
+        <xs:attribute name="E_FAX" type="Type50"/>
+        <xs:attribute name="E_MAIL" type="Type50"/>
+        <xs:attribute name="ADR_WWW" type="Type254"/>
+        <xs:attribute name="DAT_WWW" type="dateCompatible"/>
+        <xs:attribute name="ARM_NAME" type="TypeText"/>
+        <xs:attribute name="ARM_EDRPOU" type="EDRPOU"/>
+        <xs:attribute name="ARM_CONT" type="ClsCont_Type"/>
+        <xs:attribute name="ARM_LICNUM" type="Type20"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTITLIST-container-Q">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSTITLIST-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTITLIST-row-Qc">
+        <xs:attribute name="E_OPF" type="Type3" use="required"/>
+        <xs:attribute name="E_ATTYPE" type="Opt1Or2Type"/>
+        <xs:attribute name="E_OBL" type="ClsObl_Type" use="required"/>
+        <xs:attribute name="E_ADRES" type="Type100"/>
+        <xs:attribute name="E_STREET" type="Type50"/>
+        <xs:attribute name="E_POST" type="Type5"/>
+        <xs:attribute name="E_PHONE" type="Type50"/>
+        <xs:attribute name="E_FAX" type="Type50"/>
+        <xs:attribute name="E_MAIL" type="Type50"/>
+        <xs:attribute name="E_OZN" type="xs:double"/>
+        <xs:attribute name="FST_OZN" type="xs:double"/>
+        <xs:attribute name="ARM_NAME" type="TypeText"/>
+        <xs:attribute name="ARM_EDRPOU" type="EDRPOU"/>
+        <xs:attribute name="ARM_CONT" type="ClsCont_Type"/>
+        <xs:attribute name="ARM_LICNUM" type="Type20"/>
+        <xs:attribute name="ADR_WWW" type="Type254"/>
+        <xs:attribute name="DAT_WWW" type="dateCompatible"/>
+        <xs:attribute name="POS_PODP" type="Type100"/>
+        <xs:attribute name="FIO_PODP" type="Type100"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTITLIST-container-Qc">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSTITLIST-row-Qc"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTITLIST-row-Y">
+        <xs:attribute name="POS_PODP" type="Type100"/>
+        <xs:attribute name="FIO_PODP" type="Type100"/>
+        <xs:attribute name="E_OPF" type="Type3" use="required"/>
+        <xs:attribute name="E_OZN" type="xs:double"/>
+        <xs:attribute name="ROZM_OMP" type="xs:double"/>
+        <xs:attribute name="ROZM_IO" type="xs:double"/>
+        <xs:attribute name="ROZM_IS" type="xs:double"/>
+        <xs:attribute name="ROZM_FON" type="xs:double"/>
+        <xs:attribute name="E_BANK" type="xs:double"/>
+        <xs:attribute name="E_FINUST" type="xs:double"/>
+        <xs:attribute name="E_STRAH" type="xs:double"/>
+        <xs:attribute name="E_ISI" type="xs:double"/>
+        <xs:attribute name="E_TSOBL" type="xs:double"/>
+        <xs:attribute name="E_BORG" type="xs:double"/>
+        <xs:attribute name="E_SANAC" type="xs:double"/>
+        <xs:attribute name="E_ROZPOR" type="xs:double"/>
+        <xs:attribute name="FST_OZN" type="xs:double"/>
+        <xs:attribute name="FST_PZMSFZ" type="xs:double"/>
+        <xs:attribute name="E_KONSFZ" type="xs:double"/>
+        <xs:attribute name="ROZM_PUBL" type="xs:double"/>
+        <xs:attribute name="ROZM_PRIV" type="xs:double"/>
+        <xs:attribute name="E_ATTYPE" type="Opt1Or2Type"/>
+        <xs:attribute name="E_CONT" type="Type50"/>
+        <xs:attribute name="E_OBL" type="ClsObl_Type" use="required"/>
+        <xs:attribute name="E_RAYON" type="Type100"/>
+        <xs:attribute name="E_POST" type="Type5"/>
+        <xs:attribute name="E_ADRES" type="Type100"/>
+        <xs:attribute name="E_STREET" type="Type50"/>
+        <xs:attribute name="E_PHONE" type="Type50"/>
+        <xs:attribute name="E_FAX" type="Type50"/>
+        <xs:attribute name="E_MAIL" type="Type50"/>
+        <xs:attribute name="ADR_WWW" type="URL_Type"/>
+        <xs:attribute name="DAT_WWW" type="dateCompatible"/>
+        <xs:attribute name="ARM_NAME" type="TypeText"/>
+        <xs:attribute name="ARM_EDRPOU" type="EDRPOU"/>
+        <xs:attribute name="ARM_CONT" type="ClsCont_Type"/>
+        <xs:attribute name="ARM_LICNUM" type="Type20"/>
+        <xs:attribute name="MBS_KIND" type="MBSKindType"/>
+        <xs:attribute name="MBS_DATE" type="dateCompatible"/>
+        <xs:attribute name="MBS_NUM" type="Type254"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTITLIST-container-Y">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSTITLIST-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTITUL_O-row">
+        <xs:attribute name="DAT_PODP" type="dateCompatible"/>
+        <xs:attribute name="POS_PODP" type="Type100"/>
+        <xs:attribute name="FIO_PODP" type="Type100"/>
+        <xs:attribute name="E_NAME" type="Type254" use="required"/>
+        <xs:attribute name="E_OPF" type="Type3" use="required"/>
+        <xs:attribute name="E_OBL" type="ClsObl_Type" use="required"/>
+        <xs:attribute name="E_POST" type="Type5"/>
+        <xs:attribute name="E_ADRES" type="Type100"/>
+        <xs:attribute name="E_STREET" type="Type50"/>
+        <xs:attribute name="E_PHONE" type="Type50"/>
+        <xs:attribute name="E_FAX" type="Type50"/>
+        <xs:attribute name="E_MAIL" type="Type50"/>
+        <xs:attribute name="ARM_NAME" type="TypeText"/>
+        <xs:attribute name="ARM_EDRPOU" type="EDRPOU"/>
+        <xs:attribute name="ARM_CONT" type="ClsCont_Type"/>
+        <xs:attribute name="ARM_LICNUM" type="Type20"/>
+        <xs:attribute name="ADR_WWW" type="Type254"/>
+        <xs:attribute name="DAT_WWW" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTITUL_O-container">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSTITUL_O-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTOC-row-Q">
+        <xs:attribute name="ITEMCODE" type="TOCItem-Q" use="required"/>
+        <xs:attribute name="ITEMEXIST" type="Yes1No0Type" use="required"/>
+        <xs:attribute name="PRIM" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTOC-container-Q">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSTOC-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTOC-row-Y">
+        <xs:attribute name="ITEMCODE" type="TOCItem-Y" use="required"/>
+        <xs:attribute name="ITEMEXIST" type="Yes1No0Type" use="required"/>
+        <xs:attribute name="PRIM" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTOC-container-Y">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSTOC-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTRANS_IA-row-I">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="NS_EM" type="Type20"/>
+        <xs:attribute name="DT_EM" type="dateCompatible"/>
+        <xs:attribute name="VYD_IS" type="Type10"/>
+        <xs:attribute name="NV_RIS" type="xs:double"/>
+        <xs:attribute name="VART_TIA" type="xs:double"/>
+        <xs:attribute name="RIS_TIA" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTRANS_IA-container-I">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSTRANS_IA-row-I"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSTRANS_IA-row-Q">
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSTRANS_IA-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSTRANS_IA-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSUFON_PR-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="FON_NAME" type="Type254"/>
+        <xs:attribute name="SU_NAME" type="Type100"/>
+        <xs:attribute name="SUEDRPOU" type="Type10"/>
+        <xs:attribute name="SU_POST" type="Type5"/>
+        <xs:attribute name="SU_ADRES" type="Type100"/>
+        <xs:attribute name="SUSTREET" type="Type50"/>
+        <xs:attribute name="SP_PRYP" type="Type10"/>
+        <xs:attribute name="SUB_PRYP" type="Type10"/>
+        <xs:attribute name="ISB_PRYP" type="Type254"/>
+        <xs:attribute name="NU_NAME" type="Type100"/>
+        <xs:attribute name="NU_POST" type="Type5"/>
+        <xs:attribute name="NU_ADRES" type="Type100"/>
+        <xs:attribute name="NUSTREET" type="Type50"/>
+        <xs:attribute name="NUEDRPOU" type="Type10"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSUFON_PR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSUFON_PR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSUFON_SUD-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="FON_NAME" type="Type254"/>
+        <xs:attribute name="SU_NAME" type="Type100"/>
+        <xs:attribute name="SU_POST" type="Type5"/>
+        <xs:attribute name="SU_ADRES" type="Type100"/>
+        <xs:attribute name="SUSTREET" type="Type50"/>
+        <xs:attribute name="SUEDRPOU" type="Type10"/>
+        <xs:attribute name="NU_NAME" type="Type100"/>
+        <xs:attribute name="NU_POST" type="Type5"/>
+        <xs:attribute name="NU_ADRES" type="Type100"/>
+        <xs:attribute name="NUSTREET" type="Type50"/>
+        <xs:attribute name="NUEDRPOU" type="Type10"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSUFON_SUD-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSUFON_SUD-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSUROSOB_O-row">
+        <xs:attribute name="NUM_GOS" type="Type20"/>
+        <xs:attribute name="DAT_GOS" type="dateCompatible"/>
+        <xs:attribute name="E_OBL" type="ClsObl_Type"/>
+        <xs:attribute name="STATUT" type="xs:double"/>
+        <xs:attribute name="DERG_AK" type="xs:double"/>
+        <xs:attribute name="DAT_AK" type="xs:double"/>
+        <xs:attribute name="PERS_KL" type="xs:double"/>
+        <xs:attribute name="KVED1" type="Type10"/>
+        <xs:attribute name="KVED_NM1" type="Type140"/>
+        <xs:attribute name="KVED2" type="Type10"/>
+        <xs:attribute name="KVED_NM2" type="Type140"/>
+        <xs:attribute name="KVED3" type="Type10"/>
+        <xs:attribute name="KVED_NM3" type="Type140"/>
+        <xs:attribute name="NAC_BANK" type="Type254"/>
+        <xs:attribute name="NAC_MFO" type="Type6"/>
+        <xs:attribute name="NAC_RAH" type="Type14"/>
+        <xs:attribute name="VAL_BANK" type="Type254"/>
+        <xs:attribute name="VAL_MFO" type="Type6"/>
+        <xs:attribute name="VAL_RAH" type="Type14"/>
+    </xs:complexType>
+    <xs:complexType name="DTSUROSOB_O-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSUROSOB_O-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSUROSOB_O-row-Q">
+        <xs:attribute name="DAT_GOS" type="dateCompatible"/>
+        <xs:attribute name="E_OBL" type="ClsObl_Type"/>
+        <xs:attribute name="STATUT" type="xs:double"/>
+        <xs:attribute name="DERG_AK" type="xs:double"/>
+        <xs:attribute name="DAT_AK" type="xs:double"/>
+        <xs:attribute name="PERS_KL" type="xs:double"/>
+        <xs:attribute name="KVED1" type="Type10"/>
+        <xs:attribute name="KVED_NM1" type="Type140"/>
+        <xs:attribute name="KVED2" type="Type10"/>
+        <xs:attribute name="KVED_NM2" type="Type140"/>
+        <xs:attribute name="KVED3" type="Type10"/>
+        <xs:attribute name="KVED_NM3" type="Type140"/>
+        <xs:attribute name="ORG_UPR" type="xs:string"/>
+        <xs:attribute name="NAC_BANK" type="Type254"/>
+        <xs:attribute name="NAC_MFO" type="Type6"/>
+        <xs:attribute name="NAC_RAH" type="Type14"/>
+        <xs:attribute name="VAL_BANK" type="Type254"/>
+        <xs:attribute name="VAL_MFO" type="Type6"/>
+        <xs:attribute name="VAL_RAH" type="Type14"/>
+        <xs:attribute name="FND_PCNT" type="xs:integer"/>
+    </xs:complexType>
+    <xs:complexType name="DTSUROSOB_O-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSUROSOB_O-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSUROSOB_F-row">
+        <xs:attribute name="FND_NAME" type="TypeText" use="required"/>
+        <xs:attribute name="FND_ADDR" type="TypeText"/>
+        <xs:attribute name="FND_EDRPOU" type="EntityIdCode"/>
+    </xs:complexType>
+    <xs:complexType name="DTSUROSOB_F-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSUROSOB_F-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVIKUP_O-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="ORG_RISH" type="Type100"/>
+        <xs:attribute name="KL_STOCK" type="xs:double"/>
+        <xs:attribute name="DT_STOCK" type="dateCompatible"/>
+        <xs:attribute name="NS_STOCK" type="Type20"/>
+        <xs:attribute name="OR_STOCK" type="Type100"/>
+        <xs:attribute name="CH_STOCK" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVIKUP_O-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVIKUP_O-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVLASN-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DAT_POV" type="dateCompatible"/>
+        <xs:attribute name="POV_TYP" type="VlasnPovType"/>
+        <xs:attribute name="EM_NAME" type="xs:string"/>
+        <xs:attribute name="KOD_PERS" type="Type20"/>
+        <xs:attribute name="CHAST_DO" type="xs:double"/>
+        <xs:attribute name="CHAST_POST" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVLASN-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVLASN-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVLASN_TPR-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DAT_POV" type="dateCompatible"/>
+        <xs:attribute name="EM_NAME" type="xs:string"/>
+        <xs:attribute name="KOD_PERS" type="Type20"/>
+        <xs:attribute name="CHAST_DO" type="xs:double"/>
+        <xs:attribute name="CHAST_POST" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVLASN_TPR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVLASN_TPR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVSHQTY-row">
+        <xs:attribute name="DT_V_CP" type="dateCompatible"/>
+        <xs:attribute name="NS_V_CP" type="DocNumber_Type"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="KILK_CP" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="NV_CP" type="money"/>
+        <xs:attribute name="NV_CP_V" type="xs:nonNegativeInteger"/>
+        <xs:attribute name="NV_CP_VR" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="NV_CP_VRT" type="xs:nonNegativeInteger" use="required"/>
+        <xs:attribute name="OPYS" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVSHQTY-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVSHQTY-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVYKUP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_ZAR" type="dateCompatible"/>
+        <xs:attribute name="ACTION" type="OfrActType"/>
+        <xs:attribute name="KILK_AK" type="xs:double"/>
+        <xs:attribute name="FACEVAL" type="xs:double"/>
+        <xs:attribute name="DT_AK" type="dateCompatible"/>
+        <xs:attribute name="NS_AK" type="Type20"/>
+        <xs:attribute name="ORG_AK" type="Type254"/>
+        <xs:attribute name="CH_ST_AK" type="xs:double"/>
+        <xs:attribute name="DESCR" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVYKUP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVYKUP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVYP_IS-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IS" type="dateCompatible"/>
+        <xs:attribute name="NS_IS" type="Type20"/>
+        <xs:attribute name="ORG_IS" type="Type100"/>
+        <xs:attribute name="KL_IS" type="xs:double"/>
+        <xs:attribute name="SM_IS" type="xs:double"/>
+        <xs:attribute name="VYD_IS" type="Type10"/>
+        <xs:attribute name="FD_IS" type="xs:double"/>
+        <xs:attribute name="KIB_IS" type="xs:double"/>
+        <xs:attribute name="VART_IS" type="xs:double"/>
+        <xs:attribute name="ZMEN_IS" type="xs:double"/>
+        <xs:attribute name="DT_OBIG" type="dateCompatible"/>
+        <xs:attribute name="DT_POG" type="dateCompatible"/>
+        <xs:attribute name="PER_PLAT" type="xs:double"/>
+        <xs:attribute name="PER_PATR" type="xs:double"/>
+        <xs:attribute name="D_POG_P" type="xs:double"/>
+        <xs:attribute name="D_POG_V" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVYP_IS-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVYP_IS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_FON-row">
+        <xs:attribute name="ZBO_TYPE" type="Type100"/>
+        <xs:attribute name="ZBO_VYN" type="dateCompatible"/>
+        <xs:attribute name="ZBO_DEBT" type="xs:double"/>
+        <xs:attribute name="ZBO_PROC" type="xs:double"/>
+        <xs:attribute name="ZBO_POG" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_FON-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZ_FON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_ICP-row">
+        <xs:attribute name="ZBO_TYPE" type="Type100"/>
+        <xs:attribute name="ZBO_VYN" type="dateCompatible"/>
+        <xs:attribute name="ZBO_DEBT" type="xs:double"/>
+        <xs:attribute name="ZBO_PROC" type="xs:double"/>
+        <xs:attribute name="ZBO_POG" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_ICP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZ_ICP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_INVEST-row">
+        <xs:attribute name="ZBI_TYPE" type="Type100"/>
+        <xs:attribute name="ZBI_VYN" type="dateCompatible"/>
+        <xs:attribute name="ZBI_DEBT" type="xs:double"/>
+        <xs:attribute name="ZBI_POG" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_INVEST-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZ_INVEST-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_KREDIT-row">
+        <xs:attribute name="ZBK_TYPE" type="Type100"/>
+        <xs:attribute name="ZBK_VYN" type="dateCompatible"/>
+        <xs:attribute name="ZBK_DEBT" type="xs:double"/>
+        <xs:attribute name="ZBK_PROC" type="xs:double"/>
+        <xs:attribute name="ZBK_POG" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_KREDIT-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZ_KREDIT-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_OBLIG-row">
+        <xs:attribute name="ZBO_TYPE" type="Type100"/>
+        <xs:attribute name="ZBO_VYN" type="dateCompatible"/>
+        <xs:attribute name="ZBO_DEBT" type="xs:double"/>
+        <xs:attribute name="ZBO_PROC" type="xs:double"/>
+        <xs:attribute name="ZBO_POG" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_OBLIG-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZ_OBLIG-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_POH-row">
+        <xs:attribute name="ZBO_TYPE" type="Type100"/>
+        <xs:attribute name="ZBO_VYN" type="dateCompatible"/>
+        <xs:attribute name="ZBO_DEBT" type="xs:double"/>
+        <xs:attribute name="ZBO_PROC" type="xs:double"/>
+        <xs:attribute name="ZBO_POG" type="dateCompatible"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZ_POH-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZ_POH-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_IA-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_RISH" type="dateCompatible"/>
+        <xs:attribute name="ORG_RISH" type="Type254"/>
+        <xs:attribute name="CH_IA_IP" type="xs:double"/>
+        <xs:attribute name="N_IA_VYK" type="Type254"/>
+        <xs:attribute name="V_IA_VYK" type="xs:double"/>
+        <xs:attribute name="N_IA_VK" type="Type254"/>
+        <xs:attribute name="V_IA_VK" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_IA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZAM_IA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_OFU-row-I">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="FU_NAME" type="Type100"/>
+        <xs:attribute name="FU_POST" type="Type5"/>
+        <xs:attribute name="FU_ADRES" type="Type100"/>
+        <xs:attribute name="FUSTREET" type="Type50"/>
+        <xs:attribute name="FUEDRPOU" type="Type10"/>
+        <xs:attribute name="OS_RISH" type="Type100"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_OFU-container-I">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZAM_OFU-row-I"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_OFU-row-Q">
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_OFU-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSZAM_OFU-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_RIP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_EM" type="dateCompatible"/>
+        <xs:attribute name="NS_EM" type="Type20"/>
+        <xs:attribute name="VYD_IO" type="Type10"/>
+        <xs:attribute name="DAT_RISH" type="dateCompatible"/>
+        <xs:attribute name="ORG_RISH" type="Type100"/>
+        <xs:attribute name="CH_IA_IP" type="xs:double"/>
+        <xs:attribute name="CH_IN_IP" type="xs:double"/>
+        <xs:attribute name="CH_RZ_IS" type="xs:double"/>
+        <xs:attribute name="N_IA_VYK" type="Type254"/>
+        <xs:attribute name="V_IA_VYK" type="xs:double"/>
+        <xs:attribute name="N_IA_VK" type="Type254"/>
+        <xs:attribute name="V_IA_VK" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_RIP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZAM_RIP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_UIP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DAT_DOG" type="dateCompatible"/>
+        <xs:attribute name="NU_NAME" type="Type100"/>
+        <xs:attribute name="NUEDRPOU" type="Type10"/>
+        <xs:attribute name="NU_POST" type="Type5"/>
+        <xs:attribute name="NU_ADRES" type="Type100"/>
+        <xs:attribute name="NUSTREET" type="Type50"/>
+        <xs:attribute name="NU_D_LIC" type="dateCompatible"/>
+        <xs:attribute name="NU_N_LIC" type="Type20"/>
+        <xs:attribute name="SU_NAME" type="Type100"/>
+        <xs:attribute name="SUEDRPOU" type="Type10"/>
+        <xs:attribute name="SU_POST" type="Type5"/>
+        <xs:attribute name="SU_ADRES" type="Type100"/>
+        <xs:attribute name="SUSTREET" type="Type50"/>
+        <xs:attribute name="SU_D_LIC" type="dateCompatible"/>
+        <xs:attribute name="SU_N_LIC" type="Type20"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_UIP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZAM_UIP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_UPR-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_DOG" type="dateCompatible"/>
+        <xs:attribute name="NU_NAME" type="Type254"/>
+        <xs:attribute name="NUEDRPOU" type="Type10"/>
+        <xs:attribute name="NU_POST" type="Type5"/>
+        <xs:attribute name="NU_ADRES" type="Type100"/>
+        <xs:attribute name="NUSTREET" type="Type50"/>
+        <xs:attribute name="NU_L_NUM" type="Type20"/>
+        <xs:attribute name="NU_L_DAT" type="dateCompatible"/>
+        <xs:attribute name="SU_NAME" type="Type254"/>
+        <xs:attribute name="SUEDRPOU" type="Type10"/>
+        <xs:attribute name="SU_POST" type="Type5"/>
+        <xs:attribute name="SU_ADRES" type="Type100"/>
+        <xs:attribute name="SUSTREET" type="Type50"/>
+        <xs:attribute name="SU_L_NUM" type="Type20"/>
+        <xs:attribute name="SU_L_DAT" type="dateCompatible"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZAM_UPR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZAM_UPR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZASN_ALL-row">
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZASN_ALL-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSZASN_ALL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZASN_FZ-row">
+        <xs:attribute name="P_I_B" type="Type100" use="required"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZASN_FZ-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZASN_FZ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZASN_UR-row">
+        <xs:attribute name="O_NAME" type="Type254"/>
+        <xs:attribute name="O_EDRPOU" type="EntityIdCode"/>
+        <xs:attribute name="O_CONT" type="Type50"/>
+        <xs:attribute name="O_OBL" type="Type10"/>
+        <xs:attribute name="O_RAYON" type="Type100"/>
+        <xs:attribute name="O_POST" type="Type5"/>
+        <xs:attribute name="O_ADRES" type="Type100"/>
+        <xs:attribute name="O_STREET" type="Type50"/>
+        <xs:attribute name="O_SHARE" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZASN_UR-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZASN_UR-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZBORY-row">
+        <xs:attribute name="VYD_ZBOR" type="xs:double"/>
+        <xs:attribute name="DAT_ZBOR" type="dateCompatible"/>
+        <xs:attribute name="KV_ZBOR" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZBORY-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZBORY-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZLYTTYA-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="SUB_TYP" type="Type1"/>
+        <xs:attribute name="SUB_NAME" type="Type100"/>
+        <xs:attribute name="SPOS_PR" type="Type10"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZLYTTYA-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZLYTTYA-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZM_PRE-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_EM" type="dateCompatible"/>
+        <xs:attribute name="NS_EM" type="Type20"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZM_PRE-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZM_PRE-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZM_RZIS-row">
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZM_RZIS-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSZM_RZIS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZMEN_SK-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="PREV_SK" type="xs:double"/>
+        <xs:attribute name="ZMEN_SK" type="xs:double"/>
+        <xs:attribute name="POST_SK" type="xs:double"/>
+        <xs:attribute name="SPOS_ZM" type="Type254"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZMEN_SK-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZMEN_SK-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZMINY_IA-row-Q">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IP" type="dateCompatible"/>
+        <xs:attribute name="NS_IP" type="Type20"/>
+        <xs:attribute name="DT_ZMIN" type="dateCompatible"/>
+        <xs:attribute name="VYKL_IA" type="Type254"/>
+        <xs:attribute name="VKL_IA" type="Type254"/>
+        <xs:attribute name="DOD_IA" type="Type254"/>
+        <xs:attribute name="CH_IA" type="xs:double"/>
+        <xs:attribute name="PRICH" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZMINY_IA-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZMINY_IA-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZMINY_IA-row-Y">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IP" type="dateCompatible"/>
+        <xs:attribute name="NS_IP" type="Type20"/>
+        <xs:attribute name="DT_ZMIN" type="dateCompatible"/>
+        <xs:attribute name="ZMINY" type="xs:double"/>
+        <xs:attribute name="VYKL_IA" type="xs:string"/>
+        <xs:attribute name="VKL_IA" type="xs:string"/>
+        <xs:attribute name="DOD_IA" type="xs:string"/>
+        <xs:attribute name="CH_IA" type="xs:double"/>
+        <xs:attribute name="PRICH" type="xs:string"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZMINY_IA-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZMINY_IA-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZOB_IP-row-Q">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IP" type="dateCompatible"/>
+        <xs:attribute name="NS_IP" type="Type20"/>
+        <xs:attribute name="DT_R_IP" type="dateCompatible"/>
+        <xs:attribute name="ROZM_IP" type="xs:double"/>
+        <xs:attribute name="ZOB_IP" type="xs:double"/>
+        <xs:attribute name="KOEF_IP" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZOB_IP-container-Q">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZOB_IP-row-Q"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZOB_IP-row-Y">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_IP" type="dateCompatible"/>
+        <xs:attribute name="NS_IP" type="Type20"/>
+        <xs:attribute name="DT_R_IP" type="dateCompatible"/>
+        <xs:attribute name="ROZM_IP" type="xs:double"/>
+        <xs:attribute name="ZOB_IP" type="xs:double"/>
+        <xs:attribute name="KOEF_IP" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZOB_IP-container-Y">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZOB_IP-row-Y"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZOBOVYAZ-row">
+        <xs:attribute name="ZB_KREDT" type="xs:double"/>
+        <xs:attribute name="ZB_CP" type="xs:double"/>
+        <xs:attribute name="ZB_OBL" type="xs:double"/>
+        <xs:attribute name="ZB_ICP" type="xs:double"/>
+        <xs:attribute name="ZB_FON" type="xs:double"/>
+        <xs:attribute name="ZB_VEKSL" type="xs:double"/>
+        <xs:attribute name="ZB_POH" type="xs:double"/>
+        <xs:attribute name="ZB_FICP" type="xs:double"/>
+        <xs:attribute name="ZB_TAX" type="xs:double"/>
+        <xs:attribute name="ZB_FDZO" type="xs:double"/>
+        <xs:attribute name="ZB_INSHI" type="xs:double"/>
+        <xs:attribute name="ZB_RAZOM" type="xs:double"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZOBOVYAZ-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSZOBOVYAZ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZV_SIP-row">
+        <xs:attribute name="NZP" type="xs:double"/>
+        <xs:attribute name="DT_EM" type="dateCompatible"/>
+        <xs:attribute name="NS_EM" type="Type20"/>
+        <xs:attribute name="TYP_DAT" type="Type10"/>
+        <xs:attribute name="TYP_DTIN" type="Type254"/>
+        <xs:attribute name="OS_INIC" type="Type100"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZV_SIP-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSZV_SIP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSZV_SON-row">
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSZV_SON-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSZV_SON-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSHOLDAGR-container">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="ZMIST-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSVYKUPOS-row">
+        <xs:attribute name="DT_ZAR" type="dateCompatible" use="required"/>
+        <xs:attribute name="ACTION" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="KILK_AK" type="xs:integer" use="required"/>
+        <xs:attribute name="FACEVAL" type="money" use="required"/>
+        <xs:attribute name="DT_AK" type="dateCompatible" use="required"/>
+        <xs:attribute name="NS_AK" type="Type20" use="required"/>
+        <xs:attribute name="ORG_AK" type="Type254" use="required"/>
+        <xs:attribute name="ISIN" type="ISIN_Type"/>
+        <xs:attribute name="CH_ST_AK" type="xs:double" use="required"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSVYKUPOS-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSVYKUPOS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCHARTCH-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="ZMIST-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSFUNDCH-row">
+        <xs:attribute name="DAT_GOS" type="dateCompatible"/>
+        <xs:attribute name="STATUT_PR" type="xs:double" use="required"/>
+        <xs:attribute name="STATUT_D" type="xs:double" use="required"/>
+        <xs:attribute name="STATUT_CR" type="xs:double" use="required"/>
+        <xs:attribute name="STATUT_DW" type="xs:string" use="required"/>
+        <xs:attribute name="VTSH_QTY" type="xs:integer" use="required"/>
+        <xs:attribute name="VTSH_PCT" type="xs:double"/>
+        <xs:attribute name="ZMIST" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSFUNDCH-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSFUNDCH-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSCHARTBO-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="ZMIST-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSBRDFEERP-row">
+        <xs:attribute name="ORG_NAME" type="Type100" use="required"/>
+        <xs:attribute name="EVENTDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="ZVIT" type="TypeText"/>
+        <xs:attribute name="DISCL_APA" type="Yes1No0Type" use="required"/>
+        <xs:attribute name="DISCL_WS" type="Yes1No0Type" use="required"/>
+        <xs:attribute name="ZMIST" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSBRDFEERP-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSBRDFEERP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSHOLDCH-row">
+        <xs:attribute name="NN" type="xs:positiveInteger"/>
+        <xs:attribute name="REASON" type="HoldChReasonType" use="required"/>
+        <xs:attribute name="CTL_NAME" type="xs:string" use="required"/>
+        <xs:attribute name="CTL_IDCD" type="Type10"/>
+        <xs:attribute name="CTL_ADDR" type="xs:string"/>
+        <xs:attribute name="CHDATE" type="dateCompatible" use="required"/>
+        <xs:attribute name="VSH_PCT" type="xs:double" use="required"/>
+        <xs:attribute name="VRT_PCT" type="xs:double" use="required"/>
+        <xs:attribute name="VRO_PCT" type="xs:double"/>
+        <xs:attribute name="VFI_PCT" type="xs:double" use="required"/>
+        <xs:attribute name="VRT_ALL" type="xs:double" use="required"/>
+        <xs:attribute name="VALLSH" type="xs:integer" use="required"/>
+        <xs:attribute name="VSH_PCT_P" type="xs:double"/>
+        <xs:attribute name="VRT_PCT_P" type="xs:double"/>
+        <xs:attribute name="VRO_PCT_P" type="xs:double"/>
+        <xs:attribute name="VFI_PCT_P" type="xs:double"/>
+        <xs:attribute name="VRT_ALL_P" type="xs:double"/>
+        <xs:attribute name="VALLSH_P" type="xs:double"/>
+        <xs:attribute name="VSH_TYP" type="xs:string"/>
+        <xs:attribute name="VSH_ISIN" type="ISIN_Type"/>
+        <xs:attribute name="VSH_BSDT" type="Opt1Or2Type"/>
+        <xs:attribute name="VSH_OWTYP" type="Opt1Or2Type"/>
+        <xs:attribute name="VSH_QTY" type="xs:integer"/>
+        <xs:attribute name="VRT_TYP" type="xs:string"/>
+        <xs:attribute name="VRT_ISIN" type="ISIN_Type"/>
+        <xs:attribute name="VRT_BSDT" type="Opt1Or2Type"/>
+        <xs:attribute name="VRT_OWTYP" type="HoldChOwType"/>
+        <xs:attribute name="VRT_QTY" type="xs:integer"/>
+        <xs:attribute name="VOP_TYP" type="xs:string"/>
+        <xs:attribute name="VOP_EXP" type="dateCompatible"/>
+        <xs:attribute name="VOP_BSDT" type="Opt1Or2Type"/>
+        <xs:attribute name="VOP_OWTYP" type="Opt1Or2Type"/>
+        <xs:attribute name="VOP_QTY" type="xs:integer"/>
+        <xs:attribute name="VOP_PCT" type="xs:double"/>
+        <xs:attribute name="VRI_TYP" type="xs:string"/>
+        <xs:attribute name="VRI_EXP" type="dateCompatible"/>
+        <xs:attribute name="VRI_BAS" type="Opt1Or2Type"/>
+        <xs:attribute name="VRI_BSDT" type="Opt1Or2Type"/>
+        <xs:attribute name="VRI_OWTYP" type="Opt1Or2Type"/>
+        <xs:attribute name="VRI_STL" type="Opt1Or2Type"/>
+        <xs:attribute name="VRI_QTY" type="xs:integer"/>
+        <xs:attribute name="VRI_PCT" type="xs:double"/>
+        <xs:attribute name="PXY_NAME" type="xs:string"/>
+        <xs:attribute name="PXY_IDCD" type="Type10"/>
+        <xs:attribute name="PXY_VQTY" type="xs:integer"/>
+        <xs:attribute name="PXY_VPCT" type="xs:double"/>
+        <xs:attribute name="PXY_ENDS" type="dateCompatible"/>
+        <xs:attribute name="OPYS" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSHOLDCH-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSHOLDCH-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSHOLDCHCTL-row">
+        <xs:attribute name="HOLDCH_NN" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="CTL_NAME" type="xs:string" use="required"/>
+        <xs:attribute name="CTL_IDCD" type="Type10"/>
+        <xs:attribute name="VSH_PCT" type="xs:double" use="required"/>
+        <xs:attribute name="VRT_PCT" type="xs:double" use="required"/>
+        <xs:attribute name="VFI_PCT" type="xs:double" use="required"/>
+        <xs:attribute name="VRT_ALL" type="xs:double" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSHOLDCHCTL-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSHOLDCHCTL-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSAUDITQ-row">
+        <xs:attribute name="NAMEAUD" type="TypeText" use="required"/>
+        <xs:attribute name="EDRPOUAUD" type="Type10"/>
+        <xs:attribute name="MSZNAUD" type="TypeText"/>
+        <xs:attribute name="NUM_SV" type="Type20"/>
+        <xs:attribute name="CHMB_QSNM" type="Type50"/>
+        <xs:attribute name="CHMB_QSDT" type="dateCompatible"/>
+        <xs:attribute name="AUD_REPFID" type="dateCompatible"/>
+        <xs:attribute name="AUD_REPSTD" type="dateCompatible"/>
+        <xs:attribute name="AUD_OPIN" type="TypeAuditOpinion"/>
+        <xs:attribute name="AUD_SVCNM" type="Type50"/>
+        <xs:attribute name="AUD_SVCDT" type="dateCompatible"/>
+        <xs:attribute name="AUD_BEG" type="dateCompatible"/>
+        <xs:attribute name="AUD_END" type="dateCompatible"/>
+        <xs:attribute name="AUD_DATE" type="dateCompatible"/>
+        <xs:attribute name="AUD_FEE" type="money"/>
+        <xs:attribute name="AUDIT" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSAUDITQ-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSAUDITQ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSMANREP-row">
+        <xs:attribute name="MANREP" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSMANREP-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSMANREP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSREPCONS-row">
+        <xs:attribute name="REPCONS" type="TypeText" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSREPCONS-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSREPCONS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSWEBSITE-row">
+        <xs:attribute name="WS_OLD" type="URL_Type" use="required"/>
+        <xs:attribute name="EVENTDT" type="dateCompatible" use="required"/>
+        <xs:attribute name="WS_NEW" type="URL_Type" use="required"/>
+        <xs:attribute name="ZMIST" type="TypeText"/>
+    </xs:complexType>
+    <xs:complexType name="DTSWEBSITE-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSWEBSITE-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSOWSHIP-row">
+        <xs:attribute name="NN" type="xs:positiveInteger"/>
+        <xs:attribute name="O_NAME" type="Type254" use="required"/>
+        <xs:attribute name="O_ID" type="EDRPOU"/>
+        <xs:attribute name="PERS_OZN" type="Opt1Or2Type" use="required"/>
+        <xs:attribute name="PART_DIR" type="xs:double"/>
+        <xs:attribute name="PART_IDIR" type="xs:double"/>
+        <xs:attribute name="PART_TOT" type="xs:double"/>
+        <xs:attribute name="BENEFOWN" type="Type254"/>
+    </xs:complexType>
+    <xs:complexType name="DTSOWSHIP-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSOWSHIP-row"/>
+        </xs:sequence>
+    </xs:complexType>
+</xs:schema>

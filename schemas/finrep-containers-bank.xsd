@@ -1,0 +1,1115 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:z="http://nssmc.gov.ua/Schem/FinRep"
+        elementFormDefault="qualified">
+    <xs:import schemaLocation="finrep-types.xsd"
+        namespace="http://nssmc.gov.ua/Schem/FinRep"/>
+    <xs:complexType name="FinRep-bank">
+        <xs:all>
+            <xs:element name="DTSISBB" type="DTSISBB-container">
+                <xs:key name="FinRep-bank-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:key>
+            </xs:element>
+            <xs:element name="DTSISFB" type="DTSISFB-container">
+                <xs:unique name="DTSISFB-row-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="DTSISPZ" type="DTSISPZ-container">
+                <xs:unique name="DTSISPZ-row-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="DTSISSD" type="DTSISSD-container">
+                <xs:unique name="DTSISSD-row-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="DTSISVK" type="DTSISVK-container">
+                <xs:unique name="DTSISVK-row-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="DTSISRD" type="DTSISRD-container">
+                <xs:unique name="DTSISRD-row-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="DTSISRI" type="DTSISRI-container">
+                <xs:unique name="DTSISRI-row-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                </xs:unique>
+            </xs:element>
+            <xs:element name="DTSISPRYM" type="DTSISPRYM-container">
+                <xs:key name="FinRep-bank-note-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                    <xs:field xpath="@NN"/>
+                </xs:key>
+            </xs:element>
+            <xs:element name="DTSISPREF" type="DTSISPREF-container">
+                <xs:unique name="FinRep-bank-noteref-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                    <xs:field xpath="@K_OZN"/>
+                    <xs:field xpath="@NN"/>
+                    <xs:field xpath="@FORM"/>
+                    <xs:field xpath="@POINT"/>
+                    <xs:field xpath="@POINT_NN"/>
+                </xs:unique>
+            </xs:element>
+        </xs:all>
+    </xs:complexType>
+    <xs:attributeGroup name="key-attribs">
+        <xs:attribute name="PERIOD_Y" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:pattern value="[12][0-9]{3}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="PERIOD_Q" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:enumeration value="1"/>
+                    <xs:enumeration value="2"/>
+                    <xs:enumeration value="3"/>
+                    <xs:enumeration value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="K_OZN" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:enumeration value="1"/>
+                    <xs:enumeration value="2"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:attributeGroup name="general-attribs">
+        <xs:attributeGroup ref="key-attribs"/>
+        <xs:attribute name="DATE" type="xs:date" use="required"/>
+        <xs:attribute name="VYKON" type="z:FinType100"/>
+        <xs:attribute name="KERIVNYK" type="z:FinType100"/>
+        <xs:attribute name="BUHG" type="z:FinType100"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:attributeGroup>
+    <xs:complexType name="DTSISBB-container">
+        <xs:sequence minOccurs="1" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISBB-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISFB-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISFB-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISPZ-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISPZ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISSD-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISSD-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISVK-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISVK-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISRD-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISRD-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISRI-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISRI-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISPRYM-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISPRYM-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISPREF-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSISPREF-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSISBB-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="DATE1" type="xs:date" use="required"/>
+        <xs:attribute name="BB1000_03" type="xs:double"/>
+        <xs:attribute name="BB1000_04" type="xs:double"/>
+        <xs:attribute name="BB1010_03" type="xs:double"/>
+        <xs:attribute name="BB1010_04" type="xs:double"/>
+        <xs:attribute name="BB1020_03" type="xs:double"/>
+        <xs:attribute name="BB1020_04" type="xs:double"/>
+        <xs:attribute name="BB1030_03" type="xs:double"/>
+        <xs:attribute name="BB1030_04" type="xs:double"/>
+        <xs:attribute name="BB1040_03" type="xs:double"/>
+        <xs:attribute name="BB1040_04" type="xs:double"/>
+        <xs:attribute name="BB1050_03" type="xs:double"/>
+        <xs:attribute name="BB1050_04" type="xs:double"/>
+        <xs:attribute name="BB1060_03" type="xs:double"/>
+        <xs:attribute name="BB1060_04" type="xs:double"/>
+        <xs:attribute name="BB1070_03" type="xs:double"/>
+        <xs:attribute name="BB1070_04" type="xs:double"/>
+        <xs:attribute name="BB1080_03" type="xs:double"/>
+        <xs:attribute name="BB1080_04" type="xs:double"/>
+        <xs:attribute name="BB1090_03" type="xs:double"/>
+        <xs:attribute name="BB1090_04" type="xs:double"/>
+        <xs:attribute name="BB1100_03" type="xs:double"/>
+        <xs:attribute name="BB1100_04" type="xs:double"/>
+        <xs:attribute name="BB1110_03" type="xs:double"/>
+        <xs:attribute name="BB1110_04" type="xs:double"/>
+        <xs:attribute name="BB1120_03" type="xs:double"/>
+        <xs:attribute name="BB1120_04" type="xs:double"/>
+        <xs:attribute name="BB1130_03" type="xs:double"/>
+        <xs:attribute name="BB1130_04" type="xs:double"/>
+        <xs:attribute name="BB1140_03" type="xs:double"/>
+        <xs:attribute name="BB1140_04" type="xs:double"/>
+        <xs:attribute name="BB1150_03" type="xs:double"/>
+        <xs:attribute name="BB1150_04" type="xs:double"/>
+        <xs:attribute name="BB1990" type="z:FinTypeExt"/>
+        <xs:attribute name="BB1990_03" type="xs:double"/>
+        <xs:attribute name="BB1990_04" type="xs:double"/>
+        <xs:attribute name="BB1999_03" type="xs:double"/>
+        <xs:attribute name="BB1999_04" type="xs:double"/>
+        <xs:attribute name="BB2000_03" type="xs:double"/>
+        <xs:attribute name="BB2000_04" type="xs:double"/>
+        <xs:attribute name="BB2010_03" type="xs:double"/>
+        <xs:attribute name="BB2010_04" type="xs:double"/>
+        <xs:attribute name="BB2020_03" type="xs:double"/>
+        <xs:attribute name="BB2020_04" type="xs:double"/>
+        <xs:attribute name="BB2030_03" type="xs:double"/>
+        <xs:attribute name="BB2030_04" type="xs:double"/>
+        <xs:attribute name="BB2040_03" type="xs:double"/>
+        <xs:attribute name="BB2040_04" type="xs:double"/>
+        <xs:attribute name="BB2050_03" type="xs:double"/>
+        <xs:attribute name="BB2050_04" type="xs:double"/>
+        <xs:attribute name="BB2060_03" type="xs:double"/>
+        <xs:attribute name="BB2060_04" type="xs:double"/>
+        <xs:attribute name="BB2070_03" type="xs:double"/>
+        <xs:attribute name="BB2070_04" type="xs:double"/>
+        <xs:attribute name="BB2080_03" type="xs:double"/>
+        <xs:attribute name="BB2080_04" type="xs:double"/>
+        <xs:attribute name="BB2090_03" type="xs:double"/>
+        <xs:attribute name="BB2090_04" type="xs:double"/>
+        <xs:attribute name="BB2100_03" type="xs:double"/>
+        <xs:attribute name="BB2100_04" type="xs:double"/>
+        <xs:attribute name="BB2110_03" type="xs:double"/>
+        <xs:attribute name="BB2110_04" type="xs:double"/>
+        <xs:attribute name="BB2990" type="z:FinTypeExt"/>
+        <xs:attribute name="BB2990_03" type="xs:double"/>
+        <xs:attribute name="BB2990_04" type="xs:double"/>
+        <xs:attribute name="BB2999_03" type="xs:double"/>
+        <xs:attribute name="BB2999_04" type="xs:double"/>
+        <xs:attribute name="BB3000_03" type="xs:double"/>
+        <xs:attribute name="BB3000_04" type="xs:double"/>
+        <xs:attribute name="BB3010_03" type="xs:double"/>
+        <xs:attribute name="BB3010_04" type="xs:double"/>
+        <xs:attribute name="BB3020_03" type="xs:double"/>
+        <xs:attribute name="BB3020_04" type="xs:double"/>
+        <xs:attribute name="BB3030_03" type="xs:double"/>
+        <xs:attribute name="BB3030_04" type="xs:double"/>
+        <xs:attribute name="BB3040_03" type="xs:double"/>
+        <xs:attribute name="BB3040_04" type="xs:double"/>
+        <xs:attribute name="BB3050_03" type="xs:double"/>
+        <xs:attribute name="BB3050_04" type="xs:double"/>
+        <xs:attribute name="BB3060_03" type="xs:double"/>
+        <xs:attribute name="BB3060_04" type="xs:double"/>
+        <xs:attribute name="BB3490" type="z:FinTypeExt"/>
+        <xs:attribute name="BB3490_03" type="xs:double"/>
+        <xs:attribute name="BB3490_04" type="xs:double"/>
+        <xs:attribute name="BB3500_03" type="xs:double"/>
+        <xs:attribute name="BB3500_04" type="xs:double"/>
+        <xs:attribute name="BB3999_03" type="xs:double"/>
+        <xs:attribute name="BB3999_04" type="xs:double"/>
+        <xs:attribute name="BB9999_03" type="xs:double"/>
+        <xs:attribute name="BB9999_04" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISFB-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="FB1000_03" type="xs:double"/>
+        <xs:attribute name="FB1000_04" type="xs:double"/>
+        <xs:attribute name="FB1005_03" type="xs:double"/>
+        <xs:attribute name="FB1005_04" type="xs:double"/>
+        <xs:attribute name="FB1010_03" type="xs:double"/>
+        <xs:attribute name="FB1010_04" type="xs:double"/>
+        <xs:attribute name="FB1020_03" type="xs:double"/>
+        <xs:attribute name="FB1020_04" type="xs:double"/>
+        <xs:attribute name="FB1030_03" type="xs:double"/>
+        <xs:attribute name="FB1030_04" type="xs:double"/>
+        <xs:attribute name="FB1040_03" type="xs:double"/>
+        <xs:attribute name="FB1040_04" type="xs:double"/>
+        <xs:attribute name="FB1045_03" type="xs:double"/>
+        <xs:attribute name="FB1045_04" type="xs:double"/>
+        <xs:attribute name="FB1050_03" type="xs:double"/>
+        <xs:attribute name="FB1050_04" type="xs:double"/>
+        <xs:attribute name="FB1060_03" type="xs:double"/>
+        <xs:attribute name="FB1060_04" type="xs:double"/>
+        <xs:attribute name="FB1070_03" type="xs:double"/>
+        <xs:attribute name="FB1070_04" type="xs:double"/>
+        <xs:attribute name="FB1080_03" type="xs:double"/>
+        <xs:attribute name="FB1080_04" type="xs:double"/>
+        <xs:attribute name="FB1090_03" type="xs:double"/>
+        <xs:attribute name="FB1090_04" type="xs:double"/>
+        <xs:attribute name="FB1100_03" type="xs:double"/>
+        <xs:attribute name="FB1100_04" type="xs:double"/>
+        <xs:attribute name="FB1110_03" type="xs:double"/>
+        <xs:attribute name="FB1110_04" type="xs:double"/>
+        <xs:attribute name="FB1120_03" type="xs:double"/>
+        <xs:attribute name="FB1120_04" type="xs:double"/>
+        <xs:attribute name="FB1130_03" type="xs:double"/>
+        <xs:attribute name="FB1130_04" type="xs:double"/>
+        <xs:attribute name="FB1140_03" type="xs:double"/>
+        <xs:attribute name="FB1140_04" type="xs:double"/>
+        <xs:attribute name="FB1150_03" type="xs:double"/>
+        <xs:attribute name="FB1150_04" type="xs:double"/>
+        <xs:attribute name="FB1160_03" type="xs:double"/>
+        <xs:attribute name="FB1160_04" type="xs:double"/>
+        <xs:attribute name="FB1170_03" type="xs:double"/>
+        <xs:attribute name="FB1170_04" type="xs:double"/>
+        <xs:attribute name="FB1180_03" type="xs:double"/>
+        <xs:attribute name="FB1180_04" type="xs:double"/>
+        <xs:attribute name="FB1190_03" type="xs:double"/>
+        <xs:attribute name="FB1190_04" type="xs:double"/>
+        <xs:attribute name="FB1390" type="z:FinTypeExt"/>
+        <xs:attribute name="FB1390_03" type="xs:double"/>
+        <xs:attribute name="FB1390_04" type="xs:double"/>
+        <xs:attribute name="FB1395" type="z:FinTypeExt"/>
+        <xs:attribute name="FB1395_03" type="xs:double"/>
+        <xs:attribute name="FB1395_04" type="xs:double"/>
+        <xs:attribute name="FB1500_03" type="xs:double"/>
+        <xs:attribute name="FB1500_04" type="xs:double"/>
+        <xs:attribute name="FB1510_03" type="xs:double"/>
+        <xs:attribute name="FB1510_04" type="xs:double"/>
+        <xs:attribute name="FB1520_03" type="xs:double"/>
+        <xs:attribute name="FB1520_04" type="xs:double"/>
+        <xs:attribute name="FB1530_03" type="xs:double"/>
+        <xs:attribute name="FB1530_04" type="xs:double"/>
+        <xs:attribute name="FB1999_03" type="xs:double"/>
+        <xs:attribute name="FB1999_04" type="xs:double"/>
+        <xs:attribute name="FB2000_03" type="xs:double"/>
+        <xs:attribute name="FB2000_04" type="xs:double"/>
+        <xs:attribute name="FB2040_03" type="xs:double"/>
+        <xs:attribute name="FB2040_04" type="xs:double"/>
+        <xs:attribute name="FB2190" type="z:FinTypeExt"/>
+        <xs:attribute name="FB2190_03" type="xs:double"/>
+        <xs:attribute name="FB2190_04" type="xs:double"/>
+        <xs:attribute name="FB2195" type="z:FinTypeExt"/>
+        <xs:attribute name="FB2195_03" type="xs:double"/>
+        <xs:attribute name="FB2195_04" type="xs:double"/>
+        <xs:attribute name="FB2250_03" type="xs:double"/>
+        <xs:attribute name="FB2250_04" type="xs:double"/>
+        <xs:attribute name="FB2360_03" type="xs:double"/>
+        <xs:attribute name="FB2360_04" type="xs:double"/>
+        <xs:attribute name="FB2510_03" type="xs:double"/>
+        <xs:attribute name="FB2510_04" type="xs:double"/>
+        <xs:attribute name="FB2520_03" type="xs:double"/>
+        <xs:attribute name="FB2520_04" type="xs:double"/>
+        <xs:attribute name="FB2530_03" type="xs:double"/>
+        <xs:attribute name="FB2530_04" type="xs:double"/>
+        <xs:attribute name="FB2540_03" type="xs:double"/>
+        <xs:attribute name="FB2540_04" type="xs:double"/>
+        <xs:attribute name="FB2690" type="z:FinTypeExt"/>
+        <xs:attribute name="FB2690_03" type="xs:double"/>
+        <xs:attribute name="FB2690_04" type="xs:double"/>
+        <xs:attribute name="FB2695" type="z:FinTypeExt"/>
+        <xs:attribute name="FB2695_03" type="xs:double"/>
+        <xs:attribute name="FB2695_04" type="xs:double"/>
+        <xs:attribute name="FB2750_03" type="xs:double"/>
+        <xs:attribute name="FB2750_04" type="xs:double"/>
+        <xs:attribute name="FB2860_03" type="xs:double"/>
+        <xs:attribute name="FB2860_04" type="xs:double"/>
+        <xs:attribute name="FB2900_03" type="xs:double"/>
+        <xs:attribute name="FB2900_04" type="xs:double"/>
+        <xs:attribute name="FB2999_03" type="xs:double"/>
+        <xs:attribute name="FB2999_04" type="xs:double"/>
+        <xs:attribute name="FB3010_03" type="xs:double"/>
+        <xs:attribute name="FB3010_04" type="xs:double"/>
+        <xs:attribute name="FB3020_03" type="xs:double"/>
+        <xs:attribute name="FB3020_04" type="xs:double"/>
+        <xs:attribute name="FB3210_03" type="xs:double"/>
+        <xs:attribute name="FB3210_04" type="xs:double"/>
+        <xs:attribute name="FB3220_03" type="xs:double"/>
+        <xs:attribute name="FB3220_04" type="xs:double"/>
+        <xs:attribute name="FB4110_03" type="xs:double"/>
+        <xs:attribute name="FB4110_04" type="xs:double"/>
+        <xs:attribute name="FB4120_03" type="xs:double"/>
+        <xs:attribute name="FB4120_04" type="xs:double"/>
+        <xs:attribute name="FB4210_03" type="xs:double"/>
+        <xs:attribute name="FB4210_04" type="xs:double"/>
+        <xs:attribute name="FB4220_03" type="xs:double"/>
+        <xs:attribute name="FB4220_04" type="xs:double"/>
+        <xs:attribute name="FB4310_03" type="xs:double"/>
+        <xs:attribute name="FB4310_04" type="xs:double"/>
+        <xs:attribute name="FB4320_03" type="xs:double"/>
+        <xs:attribute name="FB4320_04" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISPZ-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="PZ1000_03" type="xs:double"/>
+        <xs:attribute name="PZ1000_04" type="xs:double"/>
+        <xs:attribute name="PZ1005_03" type="xs:double"/>
+        <xs:attribute name="PZ1005_04" type="xs:double"/>
+        <xs:attribute name="PZ1010_03" type="xs:double"/>
+        <xs:attribute name="PZ1010_04" type="xs:double"/>
+        <xs:attribute name="PZ1020_03" type="xs:double"/>
+        <xs:attribute name="PZ1020_04" type="xs:double"/>
+        <xs:attribute name="PZ1030_03" type="xs:double"/>
+        <xs:attribute name="PZ1030_04" type="xs:double"/>
+        <xs:attribute name="PZ1040_03" type="xs:double"/>
+        <xs:attribute name="PZ1040_04" type="xs:double"/>
+        <xs:attribute name="PZ1045_03" type="xs:double"/>
+        <xs:attribute name="PZ1045_04" type="xs:double"/>
+        <xs:attribute name="PZ1050_03" type="xs:double"/>
+        <xs:attribute name="PZ1050_04" type="xs:double"/>
+        <xs:attribute name="PZ1060_03" type="xs:double"/>
+        <xs:attribute name="PZ1060_04" type="xs:double"/>
+        <xs:attribute name="PZ1070_03" type="xs:double"/>
+        <xs:attribute name="PZ1070_04" type="xs:double"/>
+        <xs:attribute name="PZ1080_03" type="xs:double"/>
+        <xs:attribute name="PZ1080_04" type="xs:double"/>
+        <xs:attribute name="PZ1090_03" type="xs:double"/>
+        <xs:attribute name="PZ1090_04" type="xs:double"/>
+        <xs:attribute name="PZ1100_03" type="xs:double"/>
+        <xs:attribute name="PZ1100_04" type="xs:double"/>
+        <xs:attribute name="PZ1110_03" type="xs:double"/>
+        <xs:attribute name="PZ1110_04" type="xs:double"/>
+        <xs:attribute name="PZ1120_03" type="xs:double"/>
+        <xs:attribute name="PZ1120_04" type="xs:double"/>
+        <xs:attribute name="PZ1130_03" type="xs:double"/>
+        <xs:attribute name="PZ1130_04" type="xs:double"/>
+        <xs:attribute name="PZ1140_03" type="xs:double"/>
+        <xs:attribute name="PZ1140_04" type="xs:double"/>
+        <xs:attribute name="PZ1150_03" type="xs:double"/>
+        <xs:attribute name="PZ1150_04" type="xs:double"/>
+        <xs:attribute name="PZ1160_03" type="xs:double"/>
+        <xs:attribute name="PZ1160_04" type="xs:double"/>
+        <xs:attribute name="PZ1170_03" type="xs:double"/>
+        <xs:attribute name="PZ1170_04" type="xs:double"/>
+        <xs:attribute name="PZ1180_03" type="xs:double"/>
+        <xs:attribute name="PZ1180_04" type="xs:double"/>
+        <xs:attribute name="PZ1190_03" type="xs:double"/>
+        <xs:attribute name="PZ1190_04" type="xs:double"/>
+        <xs:attribute name="PZ1390" type="z:FinTypeExt"/>
+        <xs:attribute name="PZ1390_03" type="xs:double"/>
+        <xs:attribute name="PZ1390_04" type="xs:double"/>
+        <xs:attribute name="PZ1395" type="z:FinTypeExt"/>
+        <xs:attribute name="PZ1395_03" type="xs:double"/>
+        <xs:attribute name="PZ1395_04" type="xs:double"/>
+        <xs:attribute name="PZ1500_03" type="xs:double"/>
+        <xs:attribute name="PZ1500_04" type="xs:double"/>
+        <xs:attribute name="PZ1510_03" type="xs:double"/>
+        <xs:attribute name="PZ1510_04" type="xs:double"/>
+        <xs:attribute name="PZ1520_03" type="xs:double"/>
+        <xs:attribute name="PZ1520_04" type="xs:double"/>
+        <xs:attribute name="PZ1530_03" type="xs:double"/>
+        <xs:attribute name="PZ1530_04" type="xs:double"/>
+        <xs:attribute name="PZ1999_03" type="xs:double"/>
+        <xs:attribute name="PZ1999_04" type="xs:double"/>
+        <xs:attribute name="PZ3010_03" type="xs:double"/>
+        <xs:attribute name="PZ3010_04" type="xs:double"/>
+        <xs:attribute name="PZ3020_03" type="xs:double"/>
+        <xs:attribute name="PZ3020_04" type="xs:double"/>
+        <xs:attribute name="PZ4110_03" type="xs:double"/>
+        <xs:attribute name="PZ4110_04" type="xs:double"/>
+        <xs:attribute name="PZ4120_03" type="xs:double"/>
+        <xs:attribute name="PZ4120_04" type="xs:double"/>
+        <xs:attribute name="PZ4210_03" type="xs:double"/>
+        <xs:attribute name="PZ4210_04" type="xs:double"/>
+        <xs:attribute name="PZ4220_03" type="xs:double"/>
+        <xs:attribute name="PZ4220_04" type="xs:double"/>
+        <xs:attribute name="PZ4310_03" type="xs:double"/>
+        <xs:attribute name="PZ4310_04" type="xs:double"/>
+        <xs:attribute name="PZ4320_03" type="xs:double"/>
+        <xs:attribute name="PZ4320_04" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISSD-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="SD1999_03" type="xs:double"/>
+        <xs:attribute name="SD1999_04" type="xs:double"/>
+        <xs:attribute name="SD2000_03" type="xs:double"/>
+        <xs:attribute name="SD2000_04" type="xs:double"/>
+        <xs:attribute name="SD2040_03" type="xs:double"/>
+        <xs:attribute name="SD2040_04" type="xs:double"/>
+        <xs:attribute name="SD2190" type="z:FinTypeExt"/>
+        <xs:attribute name="SD2190_03" type="xs:double"/>
+        <xs:attribute name="SD2190_04" type="xs:double"/>
+        <xs:attribute name="SD2195" type="z:FinTypeExt"/>
+        <xs:attribute name="SD2195_03" type="xs:double"/>
+        <xs:attribute name="SD2195_04" type="xs:double"/>
+        <xs:attribute name="SD2250_03" type="xs:double"/>
+        <xs:attribute name="SD2250_04" type="xs:double"/>
+        <xs:attribute name="SD2360_03" type="xs:double"/>
+        <xs:attribute name="SD2360_04" type="xs:double"/>
+        <xs:attribute name="SD2510_03" type="xs:double"/>
+        <xs:attribute name="SD2510_04" type="xs:double"/>
+        <xs:attribute name="SD2520_03" type="xs:double"/>
+        <xs:attribute name="SD2520_04" type="xs:double"/>
+        <xs:attribute name="SD2530_03" type="xs:double"/>
+        <xs:attribute name="SD2530_04" type="xs:double"/>
+        <xs:attribute name="SD2540_03" type="xs:double"/>
+        <xs:attribute name="SD2540_04" type="xs:double"/>
+        <xs:attribute name="SD2690" type="z:FinTypeExt"/>
+        <xs:attribute name="SD2690_03" type="xs:double"/>
+        <xs:attribute name="SD2690_04" type="xs:double"/>
+        <xs:attribute name="SD2695" type="z:FinTypeExt"/>
+        <xs:attribute name="SD2695_03" type="xs:double"/>
+        <xs:attribute name="SD2695_04" type="xs:double"/>
+        <xs:attribute name="SD2750_03" type="xs:double"/>
+        <xs:attribute name="SD2750_04" type="xs:double"/>
+        <xs:attribute name="SD2860_03" type="xs:double"/>
+        <xs:attribute name="SD2860_04" type="xs:double"/>
+        <xs:attribute name="SD2900_03" type="xs:double"/>
+        <xs:attribute name="SD2900_04" type="xs:double"/>
+        <xs:attribute name="SD2999_03" type="xs:double"/>
+        <xs:attribute name="SD2999_04" type="xs:double"/>
+        <xs:attribute name="SD3210_03" type="xs:double"/>
+        <xs:attribute name="SD3210_04" type="xs:double"/>
+        <xs:attribute name="SD3220_03" type="xs:double"/>
+        <xs:attribute name="SD3220_04" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISVK-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="VK1000_03" type="xs:double"/>
+        <xs:attribute name="VK1000_04" type="xs:double"/>
+        <xs:attribute name="VK1000_05" type="xs:double"/>
+        <xs:attribute name="VK1000_06" type="xs:double"/>
+        <xs:attribute name="VK1000_07" type="xs:double"/>
+        <xs:attribute name="VK1000_08" type="xs:double"/>
+        <xs:attribute name="VK1000_09" type="xs:double"/>
+        <xs:attribute name="VK1000_10" type="xs:double"/>
+        <xs:attribute name="VK1000_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1000_11" type="xs:double"/>
+        <xs:attribute name="VK1110_03" type="xs:double"/>
+        <xs:attribute name="VK1110_04" type="xs:double"/>
+        <xs:attribute name="VK1110_05" type="xs:double"/>
+        <xs:attribute name="VK1110_06" type="xs:double"/>
+        <xs:attribute name="VK1110_07" type="xs:double"/>
+        <xs:attribute name="VK1110_08" type="xs:double"/>
+        <xs:attribute name="VK1110_09" type="xs:double"/>
+        <xs:attribute name="VK1110_10" type="xs:double"/>
+        <xs:attribute name="VK1110_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1110_11" type="xs:double"/>
+        <xs:attribute name="VK1120_03" type="xs:double"/>
+        <xs:attribute name="VK1120_04" type="xs:double"/>
+        <xs:attribute name="VK1120_05" type="xs:double"/>
+        <xs:attribute name="VK1120_06" type="xs:double"/>
+        <xs:attribute name="VK1120_07" type="xs:double"/>
+        <xs:attribute name="VK1120_08" type="xs:double"/>
+        <xs:attribute name="VK1120_09" type="xs:double"/>
+        <xs:attribute name="VK1120_10" type="xs:double"/>
+        <xs:attribute name="VK1120_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1120_11" type="xs:double"/>
+        <xs:attribute name="VK1200_03" type="xs:double"/>
+        <xs:attribute name="VK1200_04" type="xs:double"/>
+        <xs:attribute name="VK1200_05" type="xs:double"/>
+        <xs:attribute name="VK1200_06" type="xs:double"/>
+        <xs:attribute name="VK1200_07" type="xs:double"/>
+        <xs:attribute name="VK1200_08" type="xs:double"/>
+        <xs:attribute name="VK1200_09" type="xs:double"/>
+        <xs:attribute name="VK1200_10" type="xs:double"/>
+        <xs:attribute name="VK1200_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1200_11" type="xs:double"/>
+        <xs:attribute name="VK1205_03" type="xs:double"/>
+        <xs:attribute name="VK1205_04" type="xs:double"/>
+        <xs:attribute name="VK1205_05" type="xs:double"/>
+        <xs:attribute name="VK1205_06" type="xs:double"/>
+        <xs:attribute name="VK1205_07" type="xs:double"/>
+        <xs:attribute name="VK1205_08" type="xs:double"/>
+        <xs:attribute name="VK1205_09" type="xs:double"/>
+        <xs:attribute name="VK1205_10" type="xs:double"/>
+        <xs:attribute name="VK1205_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1205_11" type="xs:double"/>
+        <xs:attribute name="VK1300_03" type="xs:double"/>
+        <xs:attribute name="VK1300_04" type="xs:double"/>
+        <xs:attribute name="VK1300_05" type="xs:double"/>
+        <xs:attribute name="VK1300_06" type="xs:double"/>
+        <xs:attribute name="VK1300_07" type="xs:double"/>
+        <xs:attribute name="VK1300_08" type="xs:double"/>
+        <xs:attribute name="VK1300_09" type="xs:double"/>
+        <xs:attribute name="VK1300_10" type="xs:double"/>
+        <xs:attribute name="VK1300_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1300_11" type="xs:double"/>
+        <xs:attribute name="VK1310_03" type="xs:double"/>
+        <xs:attribute name="VK1310_04" type="xs:double"/>
+        <xs:attribute name="VK1310_05" type="xs:double"/>
+        <xs:attribute name="VK1310_06" type="xs:double"/>
+        <xs:attribute name="VK1310_07" type="xs:double"/>
+        <xs:attribute name="VK1310_08" type="xs:double"/>
+        <xs:attribute name="VK1310_09" type="xs:double"/>
+        <xs:attribute name="VK1310_10" type="xs:double"/>
+        <xs:attribute name="VK1310_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1310_11" type="xs:double"/>
+        <xs:attribute name="VK1320_03" type="xs:double"/>
+        <xs:attribute name="VK1320_04" type="xs:double"/>
+        <xs:attribute name="VK1320_05" type="xs:double"/>
+        <xs:attribute name="VK1320_06" type="xs:double"/>
+        <xs:attribute name="VK1320_07" type="xs:double"/>
+        <xs:attribute name="VK1320_08" type="xs:double"/>
+        <xs:attribute name="VK1320_09" type="xs:double"/>
+        <xs:attribute name="VK1320_10" type="xs:double"/>
+        <xs:attribute name="VK1320_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1320_11" type="xs:double"/>
+        <xs:attribute name="VK1330_03" type="xs:double"/>
+        <xs:attribute name="VK1330_04" type="xs:double"/>
+        <xs:attribute name="VK1330_05" type="xs:double"/>
+        <xs:attribute name="VK1330_06" type="xs:double"/>
+        <xs:attribute name="VK1330_07" type="xs:double"/>
+        <xs:attribute name="VK1330_08" type="xs:double"/>
+        <xs:attribute name="VK1330_09" type="xs:double"/>
+        <xs:attribute name="VK1330_10" type="xs:double"/>
+        <xs:attribute name="VK1330_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1330_11" type="xs:double"/>
+        <xs:attribute name="VK1340_03" type="xs:double"/>
+        <xs:attribute name="VK1340_04" type="xs:double"/>
+        <xs:attribute name="VK1340_05" type="xs:double"/>
+        <xs:attribute name="VK1340_06" type="xs:double"/>
+        <xs:attribute name="VK1340_07" type="xs:double"/>
+        <xs:attribute name="VK1340_08" type="xs:double"/>
+        <xs:attribute name="VK1340_09" type="xs:double"/>
+        <xs:attribute name="VK1340_10" type="xs:double"/>
+        <xs:attribute name="VK1340_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1340_11" type="xs:double"/>
+        <xs:attribute name="VK1345_03" type="xs:double"/>
+        <xs:attribute name="VK1345_04" type="xs:double"/>
+        <xs:attribute name="VK1345_05" type="xs:double"/>
+        <xs:attribute name="VK1345_06" type="xs:double"/>
+        <xs:attribute name="VK1345_07" type="xs:double"/>
+        <xs:attribute name="VK1345_08" type="xs:double"/>
+        <xs:attribute name="VK1345_09" type="xs:double"/>
+        <xs:attribute name="VK1345_10" type="xs:double"/>
+        <xs:attribute name="VK1345_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1345_11" type="xs:double"/>
+        <xs:attribute name="VK1350_03" type="xs:double"/>
+        <xs:attribute name="VK1350_04" type="xs:double"/>
+        <xs:attribute name="VK1350_05" type="xs:double"/>
+        <xs:attribute name="VK1350_06" type="xs:double"/>
+        <xs:attribute name="VK1350_07" type="xs:double"/>
+        <xs:attribute name="VK1350_08" type="xs:double"/>
+        <xs:attribute name="VK1350_09" type="xs:double"/>
+        <xs:attribute name="VK1350_10" type="xs:double"/>
+        <xs:attribute name="VK1350_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1350_11" type="xs:double"/>
+        <xs:attribute name="VK1354_03" type="xs:double"/>
+        <xs:attribute name="VK1354_04" type="xs:double"/>
+        <xs:attribute name="VK1354_05" type="xs:double"/>
+        <xs:attribute name="VK1354_06" type="xs:double"/>
+        <xs:attribute name="VK1354_07" type="xs:double"/>
+        <xs:attribute name="VK1354_08" type="xs:double"/>
+        <xs:attribute name="VK1354_09" type="xs:double"/>
+        <xs:attribute name="VK1354_10" type="xs:double"/>
+        <xs:attribute name="VK1354_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1354_11" type="xs:double"/>
+        <xs:attribute name="VK1358_03" type="xs:double"/>
+        <xs:attribute name="VK1358_04" type="xs:double"/>
+        <xs:attribute name="VK1358_05" type="xs:double"/>
+        <xs:attribute name="VK1358_06" type="xs:double"/>
+        <xs:attribute name="VK1358_07" type="xs:double"/>
+        <xs:attribute name="VK1358_08" type="xs:double"/>
+        <xs:attribute name="VK1358_09" type="xs:double"/>
+        <xs:attribute name="VK1358_10" type="xs:double"/>
+        <xs:attribute name="VK1358_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1358_11" type="xs:double"/>
+        <xs:attribute name="VK1360_03" type="xs:double"/>
+        <xs:attribute name="VK1360_04" type="xs:double"/>
+        <xs:attribute name="VK1360_05" type="xs:double"/>
+        <xs:attribute name="VK1360_06" type="xs:double"/>
+        <xs:attribute name="VK1360_07" type="xs:double"/>
+        <xs:attribute name="VK1360_08" type="xs:double"/>
+        <xs:attribute name="VK1360_09" type="xs:double"/>
+        <xs:attribute name="VK1360_10" type="xs:double"/>
+        <xs:attribute name="VK1360_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1360_11" type="xs:double"/>
+        <xs:attribute name="VK1370_03" type="xs:double"/>
+        <xs:attribute name="VK1370_04" type="xs:double"/>
+        <xs:attribute name="VK1370_05" type="xs:double"/>
+        <xs:attribute name="VK1370_06" type="xs:double"/>
+        <xs:attribute name="VK1370_07" type="xs:double"/>
+        <xs:attribute name="VK1370_08" type="xs:double"/>
+        <xs:attribute name="VK1370_09" type="xs:double"/>
+        <xs:attribute name="VK1370_10" type="xs:double"/>
+        <xs:attribute name="VK1370_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK1370_11" type="xs:double"/>
+        <xs:attribute name="VK2000_03" type="xs:double"/>
+        <xs:attribute name="VK2000_04" type="xs:double"/>
+        <xs:attribute name="VK2000_05" type="xs:double"/>
+        <xs:attribute name="VK2000_06" type="xs:double"/>
+        <xs:attribute name="VK2000_07" type="xs:double"/>
+        <xs:attribute name="VK2000_08" type="xs:double"/>
+        <xs:attribute name="VK2000_09" type="xs:double"/>
+        <xs:attribute name="VK2000_10" type="xs:double"/>
+        <xs:attribute name="VK2000_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2000_11" type="xs:double"/>
+        <xs:attribute name="VK2200_03" type="xs:double"/>
+        <xs:attribute name="VK2200_04" type="xs:double"/>
+        <xs:attribute name="VK2200_05" type="xs:double"/>
+        <xs:attribute name="VK2200_06" type="xs:double"/>
+        <xs:attribute name="VK2200_07" type="xs:double"/>
+        <xs:attribute name="VK2200_08" type="xs:double"/>
+        <xs:attribute name="VK2200_09" type="xs:double"/>
+        <xs:attribute name="VK2200_10" type="xs:double"/>
+        <xs:attribute name="VK2200_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2200_11" type="xs:double"/>
+        <xs:attribute name="VK2205_03" type="xs:double"/>
+        <xs:attribute name="VK2205_04" type="xs:double"/>
+        <xs:attribute name="VK2205_05" type="xs:double"/>
+        <xs:attribute name="VK2205_06" type="xs:double"/>
+        <xs:attribute name="VK2205_07" type="xs:double"/>
+        <xs:attribute name="VK2205_08" type="xs:double"/>
+        <xs:attribute name="VK2205_09" type="xs:double"/>
+        <xs:attribute name="VK2205_10" type="xs:double"/>
+        <xs:attribute name="VK2205_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2205_11" type="xs:double"/>
+        <xs:attribute name="VK2300_03" type="xs:double"/>
+        <xs:attribute name="VK2300_04" type="xs:double"/>
+        <xs:attribute name="VK2300_05" type="xs:double"/>
+        <xs:attribute name="VK2300_06" type="xs:double"/>
+        <xs:attribute name="VK2300_07" type="xs:double"/>
+        <xs:attribute name="VK2300_08" type="xs:double"/>
+        <xs:attribute name="VK2300_09" type="xs:double"/>
+        <xs:attribute name="VK2300_10" type="xs:double"/>
+        <xs:attribute name="VK2300_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2300_11" type="xs:double"/>
+        <xs:attribute name="VK2310_03" type="xs:double"/>
+        <xs:attribute name="VK2310_04" type="xs:double"/>
+        <xs:attribute name="VK2310_05" type="xs:double"/>
+        <xs:attribute name="VK2310_06" type="xs:double"/>
+        <xs:attribute name="VK2310_07" type="xs:double"/>
+        <xs:attribute name="VK2310_08" type="xs:double"/>
+        <xs:attribute name="VK2310_09" type="xs:double"/>
+        <xs:attribute name="VK2310_10" type="xs:double"/>
+        <xs:attribute name="VK2310_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2310_11" type="xs:double"/>
+        <xs:attribute name="VK2320_03" type="xs:double"/>
+        <xs:attribute name="VK2320_04" type="xs:double"/>
+        <xs:attribute name="VK2320_05" type="xs:double"/>
+        <xs:attribute name="VK2320_06" type="xs:double"/>
+        <xs:attribute name="VK2320_07" type="xs:double"/>
+        <xs:attribute name="VK2320_08" type="xs:double"/>
+        <xs:attribute name="VK2320_09" type="xs:double"/>
+        <xs:attribute name="VK2320_10" type="xs:double"/>
+        <xs:attribute name="VK2320_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2320_11" type="xs:double"/>
+        <xs:attribute name="VK2330_03" type="xs:double"/>
+        <xs:attribute name="VK2330_04" type="xs:double"/>
+        <xs:attribute name="VK2330_05" type="xs:double"/>
+        <xs:attribute name="VK2330_06" type="xs:double"/>
+        <xs:attribute name="VK2330_07" type="xs:double"/>
+        <xs:attribute name="VK2330_08" type="xs:double"/>
+        <xs:attribute name="VK2330_09" type="xs:double"/>
+        <xs:attribute name="VK2330_10" type="xs:double"/>
+        <xs:attribute name="VK2330_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2330_11" type="xs:double"/>
+        <xs:attribute name="VK2340_03" type="xs:double"/>
+        <xs:attribute name="VK2340_04" type="xs:double"/>
+        <xs:attribute name="VK2340_05" type="xs:double"/>
+        <xs:attribute name="VK2340_06" type="xs:double"/>
+        <xs:attribute name="VK2340_07" type="xs:double"/>
+        <xs:attribute name="VK2340_08" type="xs:double"/>
+        <xs:attribute name="VK2340_09" type="xs:double"/>
+        <xs:attribute name="VK2340_10" type="xs:double"/>
+        <xs:attribute name="VK2340_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2340_11" type="xs:double"/>
+        <xs:attribute name="VK2345_03" type="xs:double"/>
+        <xs:attribute name="VK2345_04" type="xs:double"/>
+        <xs:attribute name="VK2345_05" type="xs:double"/>
+        <xs:attribute name="VK2345_06" type="xs:double"/>
+        <xs:attribute name="VK2345_07" type="xs:double"/>
+        <xs:attribute name="VK2345_08" type="xs:double"/>
+        <xs:attribute name="VK2345_09" type="xs:double"/>
+        <xs:attribute name="VK2345_10" type="xs:double"/>
+        <xs:attribute name="VK2345_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2345_11" type="xs:double"/>
+        <xs:attribute name="VK2350_03" type="xs:double"/>
+        <xs:attribute name="VK2350_04" type="xs:double"/>
+        <xs:attribute name="VK2350_05" type="xs:double"/>
+        <xs:attribute name="VK2350_06" type="xs:double"/>
+        <xs:attribute name="VK2350_07" type="xs:double"/>
+        <xs:attribute name="VK2350_08" type="xs:double"/>
+        <xs:attribute name="VK2350_09" type="xs:double"/>
+        <xs:attribute name="VK2350_10" type="xs:double"/>
+        <xs:attribute name="VK2350_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2350_11" type="xs:double"/>
+        <xs:attribute name="VK2354_03" type="xs:double"/>
+        <xs:attribute name="VK2354_04" type="xs:double"/>
+        <xs:attribute name="VK2354_05" type="xs:double"/>
+        <xs:attribute name="VK2354_06" type="xs:double"/>
+        <xs:attribute name="VK2354_07" type="xs:double"/>
+        <xs:attribute name="VK2354_08" type="xs:double"/>
+        <xs:attribute name="VK2354_09" type="xs:double"/>
+        <xs:attribute name="VK2354_10" type="xs:double"/>
+        <xs:attribute name="VK2354_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2354_11" type="xs:double"/>
+        <xs:attribute name="VK2358_03" type="xs:double"/>
+        <xs:attribute name="VK2358_04" type="xs:double"/>
+        <xs:attribute name="VK2358_05" type="xs:double"/>
+        <xs:attribute name="VK2358_06" type="xs:double"/>
+        <xs:attribute name="VK2358_07" type="xs:double"/>
+        <xs:attribute name="VK2358_08" type="xs:double"/>
+        <xs:attribute name="VK2358_09" type="xs:double"/>
+        <xs:attribute name="VK2358_10" type="xs:double"/>
+        <xs:attribute name="VK2358_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2358_11" type="xs:double"/>
+        <xs:attribute name="VK2360_03" type="xs:double"/>
+        <xs:attribute name="VK2360_04" type="xs:double"/>
+        <xs:attribute name="VK2360_05" type="xs:double"/>
+        <xs:attribute name="VK2360_06" type="xs:double"/>
+        <xs:attribute name="VK2360_07" type="xs:double"/>
+        <xs:attribute name="VK2360_08" type="xs:double"/>
+        <xs:attribute name="VK2360_09" type="xs:double"/>
+        <xs:attribute name="VK2360_10" type="xs:double"/>
+        <xs:attribute name="VK2360_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2360_11" type="xs:double"/>
+        <xs:attribute name="VK2370_03" type="xs:double"/>
+        <xs:attribute name="VK2370_04" type="xs:double"/>
+        <xs:attribute name="VK2370_05" type="xs:double"/>
+        <xs:attribute name="VK2370_06" type="xs:double"/>
+        <xs:attribute name="VK2370_07" type="xs:double"/>
+        <xs:attribute name="VK2370_08" type="xs:double"/>
+        <xs:attribute name="VK2370_09" type="xs:double"/>
+        <xs:attribute name="VK2370_10" type="xs:double"/>
+        <xs:attribute name="VK2370_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK2370_11" type="xs:double"/>
+        <xs:attribute name="VK9990" type="z:FinTypeExt2"/>
+        <xs:attribute name="VK9990_03" type="xs:double"/>
+        <xs:attribute name="VK9990_04" type="xs:double"/>
+        <xs:attribute name="VK9990_05" type="xs:double"/>
+        <xs:attribute name="VK9990_06" type="xs:double"/>
+        <xs:attribute name="VK9990_07" type="xs:double"/>
+        <xs:attribute name="VK9990_08" type="xs:double"/>
+        <xs:attribute name="VK9990_09" type="xs:double"/>
+        <xs:attribute name="VK9990_10" type="xs:double"/>
+        <xs:attribute name="VK9990_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK9990_11" type="xs:double"/>
+        <xs:attribute name="VK9999_03" type="xs:double"/>
+        <xs:attribute name="VK9999_04" type="xs:double"/>
+        <xs:attribute name="VK9999_05" type="xs:double"/>
+        <xs:attribute name="VK9999_06" type="xs:double"/>
+        <xs:attribute name="VK9999_07" type="xs:double"/>
+        <xs:attribute name="VK9999_08" type="xs:double"/>
+        <xs:attribute name="VK9999_09" type="xs:double"/>
+        <xs:attribute name="VK9999_10" type="xs:double"/>
+        <xs:attribute name="VK9999_0X" type="z:FinTypeExtCol"/>
+        <xs:attribute name="VK9999_11" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISRD-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="RD1010_03" type="xs:double"/>
+        <xs:attribute name="RD1010_04" type="xs:double"/>
+        <xs:attribute name="RD1015_03" type="xs:double"/>
+        <xs:attribute name="RD1015_04" type="xs:double"/>
+        <xs:attribute name="RD1020_03" type="xs:double"/>
+        <xs:attribute name="RD1020_04" type="xs:double"/>
+        <xs:attribute name="RD1025_03" type="xs:double"/>
+        <xs:attribute name="RD1025_04" type="xs:double"/>
+        <xs:attribute name="RD1060_03" type="xs:double"/>
+        <xs:attribute name="RD1060_04" type="xs:double"/>
+        <xs:attribute name="RD1070_03" type="xs:double"/>
+        <xs:attribute name="RD1070_04" type="xs:double"/>
+        <xs:attribute name="RD1080_03" type="xs:double"/>
+        <xs:attribute name="RD1080_04" type="xs:double"/>
+        <xs:attribute name="RD1100_03" type="xs:double"/>
+        <xs:attribute name="RD1100_04" type="xs:double"/>
+        <xs:attribute name="RD1110_03" type="xs:double"/>
+        <xs:attribute name="RD1110_04" type="xs:double"/>
+        <xs:attribute name="RD1120_03" type="xs:double"/>
+        <xs:attribute name="RD1120_04" type="xs:double"/>
+        <xs:attribute name="RD1800_03" type="xs:double"/>
+        <xs:attribute name="RD1800_04" type="xs:double"/>
+        <xs:attribute name="RD1510_03" type="xs:double"/>
+        <xs:attribute name="RD1510_04" type="xs:double"/>
+        <xs:attribute name="RD1600_03" type="xs:double"/>
+        <xs:attribute name="RD1600_04" type="xs:double"/>
+        <xs:attribute name="RD1610_03" type="xs:double"/>
+        <xs:attribute name="RD1610_04" type="xs:double"/>
+        <xs:attribute name="RD1620_03" type="xs:double"/>
+        <xs:attribute name="RD1620_04" type="xs:double"/>
+        <xs:attribute name="RD1630_03" type="xs:double"/>
+        <xs:attribute name="RD1630_04" type="xs:double"/>
+        <xs:attribute name="RD1640_03" type="xs:double"/>
+        <xs:attribute name="RD1640_04" type="xs:double"/>
+        <xs:attribute name="RD1650_03" type="xs:double"/>
+        <xs:attribute name="RD1650_04" type="xs:double"/>
+        <xs:attribute name="RD1660_03" type="xs:double"/>
+        <xs:attribute name="RD1660_04" type="xs:double"/>
+        <xs:attribute name="RD1670_03" type="xs:double"/>
+        <xs:attribute name="RD1670_04" type="xs:double"/>
+        <xs:attribute name="RD1680_03" type="xs:double"/>
+        <xs:attribute name="RD1680_04" type="xs:double"/>
+        <xs:attribute name="RD1690_03" type="xs:double"/>
+        <xs:attribute name="RD1690_04" type="xs:double"/>
+        <xs:attribute name="RD1700_03" type="xs:double"/>
+        <xs:attribute name="RD1700_04" type="xs:double"/>
+        <xs:attribute name="RD1710_03" type="xs:double"/>
+        <xs:attribute name="RD1710_04" type="xs:double"/>
+        <xs:attribute name="RD1720_03" type="xs:double"/>
+        <xs:attribute name="RD1720_04" type="xs:double"/>
+        <xs:attribute name="RD1730_03" type="xs:double"/>
+        <xs:attribute name="RD1730_04" type="xs:double"/>
+        <xs:attribute name="RD1999_03" type="xs:double"/>
+        <xs:attribute name="RD1999_04" type="xs:double"/>
+        <xs:attribute name="RD2010_03" type="xs:double"/>
+        <xs:attribute name="RD2010_04" type="xs:double"/>
+        <xs:attribute name="RD2020_03" type="xs:double"/>
+        <xs:attribute name="RD2020_04" type="xs:double"/>
+        <xs:attribute name="RD2030_03" type="xs:double"/>
+        <xs:attribute name="RD2030_04" type="xs:double"/>
+        <xs:attribute name="RD2040_03" type="xs:double"/>
+        <xs:attribute name="RD2040_04" type="xs:double"/>
+        <xs:attribute name="RD2050_03" type="xs:double"/>
+        <xs:attribute name="RD2050_04" type="xs:double"/>
+        <xs:attribute name="RD2060_03" type="xs:double"/>
+        <xs:attribute name="RD2060_04" type="xs:double"/>
+        <xs:attribute name="RD2070_03" type="xs:double"/>
+        <xs:attribute name="RD2070_04" type="xs:double"/>
+        <xs:attribute name="RD2080_03" type="xs:double"/>
+        <xs:attribute name="RD2080_04" type="xs:double"/>
+        <xs:attribute name="RD2090_03" type="xs:double"/>
+        <xs:attribute name="RD2090_04" type="xs:double"/>
+        <xs:attribute name="RD2100_03" type="xs:double"/>
+        <xs:attribute name="RD2100_04" type="xs:double"/>
+        <xs:attribute name="RD2110_03" type="xs:double"/>
+        <xs:attribute name="RD2110_04" type="xs:double"/>
+        <xs:attribute name="RD2120_03" type="xs:double"/>
+        <xs:attribute name="RD2120_04" type="xs:double"/>
+        <xs:attribute name="RD2130_03" type="xs:double"/>
+        <xs:attribute name="RD2130_04" type="xs:double"/>
+        <xs:attribute name="RD2140_03" type="xs:double"/>
+        <xs:attribute name="RD2140_04" type="xs:double"/>
+        <xs:attribute name="RD2150_03" type="xs:double"/>
+        <xs:attribute name="RD2150_04" type="xs:double"/>
+        <xs:attribute name="RD2999_03" type="xs:double"/>
+        <xs:attribute name="RD2999_04" type="xs:double"/>
+        <xs:attribute name="RD3010_03" type="xs:double"/>
+        <xs:attribute name="RD3010_04" type="xs:double"/>
+        <xs:attribute name="RD3020_03" type="xs:double"/>
+        <xs:attribute name="RD3020_04" type="xs:double"/>
+        <xs:attribute name="RD3030_03" type="xs:double"/>
+        <xs:attribute name="RD3030_04" type="xs:double"/>
+        <xs:attribute name="RD3040_03" type="xs:double"/>
+        <xs:attribute name="RD3040_04" type="xs:double"/>
+        <xs:attribute name="RD3050_03" type="xs:double"/>
+        <xs:attribute name="RD3050_04" type="xs:double"/>
+        <xs:attribute name="RD3060_03" type="xs:double"/>
+        <xs:attribute name="RD3060_04" type="xs:double"/>
+        <xs:attribute name="RD3070_03" type="xs:double"/>
+        <xs:attribute name="RD3070_04" type="xs:double"/>
+        <xs:attribute name="RD3080_03" type="xs:double"/>
+        <xs:attribute name="RD3080_04" type="xs:double"/>
+        <xs:attribute name="RD3090_03" type="xs:double"/>
+        <xs:attribute name="RD3090_04" type="xs:double"/>
+        <xs:attribute name="RD3100_03" type="xs:double"/>
+        <xs:attribute name="RD3100_04" type="xs:double"/>
+        <xs:attribute name="RD3110_03" type="xs:double"/>
+        <xs:attribute name="RD3110_04" type="xs:double"/>
+        <xs:attribute name="RD3120_03" type="xs:double"/>
+        <xs:attribute name="RD3120_04" type="xs:double"/>
+        <xs:attribute name="RD3130_03" type="xs:double"/>
+        <xs:attribute name="RD3130_04" type="xs:double"/>
+        <xs:attribute name="RD3999_03" type="xs:double"/>
+        <xs:attribute name="RD3999_04" type="xs:double"/>
+        <xs:attribute name="RD5100_03" type="xs:double"/>
+        <xs:attribute name="RD5100_04" type="xs:double"/>
+        <xs:attribute name="RD5200_03" type="xs:double"/>
+        <xs:attribute name="RD5200_04" type="xs:double"/>
+        <xs:attribute name="RD5300_03" type="xs:double"/>
+        <xs:attribute name="RD5300_04" type="xs:double"/>
+        <xs:attribute name="RD5400_03" type="xs:double"/>
+        <xs:attribute name="RD5400_04" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISRI-row">
+        <xs:attributeGroup ref="general-attribs"/>
+        <xs:attribute name="RI1000_03" type="xs:double"/>
+        <xs:attribute name="RI1000_04" type="xs:double"/>
+        <xs:attribute name="RI1030_03" type="xs:double"/>
+        <xs:attribute name="RI1030_04" type="xs:double"/>
+        <xs:attribute name="RI1040_03" type="xs:double"/>
+        <xs:attribute name="RI1040_04" type="xs:double"/>
+        <xs:attribute name="RI1050_03" type="xs:double"/>
+        <xs:attribute name="RI1050_04" type="xs:double"/>
+        <xs:attribute name="RI1060_03" type="xs:double"/>
+        <xs:attribute name="RI1060_04" type="xs:double"/>
+        <xs:attribute name="RI1070_03" type="xs:double"/>
+        <xs:attribute name="RI1070_04" type="xs:double"/>
+        <xs:attribute name="RI1080_03" type="xs:double"/>
+        <xs:attribute name="RI1080_04" type="xs:double"/>
+        <xs:attribute name="RI1150_03" type="xs:double"/>
+        <xs:attribute name="RI1150_04" type="xs:double"/>
+        <xs:attribute name="RI1155_03" type="xs:double"/>
+        <xs:attribute name="RI1155_04" type="xs:double"/>
+        <xs:attribute name="RI1200_03" type="xs:double"/>
+        <xs:attribute name="RI1200_04" type="xs:double"/>
+        <xs:attribute name="RI1300_03" type="xs:double"/>
+        <xs:attribute name="RI1300_04" type="xs:double"/>
+        <xs:attribute name="RI1400_03" type="xs:double"/>
+        <xs:attribute name="RI1400_04" type="xs:double"/>
+        <xs:attribute name="RI1520_03" type="xs:double"/>
+        <xs:attribute name="RI1520_04" type="xs:double"/>
+        <xs:attribute name="RI1600_03" type="xs:double"/>
+        <xs:attribute name="RI1600_04" type="xs:double"/>
+        <xs:attribute name="RI1610_03" type="xs:double"/>
+        <xs:attribute name="RI1610_04" type="xs:double"/>
+        <xs:attribute name="RI1620_03" type="xs:double"/>
+        <xs:attribute name="RI1620_04" type="xs:double"/>
+        <xs:attribute name="RI1630_03" type="xs:double"/>
+        <xs:attribute name="RI1630_04" type="xs:double"/>
+        <xs:attribute name="RI1640_03" type="xs:double"/>
+        <xs:attribute name="RI1640_04" type="xs:double"/>
+        <xs:attribute name="RI1650_03" type="xs:double"/>
+        <xs:attribute name="RI1650_04" type="xs:double"/>
+        <xs:attribute name="RI1660_03" type="xs:double"/>
+        <xs:attribute name="RI1660_04" type="xs:double"/>
+        <xs:attribute name="RI1670_03" type="xs:double"/>
+        <xs:attribute name="RI1670_04" type="xs:double"/>
+        <xs:attribute name="RI1680_03" type="xs:double"/>
+        <xs:attribute name="RI1680_04" type="xs:double"/>
+        <xs:attribute name="RI1690_03" type="xs:double"/>
+        <xs:attribute name="RI1690_04" type="xs:double"/>
+        <xs:attribute name="RI1700_03" type="xs:double"/>
+        <xs:attribute name="RI1700_04" type="xs:double"/>
+        <xs:attribute name="RI1710_03" type="xs:double"/>
+        <xs:attribute name="RI1710_04" type="xs:double"/>
+        <xs:attribute name="RI1720_03" type="xs:double"/>
+        <xs:attribute name="RI1720_04" type="xs:double"/>
+        <xs:attribute name="RI1730_03" type="xs:double"/>
+        <xs:attribute name="RI1730_04" type="xs:double"/>
+        <xs:attribute name="RI1750_03" type="xs:double"/>
+        <xs:attribute name="RI1750_04" type="xs:double"/>
+        <xs:attribute name="RI1800_03" type="xs:double"/>
+        <xs:attribute name="RI1800_04" type="xs:double"/>
+        <xs:attribute name="RI1999_03" type="xs:double"/>
+        <xs:attribute name="RI1999_04" type="xs:double"/>
+        <xs:attribute name="RI2010_03" type="xs:double"/>
+        <xs:attribute name="RI2010_04" type="xs:double"/>
+        <xs:attribute name="RI2020_03" type="xs:double"/>
+        <xs:attribute name="RI2020_04" type="xs:double"/>
+        <xs:attribute name="RI2030_03" type="xs:double"/>
+        <xs:attribute name="RI2030_04" type="xs:double"/>
+        <xs:attribute name="RI2040_03" type="xs:double"/>
+        <xs:attribute name="RI2040_04" type="xs:double"/>
+        <xs:attribute name="RI2050_03" type="xs:double"/>
+        <xs:attribute name="RI2050_04" type="xs:double"/>
+        <xs:attribute name="RI2060_03" type="xs:double"/>
+        <xs:attribute name="RI2060_04" type="xs:double"/>
+        <xs:attribute name="RI2070_03" type="xs:double"/>
+        <xs:attribute name="RI2070_04" type="xs:double"/>
+        <xs:attribute name="RI2080_03" type="xs:double"/>
+        <xs:attribute name="RI2080_04" type="xs:double"/>
+        <xs:attribute name="RI2090_03" type="xs:double"/>
+        <xs:attribute name="RI2090_04" type="xs:double"/>
+        <xs:attribute name="RI2100_03" type="xs:double"/>
+        <xs:attribute name="RI2100_04" type="xs:double"/>
+        <xs:attribute name="RI2110_03" type="xs:double"/>
+        <xs:attribute name="RI2110_04" type="xs:double"/>
+        <xs:attribute name="RI2120_03" type="xs:double"/>
+        <xs:attribute name="RI2120_04" type="xs:double"/>
+        <xs:attribute name="RI2130_03" type="xs:double"/>
+        <xs:attribute name="RI2130_04" type="xs:double"/>
+        <xs:attribute name="RI2140_03" type="xs:double"/>
+        <xs:attribute name="RI2140_04" type="xs:double"/>
+        <xs:attribute name="RI2150_03" type="xs:double"/>
+        <xs:attribute name="RI2150_04" type="xs:double"/>
+        <xs:attribute name="RI2999_03" type="xs:double"/>
+        <xs:attribute name="RI2999_04" type="xs:double"/>
+        <xs:attribute name="RI3010_03" type="xs:double"/>
+        <xs:attribute name="RI3010_04" type="xs:double"/>
+        <xs:attribute name="RI3020_03" type="xs:double"/>
+        <xs:attribute name="RI3020_04" type="xs:double"/>
+        <xs:attribute name="RI3030_03" type="xs:double"/>
+        <xs:attribute name="RI3030_04" type="xs:double"/>
+        <xs:attribute name="RI3040_03" type="xs:double"/>
+        <xs:attribute name="RI3040_04" type="xs:double"/>
+        <xs:attribute name="RI3050_03" type="xs:double"/>
+        <xs:attribute name="RI3050_04" type="xs:double"/>
+        <xs:attribute name="RI3060_03" type="xs:double"/>
+        <xs:attribute name="RI3060_04" type="xs:double"/>
+        <xs:attribute name="RI3070_03" type="xs:double"/>
+        <xs:attribute name="RI3070_04" type="xs:double"/>
+        <xs:attribute name="RI3080_03" type="xs:double"/>
+        <xs:attribute name="RI3080_04" type="xs:double"/>
+        <xs:attribute name="RI3090_03" type="xs:double"/>
+        <xs:attribute name="RI3090_04" type="xs:double"/>
+        <xs:attribute name="RI3100_03" type="xs:double"/>
+        <xs:attribute name="RI3100_04" type="xs:double"/>
+        <xs:attribute name="RI3110_03" type="xs:double"/>
+        <xs:attribute name="RI3110_04" type="xs:double"/>
+        <xs:attribute name="RI3120_03" type="xs:double"/>
+        <xs:attribute name="RI3120_04" type="xs:double"/>
+        <xs:attribute name="RI3130_03" type="xs:double"/>
+        <xs:attribute name="RI3130_04" type="xs:double"/>
+        <xs:attribute name="RI3999_03" type="xs:double"/>
+        <xs:attribute name="RI3999_04" type="xs:double"/>
+        <xs:attribute name="RI5100_03" type="xs:double"/>
+        <xs:attribute name="RI5100_04" type="xs:double"/>
+        <xs:attribute name="RI5200_03" type="xs:double"/>
+        <xs:attribute name="RI5200_04" type="xs:double"/>
+        <xs:attribute name="RI5300_03" type="xs:double"/>
+        <xs:attribute name="RI5300_04" type="xs:double"/>
+        <xs:attribute name="RI5400_03" type="xs:double"/>
+        <xs:attribute name="RI5400_04" type="xs:double"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISPRYM-row">
+        <xs:attributeGroup ref="key-attribs"/>
+        <xs:attribute name="NN" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="PRYM" type="xs:string" use="required"/>
+    </xs:complexType>
+    <xs:complexType name="DTSISPREF-row">
+        <xs:attributeGroup ref="key-attribs"/>
+        <xs:attribute name="NN" type="xs:positiveInteger" use="required"/>
+        <xs:attribute name="FORM" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:enumeration value="BB"/>
+                    <xs:enumeration value="FB"/>
+                    <xs:enumeration value="PZ"/>
+                    <xs:enumeration value="SD"/>
+                    <xs:enumeration value="VK"/>
+                    <xs:enumeration value="RD"/>
+                    <xs:enumeration value="RI"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="POINT" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:string">
+                    <xs:pattern value="[0-9A-Z]{4}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="POINT_NN" type="xs:nonNegativeInteger" default="0"/>
+    </xs:complexType>
+</xs:schema>

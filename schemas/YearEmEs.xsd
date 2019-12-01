@@ -1,0 +1,128 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:z="http://nssmc.gov.ua/Schem/YearEmEs"
+	targetNamespace="http://nssmc.gov.ua/Schem/YearEmEs"
+	elementFormDefault="qualified">
+    <xs:include schemaLocation="smc-components-pic.xsd"/>
+    <xs:include schemaLocation="FinRep.xsd"/>
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="DTSTITLIST" type="z:DTSTITLIST-container-Y"/>
+                <xs:element name="DTSTOC" type="z:DTSTOC-container-Y"/>
+                <xs:element name="DTSUROSOB_O" type="z:DTSUROSOB_O-container"/>
+                <xs:element name="DTSLICENCE" type="z:DTSLICENCE-container"/>
+                <xs:element name="DTSSTV_UO" type="z:DTSSTV_UO-container"/>
+                <xs:element name="DTSKORP_SEC" type="z:DTSKORP_SEC-container"/>
+                <xs:element name="DTSRA_INFO" type="z:DTSRA_INFO-container"/>
+                <xs:element name="DTSORGSTR" type="z:DTSORGSTR-container"/>
+                <xs:element name="DTSSUDSPRV" type="z:DTSSUDSPRV-container"/>
+                <xs:element name="DTSSHTRAF" type="z:DTSSHTRAF-container"/>
+                <xs:element name="DTSBUS_TEXT" type="z:DTSBUS_TEXT-container"/>
+                <xs:element name="DTSORGUPR" type="z:DTSORGUPR-container"/>
+                <xs:element name="DTSPERSON_P" type="z:DTSPERSON_P-container-Y"/>
+                <xs:element name="DTSOWNER_PO" type="z:DTSOWNER_PO-container"/>
+                <xs:element name="DTSOWPO_ALL" type="z:DTSOWPO_ALL-container"/>
+                <xs:element name="DTSEXITFEE" type="z:DTSEXITFEE-container"/>
+                <xs:element name="DTSZASN_UR" type="z:DTSZASN_UR-container"/>
+                <xs:element name="DTSZASN_FZ" type="z:DTSZASN_FZ-container"/>
+                <xs:element name="DTSZASN_ALL" type="z:DTSZASN_ALL-container"/>
+                <xs:element name="DTSMANREPA" type="z:DTSMANREPA-container"/>
+                <xs:element name="DTSZBORY" type="z:DTSZBORY-container"/>
+                <xs:element name="DTSCORP_ZZA" type="z:DTSCORP_ZZA-container"/>
+                <xs:element name="DTSCORP_OU1" type="z:DTSCORP_OU1-container"/>
+                <xs:element name="DTSCORP_SVB" type="z:DTSCORP_SVB-container"/>
+                <xs:element name="DTSCORP_EXB" type="z:DTSCORP_EXB-container"/>
+                <xs:element name="DTSCORP_OU2" type="z:DTSCORP_OU2-container"/>
+                <xs:element name="DTSCORP_OU3" type="z:DTSCORP_OU3-container"/>
+                <xs:element name="DTSCORP_SPO" type="z:DTSCORP_SPO-container"/>
+                <xs:element name="DTSCORP_DNY" type="z:DTSCORP_DNY-container"/>
+                <xs:element name="DTSOWNER_UR" type="z:DTSOWNER_UR-container"/>
+                <xs:element name="DTSOWNER_FZ" type="z:DTSOWNER_FZ-container"/>
+                <xs:element name="DTSOWFZ_ALL" type="z:DTSOWFZ_ALL-container"/>
+                <xs:element name="DTSVLASN_TPR" type="z:DTSVLASN_TPR-container"/>
+                <xs:element name="DTSHOLDCH" type="z:DTSHOLDCH-container"/>
+                <xs:element name="DTSHOLDCHCTL" type="z:DTSHOLDCHCTL-container"/>
+                <xs:element name="DTSCAPSTRU" type="z:DTSCAPSTRU-container"/>
+                <xs:element name="DTSPAPERY_A" type="z:DTSPAPERY_A-container-Y"/>
+                <xs:element name="DTSOBLIG" type="z:DTSOBLIG-container"/>
+                <xs:element name="DTSOBL_INF" type="z:DTSOBL_INF-container"/>
+                <xs:element name="DTSPAPER_DR" type="z:DTSPAPER_DR-container-Y"/>
+                <xs:element name="DTSPOHID_CP" type="z:DTSPOHID_CP-container-Y"/>
+                <xs:element name="DTSGAR_TO" type="z:DTSGAR_TO-container"/>
+                <xs:element name="DTSVYKUP" type="z:DTSVYKUP-container"/>
+                <xs:element name="DTSZV_SON" type="z:DTSZV_SON-container"/>
+                <xs:element name="DTSEMOWSC" type="z:DTSEMOWSC-container"/>
+                <xs:element name="DTSEMOWSCALL" type="z:DTSEMOWSCALL-container"/>
+                <xs:element name="DTSEMOWEQ" type="z:DTSEMOWEQ-container"/>
+                <xs:element name="DTSEMOWEQALL" type="z:DTSEMOWEQALL-container"/>
+                <xs:element name="DTSVSHQTY" type="z:DTSVSHQTY-container"/>
+                <xs:element name="DTSSECLIM" type="z:DTSSECLIM-container"/>
+                <xs:element name="DTSDYVIDEND" type="z:DTSDYVIDEND-container"/>
+                <xs:element name="DTSDYVIDPAY" type="z:DTSDYVIDPAY-container"/>
+                <xs:element name="DTSOSN_ZASB" type="z:DTSOSN_ZASB-container"/>
+                <xs:element name="DTSCHAKTIVY" type="z:DTSCHAKTIVY-container"/>
+                <xs:element name="DTSZOBOVYAZ" type="z:DTSZOBOVYAZ-container"/>
+                <xs:element name="DTSZ_KREDIT" type="z:DTSZ_KREDIT-container"/>
+                <xs:element name="DTSZ_OBLIG" type="z:DTSZ_OBLIG-container"/>
+                <xs:element name="DTSZ_POH" type="z:DTSZ_POH-container"/>
+                <xs:element name="DTSZ_FON" type="z:DTSZ_FON-container"/>
+                <xs:element name="DTSZ_ICP" type="z:DTSZ_ICP-container"/>
+                <xs:element name="DTSZ_INVEST" type="z:DTSZ_INVEST-container"/>
+                <xs:element name="DTSOBS_PROD" type="z:DTSOBS_PROD-container"/>
+                <xs:element name="DTSCVRP" type="z:DTSCVRP-container"/>
+                <xs:element name="DTSOBSLUG" type="z:DTSOBSLUG-container-Y"/>
+                <xs:element name="DTSDEAL_BA" type="z:DTSDEALIMP-container-R"/>
+                <xs:element name="DTSDEAL_BC" type="z:DTSDEALIMP-container-RY"/>
+                <xs:element name="DTSDEAL_WI" type="z:DTSDEALIMP-container-RY"/>
+                <xs:element name="DTSGARFIN" type="z:DTSGARFIN-container"/>
+                <xs:element ref="z:Fin_sub"/>
+                <xs:element name="DTSAUDITINFO" type="z:DTSAUDITINFO-container"/>
+                <xs:element name="DTSREPCONS" type="z:DTSREPCONS-container"/>
+                <xs:element name="DTSAGRCORP" type="z:DTSAGRCORP-container"/>
+                <xs:element name="DTSAGRCONST" type="z:DTSAGRCONST-container"/>
+                <xs:element name="DTSOSOBLYVA" type="z:DTSOSOBLYVA-container"/>
+                <xs:element name="DTSOBLIG_IP" type="z:DTSOBLIG_IP-container"/>
+                <xs:element name="DTSROZM_IP" type="z:DTSROZM_IP-container-Y"/>
+                <xs:element name="DTSZOB_IP" type="z:DTSZOB_IP-container-Y"/>
+                <xs:element name="DTSZMINY_IA" type="z:DTSZMINY_IA-container-Y"/>
+                <xs:element name="DTSSTR_IP" type="z:DTSSTR_IP-container"/>
+                <xs:element name="DTSPRAVA_IA" type="z:DTSPRAVA_IA-container"/>
+                <xs:element name="DTSBORG" type="z:DTSBORG-container"/>
+                <xs:element name="DTSVYP_IS" type="z:DTSVYP_IS-container"/>
+                <xs:element name="DTSRSTR_IA" type="z:DTSRSTR_IA-container"/>
+                <xs:element name="DTSFON" type="z:DTSFON-container"/>
+                <xs:element name="DTSSERT_FON" type="z:DTSSERT_FON-container"/>
+                <xs:element name="DTSO_FON_UR" type="z:DTSO_FON_UR-container"/>
+                <xs:element name="DTSO_FON_FZ" type="z:DTSO_FON_FZ-container"/>
+                <xs:element name="DTSOFON_ALL" type="z:DTSOFON_ALL-container"/>
+                <xs:element name="DTSCHA_FON" type="z:DTSCHA_FON-container"/>
+                <xs:element name="DTSPRAV_FON" type="z:DTSPRAV_FON-container"/>
+                <xs:element ref="z:extparts" minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="z:root-attributes"/>
+        </xs:complexType>
+        <xs:unique name="DTSTOC-uniq">
+          <xs:selector xpath="z:DTSTOC/*"/>
+          <xs:field xpath="@TOCITEM"/>
+        </xs:unique>
+        <xs:key name="DTSHOLDCH-key">
+          <xs:selector xpath="z:DTSHOLDCH/*"/>
+          <xs:field xpath="@NN"/>
+        </xs:key>
+        <xs:keyref name="DTSHOLDCHCTL-keyref" refer="z:DTSHOLDCH-key">
+          <xs:selector xpath="z:DTSHOLDCHCTL/*"/>
+          <xs:field xpath="@HOLDCH_NN"/>
+        </xs:keyref>
+        <xs:key name="extparts-key">
+          <xs:selector xpath="z:extparts/*"/>
+          <xs:field xpath="@NN"/>
+        </xs:key>
+        <xs:keyref name="extparts-keyref" refer="z:extparts-key">
+          <xs:selector xpath="*/*"/>
+          <xs:field xpath="@EXTPART_NN"/>
+        </xs:keyref>
+    </xs:element>
+    <xs:element name="extparts" type="z:extparts-container"/>
+</xs:schema>

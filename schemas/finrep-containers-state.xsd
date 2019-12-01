@@ -1,0 +1,748 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+        xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:z="http://nssmc.gov.ua/Schem/FinRep"
+        elementFormDefault="qualified">
+    <xs:import schemaLocation="finrep-types.xsd"
+        namespace="http://nssmc.gov.ua/Schem/FinRep"/>
+    <xs:complexType name="FinRep-state">
+        <xs:all>
+            <xs:element name="DTSBS" type="DTSBS-container">
+                <xs:key name="FinRep-state-key">
+                    <xs:selector xpath="*"/>
+                    <xs:field xpath="@PERIOD_Y"/>
+                    <xs:field xpath="@PERIOD_Q"/>
+                </xs:key>
+            </xs:element>
+            <xs:element name="DTSFS" type="DTSFS-container"/>
+            <xs:element name="DTSRS" type="DTSRS-container"/>
+            <xs:element name="DTSXS" type="DTSXS-container"/>
+            <xs:element name="DTSXSZ" type="DTSXSZ-container"/>
+            <xs:element name="DTSXSK" type="DTSXSK-container"/>
+            <xs:element name="DTSXSN" type="DTSXSN-container"/>
+            <xs:element name="DTSXSM" type="DTSXSM-container"/>
+            <xs:element name="DTSXSS" type="DTSXSS-container"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:attributeGroup name="finstate-general-attribs">
+        <xs:attribute name="PERIOD_Y" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:pattern value="[12][0-9]{3}"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+        <xs:attribute name="PERIOD_Q" use="required">
+            <xs:simpleType>
+                <xs:restriction base="xs:positiveInteger">
+                    <xs:enumeration value="1"/>
+                    <xs:enumeration value="2"/>
+                    <xs:enumeration value="3"/>
+                    <xs:enumeration value="4"/>
+                </xs:restriction>
+            </xs:simpleType>
+        </xs:attribute>
+    </xs:attributeGroup>
+    <xs:complexType name="DTSBS-container">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSBS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSFS-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSFS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSRS-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSRS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSXS-container">
+        <xs:sequence minOccurs="1" maxOccurs="1">
+            <xs:element name="row" type="DTSXS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSXSZ-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSXSZ-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSXSK-container">
+        <xs:sequence minOccurs="0" maxOccurs="unbounded">
+            <xs:element name="row" type="DTSXSK-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSXSN-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSXSN-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSXSM-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSXSM-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSXSS-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSXSS-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSBS-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="DATE1" type="xs:date" use="required"/>
+        <xs:attribute name="DATE" type="xs:date" use="required"/>
+        <xs:attribute name="KOATYY" type="z:FinType10"/>
+        <xs:attribute name="KOPFG" type="z:FinType10"/>
+        <xs:attribute name="KVKVKDB" type="z:FinCode2Or3Dig"/>
+        <xs:attribute name="KTVKVKMB" type="z:FinCode2Dig"/>
+        <xs:attribute name="BS110_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS110_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS111_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS111_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS112_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS112_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS120_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS120_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS121_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS121_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS122_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS122_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS130_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS130_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS131_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS131_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS132_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS132_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS140_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS140_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS145_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS145_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS150_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS150_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS160_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS160_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS170_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS170_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS180_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS180_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS181_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS181_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS182_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS182_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS183_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS183_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS184_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS184_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS185_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS185_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS186_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS186_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS187_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS187_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS190_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS190_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS200_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS200_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS205_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS205_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS210_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS210_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS220_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS220_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS221_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS221_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS222_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS222_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS240_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS240_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS241_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS241_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS242_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS242_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS243_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS243_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS244_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS244_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS250_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS250_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS260_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS260_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS261_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS261_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS262_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS262_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS263_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS263_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS264_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS264_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS270_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS270_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS280_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS280_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS285_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS285_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS290_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS290_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS300_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS300_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS301_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS301_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS302_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS302_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS303_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS303_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS304_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS304_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS305_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS305_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS310_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS310_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS330_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS330_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS340_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS340_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS345_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS345_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS350_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS350_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS360_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS360_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS370_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS370_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS380_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS380_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS390_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS390_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS400_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS400_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS410_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS410_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS420_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS420_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS421_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS421_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS422_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS422_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS423_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS423_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS424_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS424_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS425_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS425_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS426_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS426_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS427_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS427_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS428_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS428_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS429_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS429_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS430_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS430_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS440_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS440_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS445_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS445_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS450_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS450_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS460_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS460_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS461_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS461_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS462_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS462_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS463_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS463_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS464_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS464_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS465_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS465_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS470_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS470_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS10_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS10_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS10_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS10_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS20_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS20_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS20_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS20_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS30_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS30_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS30_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS30_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS31_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS31_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS31_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS31_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS32_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS32_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS32_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS32_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS40_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS40_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS40_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS40_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS50_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS50_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS50_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS50_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS60_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS60_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS60_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS60_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS61_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS61_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS61_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS61_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS62_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS62_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS62_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS62_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS70_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS70_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS70_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS70_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS99_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS99_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS99_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="BS99_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="KERIVNYK" type="z:FinType100"/>
+        <xs:attribute name="BUHG" type="z:FinType100"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSFS-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="FS010_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS020_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS021_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS022_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS023_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS030_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS040_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS041_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS042_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS050_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS051_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS052_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS060_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS090_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS090_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS100_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS110_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS111_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS112_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS113_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS114_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS120_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS121_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS122_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS123_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS124_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS130_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS140_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS150_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS200_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS300_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS400_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS401_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS402_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS403_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS500_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS600_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS601_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS602_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS700_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS701_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS702_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS800_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS900_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="FS900_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSRS-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="RS100_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS100_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS100_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS100_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS101_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS101_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS102_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS102_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS102_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS102_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS200_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS200_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS200_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS200_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS200_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS200_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS201_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS201_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS201_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS201_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS201_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS201_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS202_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS202_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS202_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS202_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS202_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS202_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS210_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS210_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS210_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS210_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS210_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS210_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS211_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS212_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS213_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS214_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS220_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS220_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS220_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS220_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS220_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS221_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS222_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS223_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS224_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS230_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS230_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS230_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS230_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS230_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS240_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS240_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS240_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS240_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS240_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS250_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS250_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS250_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS250_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS250_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS300_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS300_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS300_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS300_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS301_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS301_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS301_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS301_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS302_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS302_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS302_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS302_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS400_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS400_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS400_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS400_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS400_07" type="z:FinTypeMoney2"/>
+        <xs:attribute name="RS400_08" type="z:FinTypeMoney2"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSXS-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="DESCR" type="xs:string" use="required"/>
+        <xs:attribute name="HOLDER" type="z:FinType254" use="required"/>
+        <xs:attribute name="CHISP" type="xs:double"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSXSZ-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="XSZ010_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ010_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ010_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ010_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ011_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ011_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ011_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ011_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ012_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ012_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ012_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ012_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ020_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ020_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ020_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ020_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ030_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ030_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ030_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ030_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ031_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ031_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ031_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ031_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ032_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ032_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ032_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ032_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ040_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ040_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ040_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ040_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ050_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ050_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ050_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ050_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ060_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ060_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ060_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ060_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ070_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ070_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ070_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ070_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ080_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ080_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ080_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ080_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ090_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ090_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ090_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ090_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ100_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ100_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ100_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ100_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ110_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ110_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ110_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ110_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ120_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ120_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ130_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ130_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ130_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ130_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ131" type="z:FinType254"/>
+        <xs:attribute name="XSZ131_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ131_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ131_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ131_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ132" type="z:FinType254"/>
+        <xs:attribute name="XSZ132_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ132_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ132_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ132_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ133" type="z:FinType254"/>
+        <xs:attribute name="XSZ133_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ133_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ133_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ133_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ134" type="z:FinType254"/>
+        <xs:attribute name="XSZ134_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ134_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ134_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ134_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ135" type="z:FinType254"/>
+        <xs:attribute name="XSZ135_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ135_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ135_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ135_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ136" type="z:FinType254"/>
+        <xs:attribute name="XSZ136_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ136_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ136_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ136_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ137" type="z:FinType254"/>
+        <xs:attribute name="XSZ137_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ137_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ137_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ137_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ138" type="z:FinType254"/>
+        <xs:attribute name="XSZ138_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ138_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ138_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ138_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ139" type="z:FinType254"/>
+        <xs:attribute name="XSZ139_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ139_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ139_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ139_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ140_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ140_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ140_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSZ140_06" type="z:FinTypeMoney2"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSXSK-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="AST_TYPE" type="z:FinType1Or2" use="required"/>
+        <xs:attribute name="AST_NAME" type="z:FinType254" use="required"/>
+        <xs:attribute name="SPL_NAME" type="z:FinType254"/>
+        <xs:attribute name="SPL_EDRPOU" type="z:FinType10"/>
+        <xs:attribute name="KPR_NAME" type="z:FinType254"/>
+        <xs:attribute name="KPR_EDRPOU" type="z:FinType10"/>
+        <xs:attribute name="AMOUNT" type="z:FinTypeMoney2"/>
+        <xs:attribute name="AGREEM" type="z:FinType254"/>
+        <xs:attribute name="KP_TERM" type="z:FinType100"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSXSN-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="XSN100_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN100_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN110_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN110_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN111_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN111_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN120_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN120_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN130_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN130_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN140_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN140_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN150_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN150_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN160_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN160_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN170_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN170_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN200_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN200_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN210_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN210_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN220_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN220_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN300_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN300_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN310_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN310_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN311_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN311_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN320_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN320_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN400_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN400_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN410_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN410_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN420_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN420_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN430_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN430_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN500_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN500_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN510_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN510_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN520_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN520_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN600_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN600_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN700" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN710" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN711" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN712" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN713" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN714" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN715" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN716" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN720" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN730" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN740" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN750" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN751" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN752" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN760" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN800" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN810" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN820" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN821" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN822" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN830" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN840" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN841" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN842" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN850" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN860" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSN870" type="z:FinTypeMoney2"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSXSM-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="XSM010_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM010_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM010_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM011_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM011_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM011_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM012_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM012_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM012_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM013_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM013_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM013_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM020_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM020_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM020_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM030_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM030_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM030_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM040_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM040_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM040_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM041_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM041_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM041_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM050_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM050_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM050_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM060_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM060_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM060_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM070_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM070_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM070_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM080_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM080_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM080_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM100_03" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM100_04" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM100_05" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM200" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM210" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM220" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM221" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM222" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM230" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM240" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM241" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM242" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM250" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM300" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM310" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM320" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM321" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM322" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM330" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM340" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM350" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM360" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM361" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM362" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSM370" type="z:FinTypeMoney2"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSXSS-row">
+        <xs:attributeGroup ref="finstate-general-attribs"/>
+        <xs:attribute name="XSS010" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS011" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS012" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS020" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS021" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS030" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS040" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS050" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS060" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS070" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS080" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS081" type="z:FinTypeMoney2"/>
+        <xs:attribute name="XSS082" type="z:FinTypeMoney2"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+</xs:schema>

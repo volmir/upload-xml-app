@@ -1,0 +1,38 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+
+<div class="row">
+    <h1>{{ controller_name }}</h1>
+</div>    
+
+<div class="row">
+        <div class="col-md-6">
+
+            <form method="post" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="edrpou">Код предприятия:</label>
+                    <input type="text" class="form-control" name="edrpou" id="edrpou">
+                </div>
+                <div class="form-group">
+                    <label for="name">Наименование предприятия:</label>
+                    <input type="text" class="form-control" name="name" id="name">
+                </div>
+                <div class="form-group">
+                    <label for="nreg">Тип информации:</label>
+                    <input type="number" class="form-control" name="nreg" id="nreg">
+                </div>
+                <div class="form-group">
+                    <label for="file">Файл:</label>
+                    <input type="file" name="file" id="file" accept=".xml">
+                </div>                
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>    
+
+        </div>
+ 
+
+</div>
+{% endblock %}

@@ -1,0 +1,144 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	xmlns:z="http://nssmc.gov.ua/Schem/IrregEm"
+	targetNamespace="http://nssmc.gov.ua/Schem/IrregEm"
+	elementFormDefault="qualified">
+    <xs:include schemaLocation="smc-components-pic.xsd"/>
+    <xs:element name="root">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:choice>
+                    <xs:sequence>
+                        <xs:element name="DTSTITUL_O" type="z:DTSTITUL_O-container"
+                            minOccurs="1" maxOccurs="1"/>
+                        <xs:element ref="z:DTSINFO"
+                            minOccurs="1" maxOccurs="1"/>
+                        <xs:element ref="z:DTSINFO_EXT"
+                            minOccurs="0" maxOccurs="1"/>
+                    </xs:sequence>
+                    <xs:sequence>
+                        <xs:element ref="z:DTSOTHER"
+                            minOccurs="1" maxOccurs="1"/>
+                        <xs:element ref="z:DTSOTHER_EXT"
+                            minOccurs="0" maxOccurs="1"/>
+                    </xs:sequence>
+                </xs:choice>
+                <xs:element ref="z:extparts"
+                    minOccurs="0" maxOccurs="1"/>
+            </xs:sequence>
+            <xs:attributeGroup ref="z:root-attributes"/>
+        </xs:complexType>
+        <xs:key name="DTSHOLDCH-key">
+          <xs:selector xpath="z:DTSHOLDCH/*"/>
+          <xs:field xpath="@NN"/>
+        </xs:key>
+        <xs:keyref name="DTSHOLDCHCTL-keyref" refer="z:DTSHOLDCH-key">
+          <xs:selector xpath="z:DTSHOLDCHCTL/*"/>
+          <xs:field xpath="@HOLDCH_NN"/>
+        </xs:keyref>
+        <xs:key name="extparts-key">
+          <xs:selector xpath="z:extparts/*"/>
+          <xs:field xpath="@NN"/>
+        </xs:key>
+        <xs:keyref name="extparts-keyref" refer="z:extparts-key">
+          <xs:selector xpath="*/*"/>
+          <xs:field xpath="@EXTPART_NN"/>
+        </xs:keyref>
+    </xs:element>
+    <xs:element name="DTSINFO" abstract="true"/>
+    <xs:element name="DTSINFO_EXT" abstract="true"/>
+    <xs:element name="DTSOTHER" abstract="true"/>
+    <xs:element name="DTSOTHER_EXT" abstract="true"/>
+    <xs:element name="DTSBANKR_O" type="z:DTSBANKR_O-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSDEAL_BA" type="z:DTSDEAL_BA-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSDEAL_BC" type="z:DTSDEAL_BC-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSDEAL_WI" type="z:DTSDEAL_WI-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSDEBTGUAR" type="z:DTSDEBTGUAR-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSDIVPAYDC" type="z:DTSDIVPAYDC-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSDMGSPROC" type="z:DTSDMGSPROC-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSFILIA" type="z:DTSFILIA-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSKONV_IS" type="z:DTSKONV_IS-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSLIKV_SUD" type="z:DTSLIKV_SUD-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSLIKV_VOE" type="z:DTSLIKV_VOE-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSLIST_CP" type="z:DTSLIST_CP-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSPERSON_O" type="z:DTSPERSON_O-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSPOG_IO" type="z:DTSPOG_IO-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSPRYP_FON" type="z:DTSPRYP_FON-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSPRYZ_DOG" type="z:DTSPRYZ_DOG-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSROZM_CP" type="z:DTSROZM_CP-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSSANACIA" type="z:DTSSANACIA-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSTRANS_IA" type="z:DTSTRANS_IA-container-I"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSUFON_PR" type="z:DTSUFON_PR-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSUFON_SUD" type="z:DTSUFON_SUD-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSVIKUP_O" type="z:DTSVIKUP_O-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSVLASN" type="z:DTSVLASN-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSVLASN_TPR" type="z:DTSVLASN_TPR-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZAM_OFU" type="z:DTSZAM_OFU-container-I"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZAM_RIP" type="z:DTSZAM_RIP-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZAM_UIP" type="z:DTSZAM_UIP-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZLYTTYA" type="z:DTSZLYTTYA-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZMEN_SK" type="z:DTSZMEN_SK-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZM_PRE" type="z:DTSZM_PRE-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSZV_SIP" type="z:DTSZV_SIP-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSJSCTYP_O" type="z:DTSJSCTYP_O-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSHOLDAGR" type="z:DTSHOLDAGR-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSVYKUPOS" type="z:DTSVYKUPOS-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSCHARTCH" type="z:DTSCHARTCH-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSFUNDCH" type="z:DTSFUNDCH-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSCHARTBO" type="z:DTSCHARTBO-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSHOLDCH" type="z:DTSHOLDCH-container"
+                substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSHOLDCHCTL" type="z:DTSHOLDCHCTL-container"
+                substitutionGroup="z:DTSINFO_EXT">
+    </xs:element>
+    <xs:element name="DTSBRDFEERP" type="z:DTSBRDFEERP-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSWEBSITE" type="z:DTSWEBSITE-container"
+        substitutionGroup="z:DTSINFO"/>
+    <xs:element name="DTSOWSHIP" type="z:DTSOWSHIP-container"
+        substitutionGroup="z:DTSOTHER">
+        <xs:unique name="DTSOWSHIP-key">
+          <xs:selector xpath="*"/>
+          <xs:field xpath="@NN"/>
+        </xs:unique>
+    </xs:element>
+    <xs:element name="extparts" type="z:extparts-container"/>
+</xs:schema>

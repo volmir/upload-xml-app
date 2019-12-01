@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:z="http://nssmc.gov.ua/Schem/FinRep"
+    targetNamespace="http://nssmc.gov.ua/Schem/FinRep">
+    <xs:simpleType name="FinType100">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="100"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinType10">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="10"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinType7">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="7"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinType254">
+        <xs:restriction base="xs:string">
+            <xs:maxLength value="254"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinTypeExt">
+        <xs:restriction base="xs:string">
+            <xs:pattern value=
+"([^;]+:(-?([0-9])*(\.[0-9]*)?)?,(-?([0-9])*(\.[0-9]*)?)?;)*"
+            />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinTypeExt2">
+        <xs:restriction base="xs:string">
+            <xs:pattern value=
+"([^;]+:((-?([0-9])*(\.[0-9]*)?)?,){8,}(-?([0-9])*(\.[0-9]*)?)?;)*"
+            />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinTypeExtCol">
+        <xs:restriction base="xs:string">
+            <xs:pattern value=
+"((-?([0-9])*(\.[0-9]*)?)?,)*(-?([0-9])*(\.[0-9]*)?)"
+            />
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinCode2Or3Dig">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{2,3}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinCode2Dig">
+        <xs:restriction base="xs:string">
+            <xs:pattern value="[0-9]{2}"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinType1Or2">
+        <xs:restriction base="xs:string">
+            <xs:enumeration value="1"/>
+            <xs:enumeration value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+    <xs:simpleType name="FinTypeMoney2">
+        <xs:restriction base="xs:decimal">
+            <xs:fractionDigits value="2"/>
+        </xs:restriction>
+    </xs:simpleType>
+</xs:schema>

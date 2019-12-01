@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ controller_name }}{% endblock %}
+
+{% block body %}
+   
+<div class="row">
+    <h1>{{ controller_name }}</h1>   
+</div>
+
+{% for label, messages in app.flashes %}
+    <div class="row flash-notice">
+    {% for message in messages %}  
+        <div class="alert alert-secondary" role="alert">
+            {{ message }}    
+        </div>
+    {% endfor %}
+    </div>
+{% endfor %}  
+
+<div class="row">
+    <a href="{{ path('upload_form') }}" class="btn btn-primary">Upload report</a>    
+</div>    
+
+<div class="row">
+<h3>Поданные отчеты</h3>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th scope="col">Пользователь</th>
+      <th scope="col">Код предприятия</th>
+      <th scope="col">Наименование предприятия</th>
+      <th scope="col">Тип информации</th>
+      <th scope="col">Дата размещения</th>
+      <th scope="col">Действие</th>
+    </tr>
+  </thead>
+  <tbody>
+{% for report in reports %}
+    <tr>
+      <td>{{ report.user.email }}</td>
+      <td>{{ report.edrpou }}</td>
+      <td>{{ report.name }}</td>
+      <td>{{ report.nreg }}</td>
+      <td>{{ report.publicDt|date('Y-m-d') }}</td>
+      <td><a href="" class="btn">Переглянути</a> </td>
+    </tr>
+{% endfor %}     
+  </tbody>
+</table>
+
+</div>
+    
+    
+{% endblock %}

@@ -1,0 +1,142 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+	xmlns:xs="http://www.w3.org/2001/XMLSchema"
+        xmlns:z="http://nssmc.gov.ua/Schem/FinRep"
+        elementFormDefault="qualified">
+    <xs:import schemaLocation="finrep-types.xsd"
+        namespace="http://nssmc.gov.ua/Schem/FinRep"/>
+    <xs:complexType name="FinRep-small">
+        <xs:all>
+            <xs:element name="DTSBM48" type="DTSBM48-container"/>
+            <xs:element name="DTSFM48" type="DTSFM48-container"/>
+        </xs:all>
+    </xs:complexType>
+    <xs:complexType name="DTSBM48-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSBM48-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSFM48-container">
+        <xs:sequence minOccurs="0" maxOccurs="1">
+            <xs:element name="row" type="DTSFM48-row"/>
+        </xs:sequence>
+    </xs:complexType>
+    <xs:complexType name="DTSBM48-row">
+        <xs:attribute name="DATE1" type="xs:dateTime"/>
+        <xs:attribute name="KOATYY" type="z:FinType10"/>
+        <xs:attribute name="KOPFG" type="z:FinType10"/>
+        <xs:attribute name="KVED" type="z:FinType7"/>
+        <xs:attribute name="BM_CHISP" type="xs:double"/>
+        <xs:attribute name="ADRES" type="z:FinType254"/>
+        <xs:attribute name="BM1005_03" type="xs:double"/>
+        <xs:attribute name="BM1005_04" type="xs:double"/>
+        <xs:attribute name="BM1010_03" type="xs:double"/>
+        <xs:attribute name="BM1010_04" type="xs:double"/>
+        <xs:attribute name="BM1011_03" type="xs:double"/>
+        <xs:attribute name="BM1011_04" type="xs:double"/>
+        <xs:attribute name="BM1012_03" type="xs:double"/>
+        <xs:attribute name="BM1012_04" type="xs:double"/>
+        <xs:attribute name="BM1020_03" type="xs:double"/>
+        <xs:attribute name="BM1020_04" type="xs:double"/>
+        <xs:attribute name="BM1030_03" type="xs:double"/>
+        <xs:attribute name="BM1030_04" type="xs:double"/>
+        <xs:attribute name="BM1090_03" type="xs:double"/>
+        <xs:attribute name="BM1090_04" type="xs:double"/>
+        <xs:attribute name="BM1095_03" type="xs:double"/>
+        <xs:attribute name="BM1095_04" type="xs:double"/>
+        <xs:attribute name="BM1100_03" type="xs:double"/>
+        <xs:attribute name="BM1100_04" type="xs:double"/>
+        <xs:attribute name="BM1103_03" type="xs:double"/>
+        <xs:attribute name="BM1103_04" type="xs:double"/>
+        <xs:attribute name="BM1110_03" type="xs:double"/>
+        <xs:attribute name="BM1110_04" type="xs:double"/>
+        <xs:attribute name="BM1125_03" type="xs:double"/>
+        <xs:attribute name="BM1125_04" type="xs:double"/>
+        <xs:attribute name="BM1135_03" type="xs:double"/>
+        <xs:attribute name="BM1135_04" type="xs:double"/>
+        <xs:attribute name="BM1136_03" type="xs:double"/>
+        <xs:attribute name="BM1136_04" type="xs:double"/>
+        <xs:attribute name="BM1155_03" type="xs:double"/>
+        <xs:attribute name="BM1155_04" type="xs:double"/>
+        <xs:attribute name="BM1160_03" type="xs:double"/>
+        <xs:attribute name="BM1160_04" type="xs:double"/>
+        <xs:attribute name="BM1165_03" type="xs:double"/>
+        <xs:attribute name="BM1165_04" type="xs:double"/>
+        <xs:attribute name="BM1170_03" type="xs:double"/>
+        <xs:attribute name="BM1170_04" type="xs:double"/>
+        <xs:attribute name="BM1190_03" type="xs:double"/>
+        <xs:attribute name="BM1190_04" type="xs:double"/>
+        <xs:attribute name="BM1195_03" type="xs:double"/>
+        <xs:attribute name="BM1195_04" type="xs:double"/>
+        <xs:attribute name="BM1200_03" type="xs:double"/>
+        <xs:attribute name="BM1200_04" type="xs:double"/>
+        <xs:attribute name="BM1300_03" type="xs:double"/>
+        <xs:attribute name="BM1300_04" type="xs:double"/>
+        <xs:attribute name="BM1400_03" type="xs:double"/>
+        <xs:attribute name="BM1400_04" type="xs:double"/>
+        <xs:attribute name="BM1410_03" type="xs:double"/>
+        <xs:attribute name="BM1410_04" type="xs:double"/>
+        <xs:attribute name="BM1415_03" type="xs:double"/>
+        <xs:attribute name="BM1415_04" type="xs:double"/>
+        <xs:attribute name="BM1420_03" type="xs:double"/>
+        <xs:attribute name="BM1420_04" type="xs:double"/>
+        <xs:attribute name="BM1425_03" type="xs:double"/>
+        <xs:attribute name="BM1425_04" type="xs:double"/>
+        <xs:attribute name="BM1495_03" type="xs:double"/>
+        <xs:attribute name="BM1495_04" type="xs:double"/>
+        <xs:attribute name="BM1595_03" type="xs:double"/>
+        <xs:attribute name="BM1595_04" type="xs:double"/>
+        <xs:attribute name="BM1600_03" type="xs:double"/>
+        <xs:attribute name="BM1600_04" type="xs:double"/>
+        <xs:attribute name="BM1610_03" type="xs:double"/>
+        <xs:attribute name="BM1610_04" type="xs:double"/>
+        <xs:attribute name="BM1615_03" type="xs:double"/>
+        <xs:attribute name="BM1615_04" type="xs:double"/>
+        <xs:attribute name="BM1620_03" type="xs:double"/>
+        <xs:attribute name="BM1620_04" type="xs:double"/>
+        <xs:attribute name="BM1621_03" type="xs:double"/>
+        <xs:attribute name="BM1621_04" type="xs:double"/>
+        <xs:attribute name="BM1625_03" type="xs:double"/>
+        <xs:attribute name="BM1625_04" type="xs:double"/>
+        <xs:attribute name="BM1630_03" type="xs:double"/>
+        <xs:attribute name="BM1630_04" type="xs:double"/>
+        <xs:attribute name="BM1665_03" type="xs:double"/>
+        <xs:attribute name="BM1665_04" type="xs:double"/>
+        <xs:attribute name="BM1690_03" type="xs:double"/>
+        <xs:attribute name="BM1690_04" type="xs:double"/>
+        <xs:attribute name="BM1695_03" type="xs:double"/>
+        <xs:attribute name="BM1695_04" type="xs:double"/>
+        <xs:attribute name="BM1700_03" type="xs:double"/>
+        <xs:attribute name="BM1700_04" type="xs:double"/>
+        <xs:attribute name="BM1900_03" type="xs:double"/>
+        <xs:attribute name="BM1900_04" type="xs:double"/>
+        <xs:attribute name="KERIVNYK" type="z:FinType100"/>
+        <xs:attribute name="BUHG" type="z:FinType100"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+    <xs:complexType name="DTSFM48-row">
+        <xs:attribute name="FM2000_03" type="xs:double"/>
+        <xs:attribute name="FM2000_04" type="xs:double"/>
+        <xs:attribute name="FM2050_03" type="xs:double"/>
+        <xs:attribute name="FM2050_04" type="xs:double"/>
+        <xs:attribute name="FM2120_03" type="xs:double"/>
+        <xs:attribute name="FM2120_04" type="xs:double"/>
+        <xs:attribute name="FM2180_03" type="xs:double"/>
+        <xs:attribute name="FM2180_04" type="xs:double"/>
+        <xs:attribute name="FM2240_03" type="xs:double"/>
+        <xs:attribute name="FM2240_04" type="xs:double"/>
+        <xs:attribute name="FM2270_03" type="xs:double"/>
+        <xs:attribute name="FM2270_04" type="xs:double"/>
+        <xs:attribute name="FM2280_03" type="xs:double"/>
+        <xs:attribute name="FM2280_04" type="xs:double"/>
+        <xs:attribute name="FM2285_03" type="xs:double"/>
+        <xs:attribute name="FM2285_04" type="xs:double"/>
+        <xs:attribute name="FM2290_03" type="xs:double"/>
+        <xs:attribute name="FM2290_04" type="xs:double"/>
+        <xs:attribute name="FM2300_03" type="xs:double"/>
+        <xs:attribute name="FM2300_04" type="xs:double"/>
+        <xs:attribute name="FM2350_03" type="xs:double"/>
+        <xs:attribute name="FM2350_04" type="xs:double"/>
+        <xs:attribute name="PRIM" type="xs:string"/>
+    </xs:complexType>
+</xs:schema>

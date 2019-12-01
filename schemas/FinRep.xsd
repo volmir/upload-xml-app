@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<xs:schema
+    xmlns:xs="http://www.w3.org/2001/XMLSchema"
+    xmlns:z="http://nssmc.gov.ua/Schem/FinRep"
+    elementFormDefault="qualified"
+    >
+    <xs:include schemaLocation="finrep-containers-general.xsd"/>
+    <xs:include schemaLocation="finrep-containers-bank.xsd"/>
+    <xs:include schemaLocation="finrep-containers-small.xsd"/>
+    <xs:include schemaLocation="finrep-containers-smallsimple.xsd"/>
+    <xs:include schemaLocation="finrep-containers-state.xsd"/>
+    <xs:element name="Fin_sub" abstract="true"/>
+    <xs:element name="Fin-empty" substitutionGroup="Fin_sub">
+        <xs:complexType/>
+    </xs:element>
+    <xs:element name="Fin-general" type="FinRep-general"
+        substitutionGroup="Fin_sub"/>
+    <xs:element name="Fin-bank" type="FinRep-bank"
+        substitutionGroup="Fin_sub">
+        <xs:keyref name="FinRep-bank-ref" refer="FinRep-bank-key">
+            <xs:selector xpath="*/*"/>
+            <xs:field xpath="@PERIOD_Y"/>
+            <xs:field xpath="@PERIOD_Q"/>
+            <xs:field xpath="@K_OZN"/>
+        </xs:keyref>
+        <xs:keyref name="FinRep-bank-note-ref" refer="FinRep-bank-note-key">
+            <xs:selector xpath="*/*"/>
+            <xs:field xpath="@PERIOD_Y"/>
+            <xs:field xpath="@PERIOD_Q"/>
+            <xs:field xpath="@K_OZN"/>
+            <xs:field xpath="@NN"/>
+        </xs:keyref>
+    </xs:element>
+    <xs:element name="Fin-small" type="FinRep-small"
+        substitutionGroup="Fin_sub"/>
+    <xs:element name="Fin-smallsimple" type="FinRep-smallsimple"
+        substitutionGroup="Fin_sub"/>
+    <xs:element name="Fin-state" type="FinRep-state"
+        substitutionGroup="Fin_sub">
+        <xs:keyref name="FinRep-state-ref" refer="FinRep-state-key">
+            <xs:selector xpath="*/*"/>
+            <xs:field xpath="@PERIOD_Y"/>
+            <xs:field xpath="@PERIOD_Q"/>
+        </xs:keyref>
+    </xs:element>
+</xs:schema>
